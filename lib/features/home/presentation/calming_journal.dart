@@ -1,13 +1,38 @@
 import 'package:dovie/constants/styles/app_styles.dart';
+import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../constants/themes/colors.dart';
 
-class CalmingJournalScreen extends StatelessWidget {
-  const CalmingJournalScreen({super.key});
+class CalmingJournalScreen extends StatefulWidget {
+  CalmingJournalScreen({super.key});
 
+  @override
+  State<CalmingJournalScreen> createState() => _CalmingJournalScreenState();
+}
+
+class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
+  String dropdownvalue = '';
+
+  var items = [
+    '',
+    'I am Angry 1',
+    'I am Sad 2',
+    'I am Happy',
+    'I an Frustrated',
+  ];
+
+  String actionvalue = '';
+
+  var actionitems = [
+    '',
+    'Read sime Novel',
+    'Play Video',
+    'Sing Songs',
+    'Talk a walk',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,7 +197,80 @@ class CalmingJournalScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30.w),
                   color: AppColors.offWhiteColor),
-            )
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropdownButton(
+                  // Initial Value
+                  value: dropdownvalue,
+                  isExpanded: true,
+                  isDense: true,
+                  underline: SizedBox(),
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: items.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  // After selecting the desired option,it will
+
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownvalue = newValue!;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 41.h,
+            ),
+            Container(
+              height: 50.h,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.w),
+                  color: AppColors.offWhiteColor),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropdownButton(
+                  // Initial Value
+                  value: actionvalue,
+                  isExpanded: true,
+                  isDense: true,
+                  underline: SizedBox(),
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: actionitems.map((String actionitems) {
+                    return DropdownMenuItem(
+                      value: actionitems,
+                      child: Text(actionitems),
+                    );
+                  }).toList(),
+                  // After selecting the desired option,it will
+
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      actionvalue = newValue!;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 66.h,
+            ),
+            CustomButton(
+                height: 70.h,
+                width: MediaQuery.of(context).size.width,
+                borderRadius: 25.w,
+                buttonText: 'Save',
+                opnPress: () {})
           ],
         ),
       ),

@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final activities = [
-    {'imgPath': 'assets/images/mt.png', 'route': 'calmingJournalPage'},
+    {'imgPath': 'assets/images/mt.png', 'route': 'moodTrackerPage'},
     {'imgPath': 'assets/images/caj.png', 'route': 'calmingJournalPage'},
     {'imgPath': 'assets/images/gm.png', 'route': 'calmingJournalPage'},
     {'imgPath': 'assets/images/aff.png', 'route': 'calmingJournalPage'},
