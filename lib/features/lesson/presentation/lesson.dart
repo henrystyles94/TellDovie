@@ -67,6 +67,9 @@ class LessonScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        SizedBox(
+                          height: 15.h,
+                        ),
                         Text(
                           'Reading',
                           style: AppStyles().smallText,
@@ -74,12 +77,15 @@ class LessonScreen extends StatelessWidget {
                         SizedBox(
                           height: 24.h,
                         ),
-                        Center(
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            'Understanding basics, lexis and structure of theenglish language, comprehend texts and identify key details.',
-                            style: AppStyles().smallText.copyWith(
-                                fontSize: 20, fontWeight: FontWeight.w100),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              'Understanding basics, lexis and structure of theenglish language, comprehend texts and identify key details.',
+                              style: AppStyles().smallText.copyWith(
+                                  fontSize: 20, fontWeight: FontWeight.w100),
+                            ),
                           ),
                         ),
                         SizedBox(

@@ -17,7 +17,7 @@ class BottomNavigationScreen extends StatelessWidget {
     HomeScreen(),
     const WellnesScreen(),
     const LessonScreen(),
-    const StaticsScreen()
+    StaticsScreen()
   ];
   @override
   Widget build(BuildContext context) {

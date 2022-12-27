@@ -146,12 +146,17 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 35.h,
                   ),
-                  Center(
-                    child: Text(
-                      'Try a different method',
-                      style: AppStyles()
-                          .smallText
-                          .copyWith(color: AppColors.buttonColor),
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed('picLogin');
+                    },
+                    child: Center(
+                      child: Text(
+                        'Try a different method',
+                        style: AppStyles()
+                            .smallText
+                            .copyWith(color: AppColors.buttonColor),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -183,6 +188,7 @@ class CustomInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: AppStyles().smallText,
       decoration: InputDecoration(
           isDense: true,
           fillColor: AppColors.whiteColor,

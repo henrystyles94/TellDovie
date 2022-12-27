@@ -212,7 +212,10 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                   items: items.map((String items) {
                     return DropdownMenuItem(
                       value: items,
-                      child: Text(items),
+                      child: Text(
+                        items,
+                        style: AppStyles().smallText,
+                      ),
                     );
                   }).toList(),
                   // After selecting the desired option,it will
@@ -249,7 +252,10 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                   items: actionitems.map((String actionitems) {
                     return DropdownMenuItem(
                       value: actionitems,
-                      child: Text(actionitems),
+                      child: Text(
+                        actionitems,
+                        style: AppStyles().smallText,
+                      ),
                     );
                   }).toList(),
                   // After selecting the desired option,it will

@@ -10,9 +10,9 @@ class HomeScreen extends StatelessWidget {
   final activities = [
     {'imgPath': 'assets/images/mt.png', 'route': 'moodTrackerPage'},
     {'imgPath': 'assets/images/caj.png', 'route': 'calmingJournalPage'},
-    {'imgPath': 'assets/images/gm.png', 'route': 'calmingJournalPage'},
+    {'imgPath': 'assets/images/gm.png', 'route': 'growthMindset'},
     {'imgPath': 'assets/images/aff.png', 'route': 'calmingJournalPage'},
-    {'imgPath': 'assets/images/if.png', 'route': 'calmingJournalPage'},
+    {'imgPath': 'assets/images/if.png', 'route': 'informationHub'},
     {'imgPath': 'assets/images/avb.png', 'route': 'calmingJournalPage'},
   ];
   @override
