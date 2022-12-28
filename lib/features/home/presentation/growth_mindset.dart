@@ -1,14 +1,43 @@
-import 'dart:io';
-
+import 'package:camera/camera.dart';
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/constants/themes/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_camera/flutter_camera.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class GrowthMindsetScreen extends StatelessWidget {
-  const GrowthMindsetScreen({Key? key}) : super(key: key);
+class GrowthMindsetScreen extends StatefulWidget {
+  final List<CameraDescription>? cameras;
+  const GrowthMindsetScreen({Key? key, this.cameras}) : super(key: key);
+
+  @override
+  State<GrowthMindsetScreen> createState() => _GrowthMindsetScreenState();
+}
+
+class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
+  CameraController? _cameraController;
+
+  Future initCamera(CameraDescription cameraDescription) async {
+// create a CameraController
+    _cameraController =
+        CameraController(cameraDescription, ResolutionPreset.high);
+// Next, initialize the controller. This returns a Future.
+    try {
+      await _cameraController!.initialize().then((_) {
+        if (!mounted) return;
+        setState(() {});
+      });
+    } on CameraException catch (e) {
+      debugPrint("camera error $e");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // initialize the rear camera
+    initCamera(widget.cameras![1]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,56 +72,81 @@ class GrowthMindsetScreen extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              Column(
+              Stack(
                 children: [
-                  SizedBox(
-                    height: 600.h,
-                    child: FlutterCamera(
-                      color: Colors.amber,
-                      onImageCaptured: (value) {
-                        final path = value.path;
-                        print("::::::::::::::::::::::::::::::::: $path");
-                        if (path.contains('.jpg')) {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  content: Image.file(File(path)),
-                                );
-                              });
-                        }
-                      },
-                      onVideoRecorded: (value) {
-                        final path = value.path;
-                        print('::::::::::::::::::::::::;; dkdkkd $path');
-                      },
-                    ),
-                  ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Container(
-                    // height: 108.h,
-                    width: 210.w,
-                    decoration: BoxDecoration(
+                      height: 717.h,
+                      width: 343.w,
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30.w),
-                        color: AppColors.whiteColor),
-                    child: Padding(
-                      padding: const EdgeInsets.all(28.0),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: Text(
-                              'When the work gets harder, your brain gets smarter',
-                              style: AppStyles().smallText.copyWith(
-                                  fontSize: 20, color: AppColors.textBlue),
-                              textAlign: TextAlign.center,
-                            ),
-                          )
-                        ],
+                      ),
+                      child: _cameraController!.value.isInitialized
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(30.w),
+                              child: CameraPreview(_cameraController!))
+                          : const Center(child: CircularProgressIndicator())),
+                  Positioned(
+                    bottom: 150.h,
+                    left: 50.w,
+                    right: 50.w,
+                    child: Container(
+                      // height: 108.h,
+                      width: 210.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30.w),
+                          color: AppColors.whiteColor),
+                      child: Padding(
+                        padding: const EdgeInsets.all(28.0),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: Text(
+                                'When the work gets harder, your brain gets smarter',
+                                style: AppStyles().smallText.copyWith(
+                                    fontSize: 20, color: AppColors.textBlue),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
+                  Positioned(
+                      bottom: 50.h,
+                      left: MediaQuery.of(context).size.width * 0.35,
+                      child: Container(
+                        height: 60.h,
+                        width: 60.w,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.backGroundColor,
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/speak.png'))),
+                      )),
+                  Positioned(
+                    top: 10.h,
+                    left: MediaQuery.of(context).size.width * 0.3,
+                    child: Container(
+                      height: 35.h,
+                      width: 103.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.w),
+                          border: Border.all(
+                              color: AppColors.backGroundColor, width: 3.w)),
+                      child: Center(
+                        child: Text(
+                          '00:45',
+                          style: AppStyles()
+                              .smallText
+                              .copyWith(color: AppColors.backGroundColor),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               )
             ],
@@ -100,5 +154,12 @@ class GrowthMindsetScreen extends StatelessWidget {
         )),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the controller when the widget is disposed.
+    _cameraController!.dispose();
+    super.dispose();
   }
 }

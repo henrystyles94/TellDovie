@@ -168,7 +168,7 @@ class LoginScreen extends StatelessWidget {
                       borderRadius: 30.w,
                       buttonText: 'Login',
                       opnPress: () {
-                        Get.toNamed('bottomNavPage');
+                        Get.offAllNamed('bottomNavPage');
                       })
                 ],
               ),

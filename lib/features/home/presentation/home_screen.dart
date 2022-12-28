@@ -1,8 +1,16 @@
+import 'package:camera/camera.dart';
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/constants/themes/colors.dart';
+import 'package:dovie/features/home/presentation/affirmations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import 'avartar.dart';
+import 'calming_journal.dart';
+import 'growth_mindset.dart';
+import 'info_hub.dart';
+import 'mood_tracker.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -11,7 +19,7 @@ class HomeScreen extends StatelessWidget {
     {'imgPath': 'assets/images/mt.png', 'route': 'moodTrackerPage'},
     {'imgPath': 'assets/images/caj.png', 'route': 'calmingJournalPage'},
     {'imgPath': 'assets/images/gm.png', 'route': 'growthMindset'},
-    {'imgPath': 'assets/images/aff.png', 'route': 'calmingJournalPage'},
+    {'imgPath': 'assets/images/aff.png', 'route': 'affirmations'},
     {'imgPath': 'assets/images/if.png', 'route': 'informationHub'},
     {'imgPath': 'assets/images/avb.png', 'route': 'calmingJournalPage'},
   ];
@@ -90,8 +98,27 @@ class HomeScreen extends StatelessWidget {
                       mainAxisSpacing: 0),
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {
-                        Get.toNamed(activities[index]["route"].toString());
+                      onTap: () async {
+                        if (index == 0) {
+                          Get.to(() => MoodTrackerScreen());
+                        } else if (index == 1) {
+                          Get.to(() => CalmingJournalScreen());
+                          // Get.toNamed(activities[index]["route"].toString());
+                        } else if (index == 2) {
+                          await availableCameras()
+                              .then((value) => Get.to(() => GrowthMindsetScreen(
+                                    cameras: value,
+                                  )));
+                        } else if (index == 3) {
+                          await availableCameras()
+                              .then((value) => Get.to(() => AffirmationPage(
+                                    cameras: value,
+                                  )));
+                        } else if (index == 4) {
+                          Get.to(() => InformationHubScreen());
+                        } else if (index == 5) {
+                          Get.to(() => AvatarScreen());
+                        }
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
