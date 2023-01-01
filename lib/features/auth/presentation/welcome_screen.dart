@@ -44,6 +44,7 @@ class WelcomeScreen extends StatelessWidget {
               buttonText: 'Let’s Go',
               height: 70.h,
               width: 201.w,
+              isLoading: false,
               opnPress: () {
                 Get.toNamed('loginPage');
               },
@@ -61,6 +62,7 @@ class CustomButton extends StatelessWidget {
   final double borderRadius;
   final String buttonText;
   final VoidCallback opnPress;
+  final bool isLoading;
 
   const CustomButton({
     Key? key,
@@ -68,7 +70,7 @@ class CustomButton extends StatelessWidget {
     required this.width,
     required this.borderRadius,
     required this.buttonText,
-    required this.opnPress,
+    required this.opnPress, required this.isLoading,
   }) : super(key: key);
 
   @override
@@ -83,7 +85,7 @@ class CustomButton extends StatelessWidget {
               color: AppColors.buttonColor,
               borderRadius: BorderRadius.circular(borderRadius.w)),
           child: Center(
-            child: Text(
+            child: isLoading? CircularProgressIndicator(color: AppColors.backGroundColor,strokeWidth: 2,): Text(
               buttonText,
               style:
                   AppStyles().mediumText.copyWith(color: AppColors.whiteColor),

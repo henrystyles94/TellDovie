@@ -87,7 +87,9 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                           ? ClipRRect(
                               borderRadius: BorderRadius.circular(30.w),
                               child: CameraPreview(_cameraController!))
-                          : const Center(child: CircularProgressIndicator())),
+                          : const Center(
+                              child: CircularProgressIndicator(
+                                  color: AppColors.offWhiteColor))),
                   Positioned(
                     bottom: 150.h,
                     left: 50.w,

@@ -96,6 +96,7 @@ class LessonDetailPage extends StatelessWidget {
                         height: 41.h,
                       ),
                       CustomButton(
+                        isLoading: false,
                           height: 70.h,
                           width: MediaQuery.of(context).size.width,
                           borderRadius: 30.w,

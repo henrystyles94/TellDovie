@@ -276,6 +276,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                 width: MediaQuery.of(context).size.width,
                 borderRadius: 25.w,
                 buttonText: 'Save',
+                isLoading: false,
                 opnPress: () {})
           ],
         ),

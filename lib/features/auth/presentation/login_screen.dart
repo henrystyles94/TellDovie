@@ -8,12 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../../widgets/custom_input.dart';
 import '../controller/auth_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final authController = Get.put(AuthController());
-  TextEditingController otpController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +74,9 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 8.h,
                   ),
-                  const CustomInputField(),
+                   CustomInputField(
+                    controller: emailController,
+                  ),
                   SizedBox(
                     height: 57.h,
                   ),
@@ -84,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                     height: 3.h,
                   ),
                   PinCodeTextField(
-                    controller: otpController,
+                    controller: passwordController,
                     appContext: context,
                     backgroundColor: AppColors.backGroundColor,
 
@@ -162,52 +166,25 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 23.h,
                   ),
-                  CustomButton(
-                      height: 70.h,
-                      width: 382.w,
-                      borderRadius: 30.w,
-                      buttonText: 'Login',
-                      opnPress: () {
-                        Get.offAllNamed('bottomNavPage');
-                      })
+                  Obx(
+                    () => CustomButton(
+                        height: 70.h,
+                        width: 382.w,
+                        borderRadius: 30.w,
+                        buttonText: 'Login',
+                        isLoading: authController.isLoading.value,
+                        opnPress: () {
+                          authController.loginUserController(
+                              emailController.text.trim(),
+                              passwordController.text.trim());
+                        }),
+                  )
                 ],
               ),
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class CustomInputField extends StatelessWidget {
-  const CustomInputField({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      style: AppStyles().smallText,
-      decoration: InputDecoration(
-          isDense: true,
-          fillColor: AppColors.whiteColor,
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25.0),
-            borderSide: const BorderSide(
-              color: AppColors.whiteColor,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25.0),
-            borderSide: const BorderSide(
-              color: AppColors.whiteColor,
-              width: 2.0,
-            ),
-          ),
-          filled: true,
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(40.w))),
     );
   }
 }

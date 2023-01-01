@@ -56,7 +56,7 @@ class PictureLoginScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 21.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start, 
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Username',
@@ -65,7 +65,7 @@ class PictureLoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 8.h,
                 ),
-                const CustomInputField(),
+                // const CustomInputField(),
               ],
             ),
           )

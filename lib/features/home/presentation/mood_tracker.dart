@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
+import '../controller/affirmations.dart';
 
 class MoodTrackerScreen extends StatefulWidget {
   const MoodTrackerScreen({super.key});
@@ -13,6 +16,7 @@ class MoodTrackerScreen extends StatefulWidget {
   State<MoodTrackerScreen> createState() => _MoodTrackerScreenState();
 }
 
+final affirmationController = Get.put(AffirmationController());
 String dropdownvalue = '';
 var items = [
   '',
@@ -20,6 +24,18 @@ var items = [
   'Play Video',
   'Sing Songs',
   'Talk a walk',
+];
+var reactions = [
+  {'imageSrc': 'assets/images/hap.png', 'title': 'Happy'},
+  {'imageSrc': 'assets/images/ex.png', 'title': 'Excited'},
+  {'imageSrc': 'assets/images/hope.png', 'title': 'Hopeful'},
+  {'imageSrc': 'assets/images/proud.png', 'title': 'Proud'},
+  {'imageSrc': 'assets/images/silly.png', 'title': 'Silly'},
+  {'imageSrc': 'assets/images/sad.png', 'title': 'Sad'},
+  {'imageSrc': 'assets/images/angry.png', 'title': 'Angry'},
+  {'imageSrc': 'assets/images/frustrate.png', 'title': 'Frustrated'},
+  {'imageSrc': 'assets/images/shy.png', 'title': 'Shy'},
+  // {'imageSrc': 'assets/images/add.png', 'title': ''},
 ];
 
 class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
@@ -61,24 +77,34 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(),
-                  // Container(
-                  //   height: 100,
-                  //   width: 200,
-                  //   margin: EdgeInsets.only(top: 40, left: 40, right: 40),
-                  //   decoration: new BoxDecoration(
-                  //     color: AppColors.whiteColor,
-                  //     borderRadius:
-                  //         new BorderRadius.all(Radius.elliptical(100, 50)),
-                  //   ),
-                  //   child: Center(
-                  //     child: Text(
-                  //       'Dovie wants to know \nhow you’re feeling today',
-                  //       style: AppStyles().smallText.copyWith(fontSize: 14),
-                  //     ),
-                  //   ),
-                  // ),
-                  Image.asset('assets/images/grandma.png'),
+                  Container(
+                    height: 100,
+                    width: 200,
+                    margin: EdgeInsets.only(top: 40, left: 40, right: 40),
+                    decoration: new BoxDecoration(
+                      color: AppColors.whiteColor,
+                      borderRadius:
+                          new BorderRadius.all(Radius.elliptical(100, 50)),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Dovie wants to know \nhow you’re feeling today',
+                        style: AppStyles().smallText.copyWith(fontSize: 14),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                        height: 160.h,
+                        child: Image.asset(
+                          'assets/images/grandma.png',
+                          fit: BoxFit.fill,
+                        )),
+                  ),
                 ],
+              ),
+              SizedBox(
+                height: 10.h,
               ),
               Container(
                 // height: 131.h,
@@ -89,55 +115,101 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(18.0),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Image.asset('assets/images/frustrate.png'),
-                            Text(
-                              'Frustrated',
-                              style: AppStyles().smallText,
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 40.w,
-                        ),
-                        Column(
-                          children: [
-                            Image.asset('assets/images/angry.png'),
-                            Text('Angry', style: AppStyles().smallText)
-                          ],
-                        ),
-                        SizedBox(
-                          width: 40.w,
-                        ),
-                        Column(
-                          children: [
-                            Image.asset('assets/images/lonley.png'),
-                            Text(
-                              'Lonely',
-                              style: AppStyles().smallText,
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 40.w,
-                        ),
-                        Column(
-                          children: [
-                            Image.asset('assets/images/sad.png'),
-                            Text(
-                              'Sad',
-                              style: AppStyles().smallText,
-                            )
-                          ],
-                        ),
-                      ],
+                  child: SizedBox(
+                    height: 100.h,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: reactions.length + 1,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {},
+                          child: index > 8
+                              ? InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      affirmationController.clicked = true;
+                                    });
+                                    log('message');
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(28.0),
+                                    child: Row(
+                                      children: [
+                                        Visibility(
+                                          visible: affirmationController.clicked
+                                              ? false
+                                              : true,
+                                          child: Image.asset(
+                                            'assets/images/add.png',
+                                            fit: BoxFit.scaleDown,
+                                          ),
+                                        ),
+                                        Visibility(
+                                          visible: affirmationController.clicked
+                                              ? true
+                                              : false,
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                  color:
+                                                      AppColors.backGroundColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.w)),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      'you can type how you feel here',
+                                                      style: AppStyles()
+                                                          .smallText
+                                                          .copyWith(
+                                                              fontSize: 15),
+                                                    ),
+                                                    InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            affirmationController
+                                                                    .clicked =
+                                                                false;
+                                                          });
+                                                        },
+                                                        child: Visibility(
+                                                            visible:
+                                                                affirmationController
+                                                                        .clicked
+                                                                    ? true
+                                                                    : false,
+                                                            child: Icon(
+                                                                Icons.cancel)))
+                                                  ],
+                                                ),
+                                              )),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 55.h,
+                                        child: Image.asset(reactions[index]
+                                                ['imageSrc']
+                                            .toString()),
+                                      ),
+                                      Text(
+                                        reactions[index]['title'].toString(),
+                                        style: AppStyles().smallText,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -242,6 +314,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                 height: 40.h,
               ),
               CustomButton(
+                  isLoading: false,
                   height: 70.h,
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 30.w,
