@@ -1,9 +1,13 @@
 import 'dart:developer';
-
+import 'dart:io';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:dovie/features/auth/presentation/welcome_screen.dart';
+import 'package:dovie/features/widgets/custom_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
@@ -18,6 +22,7 @@ class MoodTrackerScreen extends StatefulWidget {
 
 final affirmationController = Get.put(AffirmationController());
 String dropdownvalue = '';
+int? tappedIndex = -1;
 var items = [
   '',
   'Read sime Novel',
@@ -38,7 +43,53 @@ var reactions = [
   // {'imageSrc': 'assets/images/add.png', 'title': ''},
 ];
 
+TextEditingController feelingController = TextEditingController();
+AudioPlayer audioPlayer = AudioPlayer();
+bool isPlaying = false;
+Duration duration = Duration.zero;
+Duration position = Duration.zero;
+final recorder = FlutterSoundRecorder();
+File? audioPath;
+bool isRecorderReady = false;
+Future record() async {
+  if (!isRecorderReady) return;
+  await recorder.startRecorder(toFile: 'audio');
+}
+
+Future stop() async {
+  if (!isRecorderReady) return;
+  final path = await recorder.stopRecorder();
+
+  final audioFile = File(path!);
+  audioPath = audioFile;
+  print('RecordedFile = $audioFile');
+}
+
+Future initRecorder() async {
+  final status = await Permission.microphone.request();
+  if (status != PermissionStatus.granted) {
+    throw 'Permission denied';
+  }
+  await recorder.openRecorder();
+  recorder.setSubscriptionDuration(Duration(milliseconds: 500));
+  isRecorderReady = true;
+}
+
 class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
+  @override
+  void initState() {
+    initRecorder();
+    super.initState();
+    tappedIndex = 0;
+  }
+
+  @override
+  void dispose() {
+    recorder.closeRecorder();
+    audioPlayer.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,21 +242,34 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                                     ),
                                   ),
                                 )
-                              : Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 55.h,
-                                        child: Image.asset(reactions[index]
-                                                ['imageSrc']
-                                            .toString()),
-                                      ),
-                                      Text(
-                                        reactions[index]['title'].toString(),
-                                        style: AppStyles().smallText,
-                                      )
-                                    ],
+                              : InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      tappedIndex = index;
+                                    });
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 55.h,
+                                          decoration: BoxDecoration(
+                                              color: tappedIndex == index
+                                                  ? AppColors.backGroundColor
+                                                  : AppColors.whiteColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(10.w)),
+                                          child: Image.asset(reactions[index]
+                                                  ['imageSrc']
+                                              .toString()),
+                                        ),
+                                        Text(
+                                          reactions[index]['title'].toString(),
+                                          style: AppStyles().smallText,
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                         );
@@ -226,6 +290,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
                         height: 80.h,
@@ -235,27 +300,110 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                             style: AppStyles().smallText),
                       ),
                       SizedBox(height: 10.h),
+                      Container(
+                        height: 50.h,
+                        child: Text(
+                          feelingController.text,
+                          style: AppStyles().smallText,
+                        ),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Container(
-                            height: 48.h,
-                            width: 48.w,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.backGroundColor),
-                            child: Image.asset('assets/images/mic.png'),
+                          InkWell(
+                              onTap: () {
+                                // audioPlayer.play(audioPath);
+                              },
+                              child: Icon(Icons.play_arrow)),
+                          StreamBuilder<RecordingDisposition>(
+                            builder: (context, snapshot) {
+                              final duration = snapshot.hasData
+                                  ? snapshot.data!.duration
+                                  : Duration.zero;
+
+                              String twoDigits(int n) =>
+                                  n.toString().padLeft(2, '0');
+                              final twoDigitsMinutes =
+                                  twoDigits(duration.inMinutes.remainder(60));
+                              final twoDigitsSeconds =
+                                  twoDigits(duration.inSeconds.remainder(60));
+
+                              return Text(
+                                '$twoDigitsMinutes: $twoDigitsSeconds',
+                                style: AppStyles().smallText,
+                              );
+                            },
+                            stream: recorder.onProgress,
+                          ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          InkWell(
+                            onTap: () async {
+                              if (recorder.isRecording) {
+                                await stop();
+                                setState(() {});
+                              } else {
+                                await record();
+                                setState(() {});
+                              }
+                            },
+                            child: Container(
+                              height: 48.h,
+                              width: 48.w,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.backGroundColor),
+                              child: recorder.isRecording
+                                  ? Image.asset('assets/images/speak.png')
+                                  : Image.asset('assets/images/mic.png'),
+                            ),
                           ),
                           SizedBox(
                             width: 28.w,
                           ),
-                          Container(
-                            height: 48.h,
-                            width: 48.w,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.backGroundColor),
-                            child: Image.asset('assets/images/edit.png'),
+                          InkWell(
+                            onTap: () {
+                              Get.bottomSheet(Container(
+                                height: 150.h,
+                                decoration: BoxDecoration(
+                                    color: AppColors.backGroundColor,
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20.w),
+                                        topLeft: Radius.circular(20.w))),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      CustomInputField(
+                                        controller: feelingController,
+                                      ),
+                                      SizedBox(
+                                        height: 20.h,
+                                      ),
+                                      CustomButton(
+                                          height: 40.h,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          borderRadius: 10.w,
+                                          buttonText: 'Done',
+                                          opnPress: () {
+                                            Get.back();
+                                          },
+                                          isLoading: false)
+                                    ],
+                                  ),
+                                ),
+                              ));
+                            },
+                            child: Container(
+                              height: 48.h,
+                              width: 48.w,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.backGroundColor),
+                              child: Image.asset('assets/images/edit.png'),
+                            ),
                           )
                         ],
                       )

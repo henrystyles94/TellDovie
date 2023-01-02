@@ -5,6 +5,7 @@ import '../../../constants/models/affirmation_mode.dart';
 
 class AffirmationController extends GetxController {
   bool clicked = false;
+  RxInt selectedReaction = RxInt(-1);
   RxBool isLoading = RxBool(false);
   final affirmationRepository = AffirmationRepository();
   final affirmationModel = AffirmationResponseMode().obs;
