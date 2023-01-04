@@ -12,8 +12,8 @@ class AvatarScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       appBar: AppBar(
-         backgroundColor: AppColors.backGroundColor,
-          elevation: 0.0,
+        backgroundColor: AppColors.backGroundColor,
+        elevation: 0.0,
         centerTitle: true,
         leading: InkWell(
             onTap: () {
@@ -23,23 +23,42 @@ class AvatarScreen extends StatelessWidget {
         title: Text(
           'Build your Avatar',
           style: AppStyles().headingText.copyWith(fontSize: 20),
-          
         ),
       ),
-      body: Column(
-        children: [
-          Text('Choose  your Avatar', style: AppStyles().headingText.copyWith(fontSize: 20),),
-          SizedBox(height: 50.h,),
-          Container(
-            height:   163.h,
-            width: 177.w,
-            decoration: BoxDecoration(
-              color: AppColors.offWhiteColor,
-
-              borderRadius: BorderRadius.circular(20.w)
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          children: [
+            Text(
+              'Choose  your Avatar',
+              style: AppStyles().headingText.copyWith(fontSize: 20),
             ),
-          )
-        ],
+            SizedBox(
+              height: 30.h,
+            ),
+            Expanded(
+              child: GridView.builder(
+                itemCount: 10,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 20.w,
+                    childAspectRatio: 1.2,
+                    mainAxisSpacing: 20.w),
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 163.h,
+                    width: 177.w,
+                    decoration: BoxDecoration(
+                        color: AppColors.offWhiteColor,
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/avar.png')),
+                        borderRadius: BorderRadius.circular(20.w)),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
+import '../controller/activities.dart';
 
 class InformationHubScreen extends StatelessWidget {
   InformationHubScreen({super.key});
-
+  final infoController = Get.put(ActivityController());
   var info = [
     {'name': 'Self control board game'},
     {'name': 'Let’s get social'},
@@ -46,50 +47,55 @@ class InformationHubScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: GridView.builder(
-                itemCount: info.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 20.w,
-                    childAspectRatio: 2.4,
-                    mainAxisSpacing: 50.h),
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 76.h,
-                    width: 189.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.w),
-                        color: AppColors.offWhiteColor),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: Text(
-                          info[index]['name'].toString(),
-                          style: AppStyles().smallText,
-                          textAlign: TextAlign.center,
+      body: Obx(()=> infoController.loadingInfo.value? Center(child: CircularProgressIndicator(
+        color: AppColors.whiteColor,
+        strokeWidth: 3,
+      ),): infoController.loadedinfoModel.value.data!.isEmpty? Center(child: Text('No information yet',style: AppStyles().smallText,),)
+        : Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            children: [
+              Expanded(
+                child:  GridView.builder(
+                  itemCount: infoController.loadedinfoModel.value.data!.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 20.w,
+                      childAspectRatio: 2.4,
+                      mainAxisSpacing: 50.h),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 76.h,
+                      width: 189.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.w),
+                          color: AppColors.offWhiteColor),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text(
+                           infoController.loadedinfoModel.value.data![index].title!,
+                            style: AppStyles().smallText,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            CustomButton(
-              isLoading: false,
-                height: 70.h,
-                width: MediaQuery.of(context).size.width,
-                borderRadius: 30.w,
-                buttonText: 'Kids Monthly Newsletter',
-                opnPress: () {})
-          ],
+              SizedBox(
+                height: 20.h,
+              ),
+              CustomButton(
+                  isLoading: false,
+                  height: 70.h,
+                  width: MediaQuery.of(context).size.width,
+                  borderRadius: 30.w,
+                  buttonText: 'Kids Monthly Newsletter',
+                  opnPress: () {})
+            ],
+          ),
         ),
       ),
     );

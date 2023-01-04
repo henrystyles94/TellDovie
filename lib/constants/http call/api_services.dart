@@ -16,7 +16,7 @@ class ApiCalls {
           await http.post(Uri.parse(url), body: jsonEncode(params), headers: {
         "Content-type": "application/json",
         "Accept": "application/json",
-        "Bearer-Token": "$token"
+        "Authorization": "Bearer $token"
       });
       log(response.body);
       print(response.statusCode);
@@ -41,7 +41,7 @@ class ApiCalls {
           await http.patch(Uri.parse(url), body: jsonEncode(params), headers: {
         "Content-type": "application/json",
         "Accept": "application/json",
-        "Bearer-Token": "$token"
+        "Authorization": "Bearer $token"
       });
       log(response.body);
 
@@ -67,7 +67,7 @@ class ApiCalls {
       var response = await http.get(Uri.parse(url), headers: {
         "Content-type": "application/json",
         "Accept": "application/json",
-        "Bearer-Token": token
+        "Authorization": "Bearer $token"
       });
       log(response.body);
 
@@ -115,7 +115,7 @@ class ApiCalls {
       var response = await http.delete(Uri.parse(url), headers: {
         "Content-type": "application/json",
         "Accept": "application/json",
-        "Bearer-Token": token
+        "Authorization": "Bearer $token"
       });
       log(response.body);
 

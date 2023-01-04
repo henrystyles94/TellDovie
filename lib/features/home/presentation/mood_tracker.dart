@@ -11,7 +11,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
-import '../controller/affirmations.dart';
+import '../controller/activities.dart';
 
 class MoodTrackerScreen extends StatefulWidget {
   const MoodTrackerScreen({super.key});
@@ -20,7 +20,7 @@ class MoodTrackerScreen extends StatefulWidget {
   State<MoodTrackerScreen> createState() => _MoodTrackerScreenState();
 }
 
-final affirmationController = Get.put(AffirmationController());
+final affirmationController = Get.put(ActivityController());
 String dropdownvalue = '';
 int? tappedIndex = -1;
 var items = [
@@ -42,7 +42,7 @@ var reactions = [
   {'imageSrc': 'assets/images/shy.png', 'title': 'Shy'},
   // {'imageSrc': 'assets/images/add.png', 'title': ''},
 ];
-
+final activityController = Get.put(ActivityController());
 TextEditingController feelingController = TextEditingController();
 AudioPlayer audioPlayer = AudioPlayer();
 bool isPlaying = false;
@@ -121,41 +121,39 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              // SizedBox(
+              //   width: 200.w,
+              // ),
               SizedBox(
-                width: 200.w,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(),
-                  Container(
-                    height: 100,
-                    width: 200,
-                    margin: EdgeInsets.only(top: 40, left: 40, right: 40),
-                    decoration: new BoxDecoration(
-                      color: AppColors.whiteColor,
-                      borderRadius:
-                          new BorderRadius.all(Radius.elliptical(100, 50)),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Dovie wants to know \nhow you’re feeling today',
-                        style: AppStyles().smallText.copyWith(fontSize: 14),
+                height: 160.h,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Positioned(
+                              top: 0,
+                              left: 29,
+                              bottom: 80.h,
+                              right: 0,
+                              child: Image.asset('assets/images/quest.png')),
+                          Positioned(
+                            right: 0,
+                            child: SizedBox(
+                                height: 140.h,
+                                child: Image.asset(
+                                  'assets/images/grandma.png',
+                                  fit: BoxFit.fill,
+                                )),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                        height: 160.h,
-                        child: Image.asset(
-                          'assets/images/grandma.png',
-                          fit: BoxFit.fill,
-                        )),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(
-                height: 10.h,
+                height: 30.h,
               ),
               Container(
                 // height: 131.h,
@@ -461,13 +459,18 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
               SizedBox(
                 height: 40.h,
               ),
-              CustomButton(
-                  isLoading: false,
-                  height: 70.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 30.w,
-                  buttonText: 'Save',
-                  opnPress: () {})
+              Obx(
+                () => CustomButton(
+                    isLoading: activityController.tracking.value,
+                    height: 70.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 30.w,
+                    buttonText: 'Save',
+                    opnPress: () {
+                      activityController.moodTracker(
+                          'sad', feelingController.text, dropdownvalue);
+                    }),
+              )
             ],
           ),
         ),

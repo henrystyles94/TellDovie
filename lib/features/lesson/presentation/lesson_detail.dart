@@ -6,9 +6,25 @@ import 'package:get/get.dart';
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
 
-class LessonDetailPage extends StatelessWidget {
-  const LessonDetailPage({Key? key}) : super(key: key);
+class LessonDetailPage extends StatefulWidget {
+  final String title;
+  final String image;
+  final String desc;
+  LessonDetailPage(
+      {Key? key, required this.title, required this.image, required this.desc})
+      : super(key: key);
 
+  @override
+  State<LessonDetailPage> createState() => _LessonDetailPageState();
+}
+
+class _LessonDetailPageState extends State<LessonDetailPage> {
+  bool selected = false;
+  bool selected2 = false;
+  bool selected3 = false;
+  bool selected4 = false;
+  bool selected5 = false;
+  bool selected6 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +67,7 @@ class LessonDetailPage extends StatelessWidget {
                   padding: const EdgeInsets.all(26.0),
                   child: Column(
                     children: [
-                      Text('Reading',
+                      Text(widget.title,
                           style: AppStyles()
                               .smallText
                               .copyWith(color: AppColors.textColor)),
@@ -60,7 +76,7 @@ class LessonDetailPage extends StatelessWidget {
                       ),
                       Stack(
                         children: [
-                          Image.asset('assets/images/bk.png'),
+                          // Image.network(image),
                           Image.asset('assets/images/star.png')
                         ],
                       ),
@@ -70,7 +86,7 @@ class LessonDetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'Understanding basics, lexis and structure of the english language, comprehend texts and identify key details.',
+                          widget.desc,
                           style: AppStyles().smallText.copyWith(
                               fontSize: 20, color: AppColors.textColor),
                         ),
@@ -91,12 +107,132 @@ class LessonDetailPage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: AppColors.greenColor,
                             borderRadius: BorderRadius.circular(20.w)),
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selected = !selected;
+                                });
+                              },
+                              child: Container(
+                                height: 106.h,
+                                width: 45.w,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2,
+                                        color: selected == true
+                                            ? AppColors.whiteColor
+                                            : AppColors.lightgreenColor),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20), 
+                                        bottomLeft: Radius.circular(20)),
+                                    color: AppColors.lightgreenColor),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selected2 = !selected2;
+                                });
+                              },
+                              child: Container(
+                                height: 106.h,
+                                width: 45.w,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2,
+                                        color: selected2 == true
+                                            ? AppColors.whiteColor
+                                            : AppColors.leafGreen),
+                                    color: AppColors.leafGreen),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selected3 = !selected3;
+                                });
+                              },
+                              child: Container(
+                                height: 106.h,
+                                width: 45.w,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2,
+                                        color: selected3 == true
+                                            ? AppColors.whiteColor
+                                            : AppColors.armyGreen),
+                                    color: AppColors.armyGreen),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selected4 = !selected4;
+                                });
+                              },
+                              child: Container(
+                                height: 106.h,
+                                width: 45.w,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2,
+                                        color: selected4 == true
+                                            ? AppColors.whiteColor
+                                            : AppColors.yellow),
+                                    color: AppColors.yellow),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selected5 = !selected5;
+                                });
+                              },
+                              child: Container(
+                                height: 106.h,
+                                width: 45.w,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2,
+                                        color: selected5 == true
+                                            ? AppColors.whiteColor
+                                            : AppColors.orange),
+                                    color: AppColors.orange),
+                              ),
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    selected6 = !selected6;
+                                  });
+                                },
+                                child: Container(
+                                  height: 106.h,
+                                  width: 45.w,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 2,
+                                          color: selected6 == true
+                                              ? AppColors.whiteColor
+                                              : AppColors.red),
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(20.w),
+                                          bottomRight: Radius.circular(20.w)),
+                                      color: AppColors.red),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 41.h,
                       ),
                       CustomButton(
-                        isLoading: false,
+                          isLoading: false,
                           height: 70.h,
                           width: MediaQuery.of(context).size.width,
                           borderRadius: 30.w,

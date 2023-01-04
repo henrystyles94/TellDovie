@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
-import '../controller/affirmations.dart';
+import '../controller/activities.dart';
 
 class AffirmationPage extends StatefulWidget {
   final List<CameraDescription>? cameras;
@@ -23,7 +23,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
   CameraController? _cameraController;
   FlutterTts flutterTts = FlutterTts();
 
-  final affirmationController = Get.put(AffirmationController());
+  final affirmationController = Get.put(ActivityController());
 
   Future initCamera(CameraDescription cameraDescription) async {
 // create a CameraController
@@ -156,23 +156,31 @@ class _AffirmationPageState extends State<AffirmationPage> {
                       child: Padding(
                         padding: const EdgeInsets.all(28.0),
                         child: Column(
-                          children: [
-                            Obx(
-                              () => affirmationController.isLoading.value
-                                  ? Container()
-                                  : Center(
-                                      child: Text(
-                                        affirmationController.affirmationModel
-                                            .value.data!.makeSureYouGotAim!,
-                                        style: AppStyles().smallText.copyWith(
-                                            fontSize: 20,
-                                            color: AppColors.textBlue),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                            )
-                          ],
-                        ),
+                            children: List.generate(
+                          affirmationController
+                              .affirmationModel.value.data!.length,
+                          (index) => Text(
+                            affirmationController
+                                .affirmationModel.value.data![index].content!,
+                            style: AppStyles().smallText.copyWith(
+                                fontSize: 20, color: AppColors.textBlue),
+                            textAlign: TextAlign.center,
+                          ),
+                          // Obx(
+                          //   () => affirmationController.isLoading.value
+                          //       ? Container()
+                          //       : Center(
+                          //           child: Text(
+                          //             affirmationController.affirmationModel
+                          //                 .value.data![1].content!,
+                          //             style: AppStyles().smallText.copyWith(
+                          //                 fontSize: 20,
+                          //                 color: AppColors.textBlue),
+                          //             textAlign: TextAlign.center,
+                          //           ),
+                          //         ),
+                          // )
+                        )),
                       ),
                     ),
                   ),
@@ -183,7 +191,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
                         onTap: () {
                           startTimer();
                           speak(affirmationController
-                              .affirmationModel.value.data!.makeSureYouGotAim
+                              .affirmationModel.value.data![0].content
                               .toString());
                           print('object');
                         },

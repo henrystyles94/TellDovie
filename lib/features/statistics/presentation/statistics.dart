@@ -11,23 +11,23 @@ class StaticsScreen extends StatelessWidget {
   var number = ['1', '2', '3', '11', '5', '6', '7', '8', '9'];
   final List<BarChartModel> data = [
     BarChartModel(
-        year: '🤨',
+        year: '😁',
         financial: 450,
         color: charts.ColorUtil.fromDartColor(AppColors.buttonColor)),
     BarChartModel(
-        year: '😉',
+        year: '😬',
         financial: 300,
         color: charts.ColorUtil.fromDartColor(AppColors.buttonColor)),
     BarChartModel(
-        year: '👨',
+        year: '😍',
         financial: 180,
         color: charts.ColorUtil.fromDartColor(AppColors.buttonColor)),
     BarChartModel(
-        year: '😁',
+        year: '😔',
         financial: 210,
         color: charts.ColorUtil.fromDartColor(AppColors.buttonColor)),
     BarChartModel(
-        year: '😀',
+        year: '😉',
         financial: 350,
         color: charts.ColorUtil.fromDartColor(AppColors.buttonColor)),
   ];
