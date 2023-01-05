@@ -4,6 +4,7 @@ import 'package:dovie/features/widgets/custom_snackbar.dart';
 import 'package:get/get.dart';
 
 import '../../../constants/models/affirmation_mode.dart';
+import '../../../constants/models/growth_mindset.dart';
 import '../model/info_hub.dart';
 import '../model/lessons.dart';
 
@@ -15,15 +16,18 @@ class ActivityController extends GetxController {
   RxBool loadingLessons = RxBool(false);
   RxBool sendingJournal = RxBool(false);
   RxBool tracking = RxBool(false);
+  RxBool loadingMindset = RxBool(false);
   final activityRepo = ActivitiesRepository();
   final affirmationModel = AffirmationResponseMode().obs;
   final loadedinfoModel = InfoHubResponseMode().obs;
   final loadedLessonModel = LessonHubResponseModel().obs;
+  final loadedGrowthMindsets = GrowthMindsetResponseModel().obs;
   @override
   void onInit() {
     getAffirmationController();
     informationHubController();
     getLessonController();
+    growthMindSetController();
     super.onInit();
   }
 
@@ -82,6 +86,17 @@ class ActivityController extends GetxController {
       SnackBarWidget().succesSnackBar(result['message']);
     } catch (e) {
       tracking(false);
+    }
+  }
+
+  Future growthMindSetController() async {
+    try {
+      loadingMindset(true);
+      var result = await activityRepo.growthMindsetRepository();
+      loadingMindset(false);
+      loadedGrowthMindsets.value = growthMindsetResponseModelFromJson(result);
+    } catch (e) {
+      loadingMindset(false);
     }
   }
 }

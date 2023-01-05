@@ -44,6 +44,7 @@ var reactions = [
 ];
 final activityController = Get.put(ActivityController());
 TextEditingController feelingController = TextEditingController();
+TextEditingController addTextField = TextEditingController();
 AudioPlayer audioPlayer = AudioPlayer();
 bool isPlaying = false;
 Duration duration = Duration.zero;
@@ -60,7 +61,7 @@ Future stop() async {
   if (!isRecorderReady) return;
   final path = await recorder.stopRecorder();
 
-  final audioFile = File(path!);
+  File audioFile = File(path!);
   audioPath = audioFile;
   print('RecordedFile = $audioFile');
 }
@@ -184,58 +185,112 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                                     padding: const EdgeInsets.all(28.0),
                                     child: Row(
                                       children: [
-                                        Visibility(
-                                          visible: affirmationController.clicked
-                                              ? false
-                                              : true,
+                                        // Visibility(
+                                        //   visible: affirmationController.clicked
+                                        //       ? false
+                                        //       : true,
+                                        //   child: Image.asset(
+                                        //     'assets/images/add.png',
+                                        //     fit: BoxFit.scaleDown,
+                                        //   ),
+                                        // ),
+                                        InkWell(
+                                          onTap: () {
+                                            Get.bottomSheet(Container(
+                                              height: 200.h,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              decoration: BoxDecoration(
+                                                  color:
+                                                      AppColors.backGroundColor,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  10.w),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  10.w))),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(18.0),
+                                                child: Column(
+                                                  children: [
+                                                    CustomInputField(
+                                                      controller: addTextField,
+                                                    ),
+                                                    SizedBox(
+                                                      height: 10.h,
+                                                    ),
+                                                    CustomButton(
+                                                        height: 50.h,
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        borderRadius: 10.w,
+                                                        buttonText: 'Save',
+                                                        opnPress: () {
+                                                          Get.back();
+                                                          addTextField.clear();
+                                                        },
+                                                        isLoading: false)
+                                                  ],
+                                                ),
+                                              ),
+                                            ));
+                                          },
                                           child: Image.asset(
                                             'assets/images/add.png',
                                             fit: BoxFit.scaleDown,
                                           ),
                                         ),
-                                        Visibility(
-                                          visible: affirmationController.clicked
-                                              ? true
-                                              : false,
-                                          child: Container(
-                                              decoration: BoxDecoration(
-                                                  color:
-                                                      AppColors.backGroundColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.w)),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      'you can type how you feel here',
-                                                      style: AppStyles()
-                                                          .smallText
-                                                          .copyWith(
-                                                              fontSize: 15),
-                                                    ),
-                                                    InkWell(
-                                                        onTap: () {
-                                                          setState(() {
-                                                            affirmationController
-                                                                    .clicked =
-                                                                false;
-                                                          });
-                                                        },
-                                                        child: Visibility(
-                                                            visible:
-                                                                affirmationController
-                                                                        .clicked
-                                                                    ? true
-                                                                    : false,
-                                                            child: Icon(
-                                                                Icons.cancel)))
-                                                  ],
-                                                ),
-                                              )),
-                                        ),
+                                        // Visibility(
+                                        //   visible: affirmationController.clicked
+                                        //       ? true
+                                        //       : false,
+                                        //   child: Container(
+                                        //       decoration: BoxDecoration(
+                                        //           color:
+                                        //               AppColors.backGroundColor,
+                                        //           borderRadius:
+                                        //               BorderRadius.circular(
+                                        //                   10.w)),
+                                        //       child: Padding(
+                                        //         padding:
+                                        //             const EdgeInsets.all(8.0),
+                                        //         child: Row(
+                                        //           children: [
+                                        //             Text(
+                                        //               'you can type how you feel here',
+                                        //               style: AppStyles()
+                                        //                   .smallText
+                                        //                   .copyWith(
+                                        //                       fontSize: 15),
+                                        //             ),
+                                        //             InkWell(
+                                        //                 onTap: () {
+                                        //                   setState(() {
+                                        //                     affirmationController
+                                        //                             .clicked =
+                                        //                         false;
+                                        //                   });
+                                        //                 },
+                                        //                 child: Visibility(
+                                        //                     visible:
+                                        //                         affirmationController
+                                        //                                 .clicked
+                                        //                             ? true
+                                        //                             : false,
+                                        //                     child: Icon(
+                                        //                       Icons.cancel,
+                                        //                       size: 10,
+                                        //                     )))
+                                        //           ],
+                                        //         ),
+                                        //       )),
+                                        // ),
                                       ],
                                     ),
                                   ),
@@ -254,7 +309,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                                           height: 55.h,
                                           decoration: BoxDecoration(
                                               color: tappedIndex == index
-                                                  ? AppColors.backGroundColor
+                                                  ? AppColors.buttonColor
                                                   : AppColors.whiteColor,
                                               borderRadius:
                                                   BorderRadius.circular(10.w)),
@@ -310,7 +365,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                         children: [
                           InkWell(
                               onTap: () {
-                                // audioPlayer.play(audioPath);
+                                audioPlayer.play(UrlSource(audioPath!.path));
                               },
                               child: Icon(Icons.play_arrow)),
                           StreamBuilder<RecordingDisposition>(

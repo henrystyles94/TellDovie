@@ -163,7 +163,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                         children: [
                           InkWell(
                               onTap: () {
-                                // audioPlayer.play(audioPath);
+                                audioPlayer.play(UrlSource(audioPath!.path));
                               },
                               child: Icon(Icons.play_arrow)),
                           StreamBuilder<RecordingDisposition>(
@@ -287,107 +287,140 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                       scrollDirection: Axis.horizontal,
                       itemCount: reactions.length + 1,
                       itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {},
-                          child: index > 8
-                              ? InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      affirmationController.clicked = true;
-                                    });
-                                    log('message');
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(28.0),
-                                    child: Row(
-                                      children: [
-                                        Visibility(
-                                          visible: affirmationController.clicked
-                                              ? false
-                                              : true,
-                                          child: Image.asset(
-                                            'assets/images/add.png',
-                                            fit: BoxFit.scaleDown,
+                        return index > 8
+                            ? InkWell(
+                                onTap: () {
+                                  // setState(() {
+                                  //   affirmationController.clicked = true;
+                                  // });
+                                  Get.bottomSheet(Container(
+                                    height: 200.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.backGroundColor,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10.w),
+                                            topRight: Radius.circular(10.w))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(18.0),
+                                      child: Column(
+                                        children: [
+                                          Expanded(
+                                            child: CustomInputField(
+                                              controller: addTextField,
+                                            ),
                                           ),
-                                        ),
-                                        Visibility(
-                                          visible: affirmationController.clicked
-                                              ? true
-                                              : false,
-                                          child: Container(
-                                              decoration: BoxDecoration(
-                                                  color:
-                                                      AppColors.backGroundColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.w)),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      'you can type how you feel here',
-                                                      style: AppStyles()
-                                                          .smallText
-                                                          .copyWith(
-                                                              fontSize: 15),
-                                                    ),
-                                                    InkWell(
-                                                        onTap: () {
-                                                          setState(() {
-                                                            affirmationController
-                                                                    .clicked =
-                                                                false;
-                                                          });
-                                                        },
-                                                        child: Visibility(
-                                                            visible:
-                                                                affirmationController
-                                                                        .clicked
-                                                                    ? true
-                                                                    : false,
-                                                            child: Icon(
-                                                                Icons.cancel)))
-                                                  ],
-                                                ),
-                                              )),
-                                        ),
-                                      ],
+                                          SizedBox(
+                                            height: 10.h,
+                                          ),
+                                          CustomButton(
+                                              height: 50.h,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              borderRadius: 10.w,
+                                              buttonText: 'Save',
+                                              opnPress: () {
+                                                Get.back();
+                                                addTextField.clear();
+                                              },
+                                              isLoading: false)
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                )
-                              : InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      tappedIndex = index;
-                                    });
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          height: 55.h,
-                                          decoration: BoxDecoration(
-                                              color: tappedIndex == index
-                                                  ? AppColors.backGroundColor
-                                                  : AppColors.whiteColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(10.w)),
-                                          child: Image.asset(reactions[index]
-                                                  ['imageSrc']
-                                              .toString()),
-                                        ),
-                                        Text(
-                                          reactions[index]['title'].toString(),
-                                          style: AppStyles().smallText,
-                                        )
-                                      ],
-                                    ),
+                                  ));
+                                  log('message');
+                                },
+                                // child: Padding(
+                                //   padding: const EdgeInsets.all(28.0),
+                                //   child: Row(
+                                //     children: [
+                                //       Visibility(
+                                //         visible: affirmationController.clicked
+                                //             ? false
+                                //             : true,
+                                //         child: Image.asset(
+                                //           'assets/images/add.png',
+                                //           fit: BoxFit.scaleDown,
+                                //         ),
+                                //       ),
+                                //       Visibility(
+                                //         visible: affirmationController.clicked
+                                //             ? true
+                                //             : false,
+                                //         child: Container(
+                                //             decoration: BoxDecoration(
+                                //                 color:
+                                //                     AppColors.backGroundColor,
+                                //                 borderRadius:
+                                //                     BorderRadius.circular(
+                                //                         10.w)),
+                                //             child: Padding(
+                                //               padding:
+                                //                   const EdgeInsets.all(8.0),
+                                //               child: Row(
+                                //                 children: [
+                                //                   Text(
+                                //                     'you can type how you feel here',
+                                //                     style: AppStyles()
+                                //                         .smallText
+                                //                         .copyWith(
+                                //                             fontSize: 15),
+                                //                   ),
+                                //                   InkWell(
+                                //                       onTap: () {
+                                //                         setState(() {
+                                //                           affirmationController
+                                //                                   .clicked =
+                                //                               false;
+                                //                         });
+                                //                       },
+                                //                       child: Visibility(
+                                //                           visible:
+                                //                               affirmationController
+                                //                                       .clicked
+                                //                                   ? true
+                                //                                   : false,
+                                //                           child: Icon(
+                                //                               Icons.cancel)))
+                                //                 ],
+                                //               ),
+                                //             )),
+                                //       ),
+                                //     ],
+                                //   ),
+                                // ),
+                              )
+                            : InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    tappedIndex = index;
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 55.h,
+                                        decoration: BoxDecoration(
+                                            color: tappedIndex == index
+                                                ? AppColors.buttonColor
+                                                : AppColors.whiteColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10.w)),
+                                        child: Image.asset(reactions[index]
+                                                ['imageSrc']
+                                            .toString()),
+                                      ),
+                                      Text(
+                                        reactions[index]['title'].toString(),
+                                        style: AppStyles().smallText,
+                                      )
+                                    ],
                                   ),
                                 ),
-                        );
+                              );
                       },
                     ),
                   ),

@@ -36,4 +36,9 @@ class ActivitiesRepository {
         {"reaction": reaction, "reason": reaction, "better": better});
     return response;
   }
+
+  Future growthMindsetRepository() async {
+    final response = await ApiCalls.httpGetCall(growthMindset);
+    return response;
+  }
 }

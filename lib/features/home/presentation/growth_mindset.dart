@@ -1,10 +1,16 @@
+import 'dart:async';
+
 import 'package:camera/camera.dart';
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/constants/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+
+import '../controller/activities.dart';
 
 class GrowthMindsetScreen extends StatefulWidget {
   final List<CameraDescription>? cameras;
@@ -16,7 +22,8 @@ class GrowthMindsetScreen extends StatefulWidget {
 
 class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
   CameraController? _cameraController;
-
+  FlutterTts flutterTts = FlutterTts();
+  final activitiesController = Get.put(ActivityController());
   Future initCamera(CameraDescription cameraDescription) async {
 // create a CameraController
     _cameraController =
@@ -39,8 +46,53 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
     initCamera(widget.cameras![1]);
   }
 
+  Timer? countdownTimer;
+  Duration myDuration = Duration(minutes: 15);
+  void startTimer() {
+    countdownTimer =
+        Timer.periodic(Duration(seconds: 1), (_) => setCountDown());
+  }
+
+  void setCountDown() {
+    final reduceSecondsBy = 1;
+    setState(() {
+      final seconds = myDuration.inSeconds - reduceSecondsBy;
+      if (seconds < 0) {
+        countdownTimer!.cancel();
+      } else {
+        myDuration = Duration(seconds: seconds);
+      }
+    });
+  }
+
+  void stopTimer() {
+    setState(() => countdownTimer!.cancel());
+  }
+
+  void resetTimer() {
+    stopTimer();
+    setState(() => myDuration = Duration(days: 5));
+  }
+
+  @override
+  void dispose() {
+    startTimer();
+    setCountDown();
+    _cameraController!.dispose();
+    super.dispose();
+  }
+
+  speak(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.setPitch(1);
+    await flutterTts.speak(text);
+  }
+
   @override
   Widget build(BuildContext context) {
+    String strDigits(int n) => n.toString().padLeft(2, '0');
+    final minutes = strDigits(myDuration.inMinutes.remainder(60));
+    final seconds = strDigits(myDuration.inSeconds.remainder(60));
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       body: SingleChildScrollView(
@@ -102,17 +154,36 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                           color: AppColors.whiteColor),
                       child: Padding(
                         padding: const EdgeInsets.all(28.0),
-                        child: Column(
-                          children: [
-                            Center(
-                              child: Text(
-                                'When the work gets harder, your brain gets smarter',
-                                style: AppStyles().smallText.copyWith(
-                                    fontSize: 20, color: AppColors.textBlue),
-                                textAlign: TextAlign.center,
-                              ),
-                            )
-                          ],
+                        child: Obx(
+                          () => activitiesController.loadingMindset.value
+                              ? Container()
+                              : Column(
+                                  children: List.generate(
+                                  activitiesController
+                                      .affirmationModel.value.data!.length,
+                                  (index) => Text(
+                                    activitiesController.loadedGrowthMindsets
+                                        .value.data![index].content!,
+                                    style: AppStyles().smallText.copyWith(
+                                        fontSize: 20,
+                                        color: AppColors.textBlue),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  // Obx(
+                                  //   () => affirmationController.isLoading.value
+                                  //       ? Container()
+                                  //       : Center(
+                                  //           child: Text(
+                                  //             affirmationController.affirmationModel
+                                  //                 .value.data![1].content!,
+                                  //             style: AppStyles().smallText.copyWith(
+                                  //                 fontSize: 20,
+                                  //                 color: AppColors.textBlue),
+                                  //             textAlign: TextAlign.center,
+                                  //           ),
+                                  //         ),
+                                  // )
+                                )),
                         ),
                       ),
                     ),
@@ -120,14 +191,23 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                   Positioned(
                       bottom: 50.h,
                       left: MediaQuery.of(context).size.width * 0.35,
-                      child: Container(
-                        height: 60.h,
-                        width: 60.w,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: AppColors.backGroundColor,
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/speak.png'))),
+                      child: InkWell(
+                        onTap: () {
+                          startTimer();
+                          speak(activitiesController
+                              .loadedGrowthMindsets.value.data![0].content
+                              .toString());
+                        },
+                        child: Container(
+                          height: 60.h,
+                          width: 60.w,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: AppColors.backGroundColor,
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/speak.png'))),
+                        ),
                       )),
                   Positioned(
                     top: 10.h,
@@ -141,7 +221,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                               color: AppColors.backGroundColor, width: 3.w)),
                       child: Center(
                         child: Text(
-                          '00:45',
+                          '$minutes:$seconds',
                           style: AppStyles()
                               .smallText
                               .copyWith(color: AppColors.backGroundColor),
@@ -158,10 +238,10 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
     );
   }
 
-  @override
-  void dispose() {
-    // Dispose of the controller when the widget is disposed.
-    _cameraController!.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // Dispose of the controller when the widget is disposed.
+  //   _cameraController!.dispose();
+  //   super.dispose();
+  // }
 }
