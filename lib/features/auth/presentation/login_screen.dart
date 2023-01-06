@@ -144,7 +144,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 10.h,
                   ),
-                  Divider(
+                  const Divider(
                     color: AppColors.buttonColor,
                   ),
                   SizedBox(

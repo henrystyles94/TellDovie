@@ -16,7 +16,7 @@ import '../../widgets/custom_input.dart';
 import '../controller/activities.dart';
 
 class CalmingJournalScreen extends StatefulWidget {
-  CalmingJournalScreen({super.key});
+  const CalmingJournalScreen({super.key});
 
   @override
   State<CalmingJournalScreen> createState() => _CalmingJournalScreenState();
@@ -50,7 +50,7 @@ Future initRecorder() async {
     throw 'Permission denied';
   }
   await recorder.openRecorder();
-  recorder.setSubscriptionDuration(Duration(milliseconds: 500));
+  recorder.setSubscriptionDuration(const Duration(milliseconds: 500));
   isRecorderReady = true;
 }
 
@@ -165,7 +165,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                               onTap: () {
                                 audioPlayer.play(UrlSource(audioPath!.path));
                               },
-                              child: Icon(Icons.play_arrow)),
+                              child: const Icon(Icons.play_arrow)),
                           StreamBuilder<RecordingDisposition>(
                             builder: (context, snapshot) {
                               final duration = snapshot.hasData
@@ -449,7 +449,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     value: dropdownvalue,
                     isExpanded: true,
                     isDense: true,
-                    underline: SizedBox(),
+                    underline: const SizedBox(),
                     // Down Arrow Icon
                     icon: const Icon(Icons.keyboard_arrow_down),
 
@@ -489,7 +489,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     value: actionvalue,
                     isExpanded: true,
                     isDense: true,
-                    underline: SizedBox(),
+                    underline: const SizedBox(),
                     // Down Arrow Icon
                     icon: const Icon(Icons.keyboard_arrow_down),
 

@@ -75,7 +75,7 @@ class WellnesScreen extends StatelessWidget {
                   Container(
                     height: 60.h,
                     width: 60.w,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: AppColors.backGroundColor,
                     ),

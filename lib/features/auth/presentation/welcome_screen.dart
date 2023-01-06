@@ -85,7 +85,7 @@ class CustomButton extends StatelessWidget {
               color: AppColors.buttonColor,
               borderRadius: BorderRadius.circular(borderRadius.w)),
           child: Center(
-            child: isLoading? CircularProgressIndicator(color: AppColors.backGroundColor,strokeWidth: 2,): Text(
+            child: isLoading? const CircularProgressIndicator(color: AppColors.backGroundColor,strokeWidth: 2,): Text(
               buttonText,
               style:
                   AppStyles().mediumText.copyWith(color: AppColors.whiteColor),

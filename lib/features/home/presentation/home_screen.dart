@@ -100,9 +100,9 @@ class HomeScreen extends StatelessWidget {
                     return InkWell(
                       onTap: () async {
                         if (index == 0) {
-                          Get.to(() => MoodTrackerScreen());
+                          Get.to(() => const MoodTrackerScreen());
                         } else if (index == 1) {
-                          Get.to(() => CalmingJournalScreen());
+                          Get.to(() => const CalmingJournalScreen());
                           // Get.toNamed(activities[index]["route"].toString());
                         } else if (index == 2) {
                           await availableCameras()
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                         } else if (index == 4) {
                           Get.to(() => InformationHubScreen());
                         } else if (index == 5) {
-                          Get.to(() => AvatarScreen());
+                          Get.to(() => const AvatarScreen());
                         }
                       },
                       child: Padding(

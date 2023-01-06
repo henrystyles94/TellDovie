@@ -30,8 +30,8 @@ class LessonScreen extends StatelessWidget {
                 fontSize: 20,
               ),
         ),
-        actions: [
-          const Icon(
+        actions: const [
+          Icon(
             Icons.more_vert_sharp,
             color: AppColors.greenColor,
           )
@@ -39,7 +39,7 @@ class LessonScreen extends StatelessWidget {
       ),
       body: Obx(
         () => activitiesController.loadingLessons.value
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(
                   color: AppColors.whiteColor,
                   strokeWidth: 3,

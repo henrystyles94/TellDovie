@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,14 +42,14 @@ class InformationHubScreen extends StatelessWidget {
                 fontSize: 20,
               ),
         ),
-        actions: [
-          const Icon(
+        actions: const [
+          Icon(
             Icons.more_vert_sharp,
             color: AppColors.greenColor,
           )
         ],
       ),
-      body: Obx(()=> infoController.loadingInfo.value? Center(child: CircularProgressIndicator(
+      body: Obx(()=> infoController.loadingInfo.value? const Center(child: CircularProgressIndicator(
         color: AppColors.whiteColor,
         strokeWidth: 3,
       ),): infoController.loadedinfoModel.value.data!.isEmpty? Center(child: Text('No information yet',style: AppStyles().smallText,),)

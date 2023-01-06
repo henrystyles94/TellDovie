@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/features/home/model/bar_chart_model.dart';
 import 'package:flutter/material.dart';

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
+
 
 import '../controller/activities.dart';
 
@@ -47,14 +47,14 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
   }
 
   Timer? countdownTimer;
-  Duration myDuration = Duration(minutes: 15);
+  Duration myDuration = const Duration(minutes: 15);
   void startTimer() {
     countdownTimer =
-        Timer.periodic(Duration(seconds: 1), (_) => setCountDown());
+        Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
   }
 
   void setCountDown() {
-    final reduceSecondsBy = 1;
+    const reduceSecondsBy = 1;
     setState(() {
       final seconds = myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {
@@ -71,7 +71,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
 
   void resetTimer() {
     stopTimer();
-    setState(() => myDuration = Duration(days: 5));
+    setState(() => myDuration = const Duration(days: 5));
   }
 
   @override
@@ -201,7 +201,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                         child: Container(
                           height: 60.h,
                           width: 60.w,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.backGroundColor,
                               image: DecorationImage(

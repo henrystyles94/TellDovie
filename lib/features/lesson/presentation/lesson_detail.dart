@@ -10,7 +10,7 @@ class LessonDetailPage extends StatefulWidget {
   final String title;
   final String image;
   final String desc;
-  LessonDetailPage(
+  const LessonDetailPage(
       {Key? key, required this.title, required this.image, required this.desc})
       : super(key: key);
 
@@ -45,8 +45,8 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
               .headingText
               .copyWith(fontSize: 20, color: AppColors.greenColor),
         ),
-        actions: [
-          const Icon(
+        actions: const [
+          Icon(
             Icons.more_vert_sharp,
             color: AppColors.greenColor,
           )
@@ -124,7 +124,7 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                                         color: selected == true
                                             ? AppColors.whiteColor
                                             : AppColors.lightgreenColor),
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(20), 
                                         bottomLeft: Radius.circular(20)),
                                     color: AppColors.lightgreenColor),
@@ -238,7 +238,7 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                           borderRadius: 30.w,
                           buttonText: 'Save Progress',
                           opnPress: () {
-                            Get.dialog(SuccessDialog());
+                            Get.dialog(const SuccessDialog());
                           })
                     ],
                   ),

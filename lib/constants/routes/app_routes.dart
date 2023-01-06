@@ -14,10 +14,10 @@ var appPageRoutes = [
   GetPage(name: '/welcomePage', page: () => const WelcomeScreen()),
   GetPage(name: '/loginPage', page: () => LoginScreen()),
   GetPage(name: '/bottomNavPage', page: ()=>BottomNavigationScreen()),
-  GetPage(name: '/calmingJournalPage', page: ()=>CalmingJournalScreen()),
-  GetPage(name: '/moodTrackerPage', page: ()=>MoodTrackerScreen()),
+  GetPage(name: '/calmingJournalPage', page: ()=>const CalmingJournalScreen()),
+  GetPage(name: '/moodTrackerPage', page: ()=>const MoodTrackerScreen()),
   GetPage(name: '/informationHub', page: ()=>InformationHubScreen()),
-  GetPage(name: '/growthMindset', page: ()=>GrowthMindsetScreen()),
-  GetPage(name: '/picLogin', page: ()=>PictureLoginScreen()),
-  GetPage(name: '/affirmations', page: ()=>AffirmationPage())
+  GetPage(name: '/growthMindset', page: ()=>const GrowthMindsetScreen()),
+  GetPage(name: '/picLogin', page: ()=>const PictureLoginScreen()),
+  GetPage(name: '/affirmations', page: ()=>const AffirmationPage())
 ];

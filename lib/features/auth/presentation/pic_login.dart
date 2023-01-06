@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
-import 'login_screen.dart';
 
 class PictureLoginScreen extends StatelessWidget {
   const PictureLoginScreen({super.key});

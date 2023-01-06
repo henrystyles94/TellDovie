@@ -72,7 +72,7 @@ Future initRecorder() async {
     throw 'Permission denied';
   }
   await recorder.openRecorder();
-  recorder.setSubscriptionDuration(Duration(milliseconds: 500));
+  recorder.setSubscriptionDuration(const Duration(milliseconds: 500));
   isRecorderReady = true;
 }
 
@@ -110,8 +110,8 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                 fontSize: 20,
               ),
         ),
-        actions: [
-          const Icon(
+        actions: const [
+          Icon(
             Icons.more_vert_sharp,
             color: AppColors.greenColor,
           )
@@ -353,7 +353,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                             style: AppStyles().smallText),
                       ),
                       SizedBox(height: 10.h),
-                      Container(
+                      SizedBox(
                         height: 50.h,
                         child: Text(
                           feelingController.text,
@@ -367,7 +367,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                               onTap: () {
                                 audioPlayer.play(UrlSource(audioPath!.path));
                               },
-                              child: Icon(Icons.play_arrow)),
+                              child: const Icon(Icons.play_arrow)),
                           StreamBuilder<RecordingDisposition>(
                             builder: (context, snapshot) {
                               final duration = snapshot.hasData
@@ -487,7 +487,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                     value: dropdownvalue,
                     isExpanded: true,
                     isDense: true,
-                    underline: SizedBox(),
+                    underline: const SizedBox(),
                     // Down Arrow Icon
                     icon: const Icon(Icons.keyboard_arrow_down),
 

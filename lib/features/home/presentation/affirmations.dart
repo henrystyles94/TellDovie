@@ -48,14 +48,14 @@ class _AffirmationPageState extends State<AffirmationPage> {
   }
 
   Timer? countdownTimer;
-  Duration myDuration = Duration(minutes: 15);
+  Duration myDuration = const Duration(minutes: 15);
   void startTimer() {
     countdownTimer =
-        Timer.periodic(Duration(seconds: 1), (_) => setCountDown());
+        Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
   }
 
   void setCountDown() {
-    final reduceSecondsBy = 1;
+    const reduceSecondsBy = 1;
     setState(() {
       final seconds = myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {
@@ -72,7 +72,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
 
   void resetTimer() {
     stopTimer();
-    setState(() => myDuration = Duration(days: 5));
+    setState(() => myDuration = const Duration(days: 5));
   }
 
   @override
@@ -193,12 +193,12 @@ class _AffirmationPageState extends State<AffirmationPage> {
                           speak(affirmationController
                               .affirmationModel.value.data![0].content
                               .toString());
-                          print('object');
+                        
                         },
                         child: Container(
                           height: 60.h,
                           width: 60.w,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.backGroundColor,
                               image: DecorationImage(

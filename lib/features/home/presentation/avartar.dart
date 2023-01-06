@@ -50,7 +50,7 @@ class AvatarScreen extends StatelessWidget {
                     width: 177.w,
                     decoration: BoxDecoration(
                         color: AppColors.offWhiteColor,
-                        image: DecorationImage(
+                        image: const DecorationImage(
                             image: AssetImage('assets/images/avar.png')),
                         borderRadius: BorderRadius.circular(20.w)),
                   );
