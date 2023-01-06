@@ -1,12 +1,60 @@
+import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
+import '../../widgets/custom_input.dart';
 
-class PictureLoginScreen extends StatelessWidget {
-  const PictureLoginScreen({super.key});
+class PictureLoginScreen extends StatefulWidget {
+  PictureLoginScreen({super.key});
+
+  @override
+  State<PictureLoginScreen> createState() => _PictureLoginScreenState();
+}
+
+class _PictureLoginScreenState extends State<PictureLoginScreen> {
+  var loginImages = [
+    {
+      'imgPath': 'assets/images/journal.png',
+      'value': 1,
+    },
+    {
+      'imgPath': 'assets/images/mouse.png',
+      'value': 2,
+    },
+    {
+      'imgPath': 'assets/images/scoot.png',
+      'value': 3,
+    },
+    {
+      'imgPath': 'assets/images/robot.png',
+      'value': 4,
+    },
+    {
+      'imgPath': 'assets/images/burger.png',
+      'value': 5,
+    },
+    {
+      'imgPath': 'assets/images/lab.png',
+      'value': 6,
+    },
+    {
+      'imgPath': 'assets/images/bag.png',
+      'value': 7,
+    },
+    {
+      'imgPath': 'assets/images/vault.png',
+      'value': 8,
+    },
+    {
+      'imgPath': 'assets/images/aba.png',
+      'value': 9,
+    },
+  ];
+
+  var selected = [];
 
   @override
   Widget build(BuildContext context) {
@@ -21,54 +69,200 @@ class PictureLoginScreen extends StatelessWidget {
             },
             child: Image.asset('assets/images/back.png')),
       ),
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              SizedBox(
-                height: 300.h,
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  'assets/images/curve.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.0.w,
-                ),
-                child: Text(
-                  'Login',
-                  style: AppStyles()
-                      .headingText
-                      .copyWith(fontSize: 32, fontWeight: FontWeight.w500),
-                ),
-              ),
-              Positioned(
-                  right: 0.0, child: Image.asset('assets/images/sun.png')),
-              Positioned(
-                  top: 100.0.h,
-                  left: 0.0,
-                  child: Image.asset('assets/images/cloud.png')),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 21.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
               children: [
-                Text(
-                  'Username',
-                  style: AppStyles().smallText,
-                ),
                 SizedBox(
-                  height: 8.h,
+                  height: 300.h,
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.asset(
+                    'assets/images/curve.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
-                // const CustomInputField(),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.0.w,
+                  ),
+                  child: Text(
+                    'Login',
+                    style: AppStyles()
+                        .headingText
+                        .copyWith(fontSize: 32, fontWeight: FontWeight.w500),
+                  ),
+                ),
+                Positioned(
+                    right: 0.0, child: Image.asset('assets/images/sun.png')),
+                Positioned(
+                    top: 100.0.h,
+                    left: 0.0,
+                    child: Image.asset('assets/images/cloud.png')),
               ],
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 21.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Username',
+                    style: AppStyles().smallText,
+                  ),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  const CustomInputField(),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text(
+                    'Pin',
+                    style: AppStyles().smallText,
+                  ),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  Container(
+                    height: 80.h,
+                    width: MediaQuery.of(context).size.width,
+                    // color: AppColors.whiteColor,
+                    child: selected.isEmpty
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                height: 70.h,
+                                width: 70.w,
+                                decoration: BoxDecoration(
+                                    color: AppColors.whiteColor,
+                                    shape: BoxShape.circle),
+                              ),
+                              Container(
+                                height: 70.h,
+                                width: 70.w,
+                                decoration: BoxDecoration(
+                                    color: AppColors.whiteColor,
+                                    shape: BoxShape.circle),
+                              ),
+                              Container(
+                                height: 70.h,
+                                width: 70.w,
+                                decoration: BoxDecoration(
+                                    color: AppColors.whiteColor,
+                                    shape: BoxShape.circle),
+                              ),
+                              Container(
+                                height: 70.h,
+                                width: 70.w,
+                                decoration: BoxDecoration(
+                                    color: AppColors.whiteColor,
+                                    shape: BoxShape.circle),
+                              ),
+                            ],
+                          )
+                        : ListView.builder(
+                            itemCount: selected.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 60.h,
+                                  width: 60.h,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: AppColors.greenColor),
+                                  child:
+                                      Image.asset(selected[index]['imgPath']),
+                                ),
+                              );
+                            }),
+                  ),
+                  SizedBox(
+                    height: 60.h,
+                  ),
+                  Center(
+                    child: Text(
+                      'Select Your Pin and Login',
+                      style: AppStyles().smallText,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Container(
+                    height: 300.h,
+                    child: GridView.builder(
+                      itemCount: loginImages.length,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            setState(() {
+                              if (selected.length < 4) {
+                                selected.add(loginImages[index]);
+                              } else {
+                                Get.snackbar('title', 'message');
+                              }
+                            });
+                          },
+                          child: Container(
+                            height: 20.h,
+                            width: 20.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25.w),
+                                color: AppColors.offWhiteColor,
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      "${loginImages[index]['imgPath']}"),
+                                )),
+                          ),
+                        );
+                      },
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 20.w,
+                          childAspectRatio: 1.1,
+                          mainAxisSpacing: 10),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Divider(
+                    color: AppColors.buttonColor,
+                  ),
+                  Center(
+                    child: Text(
+                      'Try a different method',
+                      style: AppStyles()
+                          .smallText
+                          .copyWith(color: AppColors.buttonColor),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  CustomButton(
+                      height: 50.h,
+                      width: MediaQuery.of(context).size.width,
+                      borderRadius: 20.w,
+                      buttonText: 'Login',
+                      opnPress: () {
+                        setState(() {
+                          selected.clear();
+                        });
+                      },
+                      isLoading: false)
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

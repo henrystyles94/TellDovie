@@ -18,6 +18,6 @@ var appPageRoutes = [
   GetPage(name: '/moodTrackerPage', page: ()=>const MoodTrackerScreen()),
   GetPage(name: '/informationHub', page: ()=>InformationHubScreen()),
   GetPage(name: '/growthMindset', page: ()=>const GrowthMindsetScreen()),
-  GetPage(name: '/picLogin', page: ()=>const PictureLoginScreen()),
+  GetPage(name: '/picLogin', page: ()=> PictureLoginScreen()),
   GetPage(name: '/affirmations', page: ()=>const AffirmationPage())
 ];
