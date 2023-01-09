@@ -1,4 +1,3 @@
-
 import 'package:dovie/features/home/repository/activities.dart';
 import 'package:dovie/features/widgets/custom_snackbar.dart';
 import 'package:get/get.dart';
@@ -98,5 +97,16 @@ class ActivityController extends GetxController {
     } catch (e) {
       loadingMindset(false);
     }
+  }
+
+  Future earnAffirmationPointsController() async {
+    try {
+      await activityRepo.earnPointsForAffirmation();
+    } catch (e) {}
+  }
+    Future earnGrowthPointController() async {
+    try {
+      await activityRepo.earnGrowthPointsRepository();
+    } catch (e) {}
   }
 }

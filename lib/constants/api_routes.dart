@@ -5,3 +5,5 @@ var lessons = 'lessons';
 var calmingJourn = 'store/journal';
 var growthMindset = 'growthmindset';
 var moodTracker = 'store/mood';
+var earnAffirmationPoint = 'completed/affirmation';
+var earnGrowthPoint = 'completed/growth';

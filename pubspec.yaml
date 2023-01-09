@@ -43,6 +43,10 @@ dependencies:
   flutter_sound: ^9.2.13
   permission_handler: ^10.2.0
   audioplayers: ^1.2.0
+  image_picker: ^0.8.6
+
+
+dependencies_override:
   
 
 

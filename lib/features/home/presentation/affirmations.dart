@@ -44,11 +44,12 @@ class _AffirmationPageState extends State<AffirmationPage> {
   void initState() {
     super.initState();
     // initialize the rear camera
+    affirmationController.earnAffirmationPointsController();
     initCamera(widget.cameras![1]);
   }
 
   Timer? countdownTimer;
-  Duration myDuration = const Duration(minutes: 15);
+  Duration myDuration = const Duration(seconds: 15);
   void startTimer() {
     countdownTimer =
         Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
@@ -91,8 +92,8 @@ class _AffirmationPageState extends State<AffirmationPage> {
   @override
   Widget build(BuildContext context) {
     String strDigits(int n) => n.toString().padLeft(2, '0');
-    final minutes = strDigits(myDuration.inMinutes.remainder(60));
-    final seconds = strDigits(myDuration.inSeconds.remainder(60));
+    final minutes = strDigits(myDuration.inSeconds.remainder(60));
+    final seconds = strDigits(myDuration.inMicroseconds.remainder(60));
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       body: SingleChildScrollView(
@@ -144,7 +145,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
                               color: AppColors.offWhiteColor,
                             ))),
                   Positioned(
-                    bottom: 150.h,
+                    bottom: 50.h,
                     left: 50.w,
                     right: 50.w,
                     child: Container(
@@ -156,48 +157,59 @@ class _AffirmationPageState extends State<AffirmationPage> {
                       child: Padding(
                         padding: const EdgeInsets.all(28.0),
                         child: Column(
-                            children: List.generate(
-                          affirmationController
-                              .affirmationModel.value.data!.length,
-                          (index) => Text(
-                            affirmationController
-                                .affirmationModel.value.data![index].content!,
-                            style: AppStyles().smallText.copyWith(
-                                fontSize: 20, color: AppColors.textBlue),
-                            textAlign: TextAlign.center,
-                          ),
-                          // Obx(
-                          //   () => affirmationController.isLoading.value
-                          //       ? Container()
-                          //       : Center(
-                          //           child: Text(
-                          //             affirmationController.affirmationModel
-                          //                 .value.data![1].content!,
-                          //             style: AppStyles().smallText.copyWith(
-                          //                 fontSize: 20,
-                          //                 color: AppColors.textBlue),
-                          //             textAlign: TextAlign.center,
-                          //           ),
-                          //         ),
-                          // )
-                        )),
+                          children: [
+                            Column(
+                                children: List.generate(
+                              affirmationController
+                                  .affirmationModel.value.data!.length,
+                              (index) => Text(
+                                affirmationController.affirmationModel.value
+                                    .data![index].content!,
+                                style: AppStyles().smallText.copyWith(
+                                    fontSize: 20, color: AppColors.textBlue),
+                                textAlign: TextAlign.center,
+                              ),
+                              // Obx(
+                              //   () => affirmationController.isLoading.value
+                              //       ? Container()
+                              //       : Center(
+                              //           child: Text(
+                              //             affirmationController.affirmationModel
+                              //                 .value.data![1].content!,
+                              //             style: AppStyles().smallText.copyWith(
+                              //                 fontSize: 20,
+                              //                 color: AppColors.textBlue),
+                              //             textAlign: TextAlign.center,
+                              //           ),
+                              //         ),
+                              // )
+                            )),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: AppColors.greenColor,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                   Positioned(
-                      bottom: 50.h,
-                      left: MediaQuery.of(context).size.width * 0.35,
+                      // bottom: 50.h,
+                      left: MediaQuery.of(context).size.width * 0.1,
+                      top: 4.4,
                       child: InkWell(
                         onTap: () {
                           startTimer();
                           speak(affirmationController
                               .affirmationModel.value.data![0].content
                               .toString());
-                        
                         },
                         child: Container(
-                          height: 60.h,
-                          width: 60.w,
+                          height: 50.h,
+                          width: 50.w,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.backGroundColor,

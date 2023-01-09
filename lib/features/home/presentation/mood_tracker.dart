@@ -63,7 +63,7 @@ Future stop() async {
 
   File audioFile = File(path!);
   audioPath = audioFile;
-    ('RecordedFile = $audioFile');
+  ('RecordedFile = $audioFile');
 }
 
 Future initRecorder() async {
@@ -121,6 +121,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
         padding: const EdgeInsets.all(18.0),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // SizedBox(
               //   width: 200.w,
@@ -154,8 +155,14 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                 ),
               ),
               SizedBox(
+                height: 10.h,
+              ),
+              Text(addTextField.text, style: AppStyles().smallText),
+
+              SizedBox(
                 height: 30.h,
               ),
+
               Container(
                 // height: 131.h,
                 width: MediaQuery.of(context).size.width,
@@ -233,7 +240,6 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                                                         buttonText: 'Save',
                                                         opnPress: () {
                                                           Get.back();
-                                                          addTextField.clear();
                                                         },
                                                         isLoading: false)
                                                   ],
@@ -331,6 +337,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                   ),
                 ),
               ),
+
               SizedBox(
                 height: 38.h,
               ),
@@ -366,8 +373,13 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                           InkWell(
                               onTap: () {
                                 audioPlayer.play(UrlSource(audioPath!.path));
+                                setState(() {
+                                  isPlaying = true;
+                                });
                               },
-                              child: const Icon(Icons.play_arrow)),
+                              child: isPlaying == true
+                                  ? Icon(Icons.pause)
+                                  : Icon(Icons.play_arrow)),
                           StreamBuilder<RecordingDisposition>(
                             builder: (context, snapshot) {
                               final duration = snapshot.hasData
@@ -441,6 +453,15 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                                           borderRadius: 10.w,
                                           buttonText: 'Done',
                                           opnPress: () {
+                                            // Get.snackbar('Sucess',
+                                            //     'Thanks for  letting Dovie how you feel',
+                                            //     backgroundColor:
+                                            //         AppColors.backGroundColor,
+                                            //     colorText: AppColors.whiteColor,
+                                            //     snackPosition:
+                                            //         SnackPosition.BOTTOM);
+
+                                            // feelingController.clear();
                                             Get.back();
                                           },
                                           isLoading: false)

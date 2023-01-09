@@ -74,8 +74,9 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 8.h,
                   ),
-                   CustomInputField(
+                  CustomInputField(
                     controller: emailController,
+                    keyBoardType: TextInputType.emailAddress,
                   ),
                   SizedBox(
                     height: 57.h,

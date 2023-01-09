@@ -9,7 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 
-
 import '../controller/activities.dart';
 
 class GrowthMindsetScreen extends StatefulWidget {
@@ -44,10 +43,11 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
     super.initState();
     // initialize the rear camera
     initCamera(widget.cameras![1]);
+    activitiesController.earnGrowthPointController();
   }
 
   Timer? countdownTimer;
-  Duration myDuration = const Duration(minutes: 15);
+  Duration myDuration = const Duration(seconds: 15);
   void startTimer() {
     countdownTimer =
         Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
@@ -91,8 +91,8 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
   @override
   Widget build(BuildContext context) {
     String strDigits(int n) => n.toString().padLeft(2, '0');
-    final minutes = strDigits(myDuration.inMinutes.remainder(60));
-    final seconds = strDigits(myDuration.inSeconds.remainder(60));
+    final minutes = strDigits(myDuration.inSeconds.remainder(60));
+    final seconds = strDigits(myDuration.inMilliseconds.remainder(60));
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       body: SingleChildScrollView(
@@ -143,7 +143,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                               child: CircularProgressIndicator(
                                   color: AppColors.offWhiteColor))),
                   Positioned(
-                    bottom: 150.h,
+                    bottom: 30.h,
                     left: 50.w,
                     right: 50.w,
                     child: Container(
@@ -189,8 +189,9 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                     ),
                   ),
                   Positioned(
-                      bottom: 50.h,
-                      left: MediaQuery.of(context).size.width * 0.35,
+                      // bottom: 50.h,
+                      left: MediaQuery.of(context).size.width * 0.04,
+                      top: 3.2.h,
                       child: InkWell(
                         onTap: () {
                           startTimer();
@@ -199,8 +200,8 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                               .toString());
                         },
                         child: Container(
-                          height: 60.h,
-                          width: 60.w,
+                          height: 50.h,
+                          width: 50.w,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.backGroundColor,

@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:dovie/constants/styles/app_styles.dart';
@@ -9,8 +8,10 @@ import '../../constants/themes/colors.dart';
 
 class CustomInputField extends StatelessWidget {
   final controller;
+  final keyBoardType;
   const CustomInputField({
-    Key? key, this.controller,
+    Key? key,
+    this.controller, this.keyBoardType,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,9 @@ class CustomInputField extends StatelessWidget {
     return TextFormField(
       style: AppStyles().smallText,
       controller: controller,
+      keyboardType: keyBoardType,
       decoration: InputDecoration(
+      
           isDense: true,
           fillColor: AppColors.whiteColor,
           focusedBorder: OutlineInputBorder(

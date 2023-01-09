@@ -41,4 +41,16 @@ class ActivitiesRepository {
     final response = await ApiCalls.httpGetCall(growthMindset);
     return response;
   }
+
+  //earningforAffirmation
+  Future earnPointsForAffirmation() async {
+    final response = await ApiCalls.httpPostCall(affirmations, {});
+    return response;
+  }
+
+  //growth Earning
+  Future earnGrowthPointsRepository() async {
+    final response = await ApiCalls.httpPostCall(earnGrowthPoint, {});
+    return response;
+  }
 }

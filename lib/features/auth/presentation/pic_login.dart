@@ -126,7 +126,7 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                   SizedBox(
                     height: 8.h,
                   ),
-                  Container(
+                  SizedBox(
                     height: 80.h,
                     width: MediaQuery.of(context).size.width,
                     // color: AppColors.whiteColor,
@@ -137,28 +137,28 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                               Container(
                                 height: 70.h,
                                 width: 70.w,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: AppColors.whiteColor,
                                     shape: BoxShape.circle),
                               ),
                               Container(
                                 height: 70.h,
                                 width: 70.w,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: AppColors.whiteColor,
                                     shape: BoxShape.circle),
                               ),
                               Container(
                                 height: 70.h,
                                 width: 70.w,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: AppColors.whiteColor,
                                     shape: BoxShape.circle),
                               ),
                               Container(
                                 height: 70.h,
                                 width: 70.w,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: AppColors.whiteColor,
                                     shape: BoxShape.circle),
                               ),
@@ -173,7 +173,7 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                                 child: Container(
                                   height: 60.h,
                                   width: 60.h,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: AppColors.greenColor),
                                   child:
@@ -194,11 +194,11 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Container(
+                  SizedBox(
                     height: 300.h,
                     child: GridView.builder(
                       itemCount: loginImages.length,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
@@ -233,7 +233,7 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Divider(
+                  const Divider(
                     color: AppColors.buttonColor,
                   ),
                   Center(
