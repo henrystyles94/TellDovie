@@ -139,7 +139,7 @@ class _WellnesScreenState extends State<WellnesScreen> {
                                       color: AppColors.offWhiteColor))
                           : Container()),
                   Positioned(
-                    bottom: 30.h,
+                    bottom: 60.h,
                     left: 50.w,
                     right: 50.w,
                     child: Container(

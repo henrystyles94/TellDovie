@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../wallet/controller/wallet.dart';
 import 'avartar.dart';
 import 'calming_journal.dart';
 import 'growth_mindset.dart';
@@ -23,6 +24,7 @@ class HomeScreen extends StatelessWidget {
     {'imgPath': 'assets/images/if.png', 'route': 'informationHub'},
     {'imgPath': 'assets/images/avb.png', 'route': 'calmingJournalPage'},
   ];
+  final walletController = Get.put(WalletController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +40,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 84.h,
+              // height: 84.h,
               width: 131.w,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.w),
@@ -53,21 +55,29 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: 13.h,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            '150',
-                            style: AppStyles().smallText.copyWith(fontSize: 20),
-                          ),
-                          SizedBox(
-                            width: 14.w,
-                          ),
-                          Expanded(
-                              child: Image.asset('assets/images/dollar.png'))
-                        ],
-                      ),
+                    Obx(
+                      () => walletController.isLoading.value
+                          ? Container()
+                          : Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 26.0),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    walletController.loadedValue.value.data!,
+                                    style: AppStyles()
+                                        .smallText
+                                        .copyWith(fontSize: 20),
+                                  ),
+                                  SizedBox(
+                                    width: 14.w,
+                                  ),
+                                  Expanded(
+                                      child: Image.asset(
+                                          'assets/images/dollar.png'))
+                                ],
+                              ),
+                            ),
                     )
                   ],
                 ),

@@ -7,3 +7,4 @@ var growthMindset = 'growthmindset';
 var moodTracker = 'store/mood';
 var earnAffirmationPoint = 'completed/affirmation';
 var earnGrowthPoint = 'completed/growth';
+var wallet = 'wallet/balance';
