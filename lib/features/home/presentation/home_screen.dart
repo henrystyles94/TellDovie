@@ -127,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                         } else if (index == 4) {
                           Get.to(() => InformationHubScreen());
                         } else if (index == 5) {
-                          Get.to(() => const AvatarScreen());
+                          Get.to(() =>  AvatarScreen());
                         }
                       },
                       child: Padding(
