@@ -58,15 +58,18 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                     animationController.selectedItem.value == 0
                         ? Image.asset('assets/svg/blackFn.png')
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/blackfeedOcto.png')
+                            ? Image.asset('assets/svg/blackFCap.png')
                             : animationController.selectedItem.value == 2
                                 ? Image.asset('assets/svg/blackFcrown.png')
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/blackFcap.png')
+                                    ? Flexible(
+                                        fit: FlexFit.loose,
+                                        child: Image.asset(
+                                            'assets/svg/blackfire.png'))
                                     : animationController.selectedItem.value ==
                                             4
                                         ? Image.asset(
-                                            'assets/svg/blackfire.png')
+                                            'assets/svg/blackfeedOcto.png')
                                         : Image.asset('assets/svg/normal.png'),
                   ],
                 ),
@@ -161,7 +164,11 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {},
+                  opnPress: () {
+                    Get.snackbar('Saved', 'Avatar saved',
+                        backgroundColor: AppColors.buttonColor,
+                        colorText: AppColors.whiteColor);
+                  },
                   isLoading: false)
             ],
           ),

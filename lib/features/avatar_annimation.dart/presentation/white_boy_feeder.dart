@@ -7,25 +7,24 @@ import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
 import '../controller/avatar_animation.dart';
 
-class BlackGirlAnimation extends StatefulWidget {
-  BlackGirlAnimation({super.key});
+class WhiteBoyFeederScreen extends StatefulWidget {
+  WhiteBoyFeederScreen({super.key});
 
   @override
-  State<BlackGirlAnimation> createState() => _BlackGirlAnimation();
+  State<WhiteBoyFeederScreen> createState() => _WhiteBoyFeederScreen();
 }
 
 final animationController = Get.put(AvatarAnimationController());
 
-class _BlackGirlAnimation extends State<BlackGirlAnimation> {
+class _WhiteBoyFeederScreen extends State<WhiteBoyFeederScreen> {
   bool selectedItem1 = false;
 
   var items = [
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
-    {'imgPath': 'assets/svg/bat.png'},
-    {'imgPath': 'assets/svg/bird.png'},
     {'imgPath': 'assets/svg/c.png'},
-    // {'imgPath': 'assets/svg/.png'},
+    {'imgPath': 'assets/svg/fire.png'},
+    {'imgPath': 'assets/svg/octo.png'},
   ];
 
   @override
@@ -57,17 +56,20 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/obg.png')
+                        ? Image.asset('assets/svg/fbnorm.png')
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/bgc.png')
+                            ? Image.asset('assets/svg/fbcap.png')
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/bgb.png')
+                                ? Image.asset('assets/svg/fbcr.png')
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/bgwbi.png')
+                                    ? Flexible(
+                                        fit: FlexFit.loose,
+                                        child:
+                                            Image.asset('assets/svg/fbf.png'))
                                     : animationController.selectedItem.value ==
                                             4
-                                        ? Image.asset('assets/svg/bgwcr.png')
-                                        : Image.asset('assets/svg/whiteN.png'),
+                                        ? Image.asset('assets/svg/fboct.png')
+                                        : Image.asset('assets/svg/fbnorm.png'),
                   ],
                 ),
               ),

@@ -14,12 +14,12 @@ class AvatarScreen extends StatelessWidget {
     {'imgPath': 'assets/svg/whiteGrilStand.png'},
     {'imgPath': 'assets/svg/blackBFeed.png'},
     {'imgPath': 'assets/svg/whiteBFeed.png'},
-    {'imgPath': 'assets/svg/bGF.png'},
-    {'imgPath': 'assets/svg/whiteGF.png'},
+    // {'imgPath': 'assets/svg/bGF.png'},
+    // {'imgPath': 'assets/svg/whiteGF.png'},
     {'imgPath': 'assets/svg/bweel.png'},
     {'imgPath': 'assets/svg/wweel.png'},
-    {'imgPath': 'assets/svg/bgweel.png'},
-    {'imgPath': 'assets/svg/wgweel.png'},
+    // {'imgPath': 'assets/svg/bgweel.png'},
+    // {'imgPath': 'assets/svg/wgweel.png'},
   ];
   @override
   Widget build(BuildContext context) {

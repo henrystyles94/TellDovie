@@ -7,25 +7,23 @@ import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
 import '../controller/avatar_animation.dart';
 
-class BlackGirlAnimation extends StatefulWidget {
-  BlackGirlAnimation({super.key});
+class BlackOnWheeelsScreen extends StatefulWidget {
+  BlackOnWheeelsScreen({super.key});
 
   @override
-  State<BlackGirlAnimation> createState() => _BlackGirlAnimation();
+  State<BlackOnWheeelsScreen> createState() => _BlackOnWheeelsScreen();
 }
 
 final animationController = Get.put(AvatarAnimationController());
 
-class _BlackGirlAnimation extends State<BlackGirlAnimation> {
+class _BlackOnWheeelsScreen extends State<BlackOnWheeelsScreen> {
   bool selectedItem1 = false;
 
   var items = [
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
-    {'imgPath': 'assets/svg/bat.png'},
-    {'imgPath': 'assets/svg/bird.png'},
     {'imgPath': 'assets/svg/c.png'},
-    // {'imgPath': 'assets/svg/.png'},
+    {'imgPath': 'assets/svg/octo.png'},
   ];
 
   @override
@@ -57,17 +55,21 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/obg.png')
+                        ? Image.asset('assets/svg/bwheel.png')
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/bgc.png')
+                            ? Flexible(
+                                child: Image.asset('assets/svg/bwheelcap.png'))
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/bgb.png')
+                                ? Flexible(
+                                    child:
+                                        Image.asset('assets/svg/bwheelcr.png'))
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/bgwbi.png')
-                                    : animationController.selectedItem.value ==
-                                            4
-                                        ? Image.asset('assets/svg/bgwcr.png')
-                                        : Image.asset('assets/svg/whiteN.png'),
+                                    ? Flexible(
+                                        child: Image.asset(
+                                            'assets/svg/bwheeloct.png'))
+                                    : Flexible(
+                                        child: Image.asset(
+                                            'assets/svg/fbnorm.png')),
                   ],
                 ),
               ),

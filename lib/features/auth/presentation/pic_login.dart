@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
 import '../../widgets/custom_input.dart';
+import '../controller/auth_controller.dart';
 
 class PictureLoginScreen extends StatefulWidget {
   PictureLoginScreen({super.key});
@@ -15,6 +16,8 @@ class PictureLoginScreen extends StatefulWidget {
 }
 
 class _PictureLoginScreenState extends State<PictureLoginScreen> {
+  final authController = Get.put(AuthController());
+  TextEditingController emailController = TextEditingController();
   var loginImages = [
     {
       'imgPath': 'assets/images/journal.png',
@@ -55,7 +58,7 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
   ];
 
   var selected = [];
-
+  var password = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -205,9 +208,11 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                             setState(() {
                               if (selected.length < 4) {
                                 selected.add(loginImages[index]);
+                                password.add(loginImages[index]['value']);
                               } else {
                                 Get.snackbar('title', 'message');
                               }
+                              print(password);
                             });
                           },
                           child: Container(
@@ -247,17 +252,21 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                   SizedBox(
                     height: 30.h,
                   ),
-                  CustomButton(
-                      height: 50.h,
-                      width: MediaQuery.of(context).size.width,
-                      borderRadius: 20.w,
-                      buttonText: 'Login',
-                      opnPress: () {
-                        setState(() {
-                          selected.clear();
-                        });
-                      },
-                      isLoading: false)
+                  Obx(
+                    () => CustomButton(
+                        height: 50.h,
+                        width: MediaQuery.of(context).size.width,
+                        borderRadius: 20.w,
+                        buttonText: 'Login',
+                        opnPress: () {
+                          authController.loginUserController(
+                              emailController.text.trim(), selected);
+                          setState(() {
+                            selected.clear();
+                          });
+                        },
+                        isLoading: authController.isLoading.value),
+                  )
                 ],
               ),
             )

@@ -160,7 +160,11 @@ class _AnimateWhiteBoyScreen extends State<AnimateWhiteBoyScreen> {
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {},
+                  opnPress: () {
+                    Get.snackbar('Saved', 'Avatar saved',
+                      backgroundColor: AppColors.buttonColor,
+                      colorText: AppColors.whiteColor);
+                  },
                   isLoading: false)
             ],
           ),
