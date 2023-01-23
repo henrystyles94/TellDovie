@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dovie/features/home/repository/activities.dart';
 import 'package:dovie/features/widgets/custom_snackbar.dart';
 import 'package:get/get.dart';
@@ -21,6 +23,7 @@ class ActivityController extends GetxController {
   final loadedinfoModel = InfoHubResponseMode().obs;
   final loadedLessonModel = LessonHubResponseModel().obs;
   final loadedGrowthMindsets = GrowthMindsetResponseModel().obs;
+  var affirm = [];
   @override
   void onInit() {
     getAffirmationController();
@@ -36,6 +39,7 @@ class ActivityController extends GetxController {
       var result = await activityRepo.getALLAffrimations();
       isLoading(false);
       affirmationModel.value = affirmationResponseModeFromJson(result);
+      affirm.addAll(jsonDecode(result)['data']);
     } catch (e) {
       isLoading(false);
     }
@@ -104,7 +108,8 @@ class ActivityController extends GetxController {
       await activityRepo.earnPointsForAffirmation();
     } catch (e) {}
   }
-    Future earnGrowthPointController() async {
+
+  Future earnGrowthPointController() async {
     try {
       await activityRepo.earnGrowthPointsRepository();
     } catch (e) {}

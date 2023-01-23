@@ -128,27 +128,43 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 79.h,
-                    width: 79.w,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: AppColors.buttonColor),
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: AppColors.whiteColor,
+                  InkWell(
+                    onTap: () {
+                      if (animationController.selectedItem.value > 0) {
+                      animationController.selectedItem.value =
+                          animationController.selectedItem.value - 1;
+                    }
+                    },
+                    child: Container(
+                      height: 79.h,
+                      width: 79.w,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: AppColors.buttonColor),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: AppColors.whiteColor,
+                      ),
                     ),
                   ),
                   SizedBox(
                     width: 59.w,
                   ),
-                  Container(
-                    height: 79.h,
-                    width: 79.w,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: AppColors.buttonColor),
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppColors.whiteColor,
+                  InkWell(
+                    onTap: (){
+                      if (animationController.selectedItem.value > 0) {
+                      animationController.selectedItem.value =
+                          animationController.selectedItem.value + 1;
+                    }
+                    },
+                    child: Container(
+                      height: 79.h,
+                      width: 79.w,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: AppColors.buttonColor),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: AppColors.whiteColor,
+                      ),
                     ),
                   )
                 ],

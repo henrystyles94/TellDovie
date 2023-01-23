@@ -21,46 +21,49 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
   var loginImages = [
     {
       'imgPath': 'assets/images/journal.png',
-      'value': 1,
+      'value': 0,
     },
     {
       'imgPath': 'assets/images/mouse.png',
-      'value': 2,
+      'value': 1,
     },
     {
       'imgPath': 'assets/images/scoot.png',
-      'value': 3,
+      'value': 2,
     },
     {
       'imgPath': 'assets/images/robot.png',
-      'value': 4,
+      'value': 3,
     },
     {
       'imgPath': 'assets/images/burger.png',
-      'value': 5,
+      'value': 4,
     },
     {
       'imgPath': 'assets/images/lab.png',
-      'value': 6,
+      'value': 5,
     },
     {
       'imgPath': 'assets/images/bag.png',
-      'value': 7,
+      'value': 6,
     },
     {
       'imgPath': 'assets/images/vault.png',
-      'value': 8,
+      'value': 7,
     },
     {
       'imgPath': 'assets/images/aba.png',
-      'value': 9,
+      'value': 8,
     },
   ];
 
   var selected = [];
   var password = [];
+  var newPass = '';
+
   @override
   Widget build(BuildContext context) {
+    var userPassword = password;
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       appBar: AppBar(
@@ -118,7 +121,9 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                   SizedBox(
                     height: 8.h,
                   ),
-                  const CustomInputField(),
+                  CustomInputField(
+                    controller: emailController,
+                  ),
                   SizedBox(
                     height: 10.h,
                   ),
@@ -198,7 +203,7 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                     height: 20.h,
                   ),
                   SizedBox(
-                    height: 300.h,
+                    height: 360.h,
                     child: GridView.builder(
                       itemCount: loginImages.length,
                       physics: const NeverScrollableScrollPhysics(),
@@ -208,7 +213,9 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                             setState(() {
                               if (selected.length < 4) {
                                 selected.add(loginImages[index]);
-                                password.add(loginImages[index]['value']);
+
+                                password.add(
+                                    loginImages[index]['value'].toString());
                               } else {
                                 Get.snackbar('title', 'message');
                               }
@@ -260,7 +267,7 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                         buttonText: 'Login',
                         opnPress: () {
                           authController.loginUserController(
-                              emailController.text.trim(), selected);
+                              emailController.text.trim(), userPassword.join());
                           setState(() {
                             selected.clear();
                           });

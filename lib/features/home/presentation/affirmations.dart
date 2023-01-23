@@ -89,6 +89,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
     await flutterTts.speak(text);
   }
 
+  var selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     String strDigits(int n) => n.toString().padLeft(2, '0');
@@ -158,39 +159,31 @@ class _AffirmationPageState extends State<AffirmationPage> {
                         padding: const EdgeInsets.all(28.0),
                         child: Column(
                           children: [
-                            Column(
-                                children: List.generate(
-                              affirmationController
-                                  .affirmationModel.value.data!.length,
-                              (index) => Text(
-                                affirmationController.affirmationModel.value
-                                    .data![index].content!,
-                                style: AppStyles().smallText.copyWith(
-                                    fontSize: 20, color: AppColors.textBlue),
-                                textAlign: TextAlign.center,
-                              ),
-                              // Obx(
-                              //   () => affirmationController.isLoading.value
-                              //       ? Container()
-                              //       : Center(
-                              //           child: Text(
-                              //             affirmationController.affirmationModel
-                              //                 .value.data![1].content!,
-                              //             style: AppStyles().smallText.copyWith(
-                              //                 fontSize: 20,
-                              //                 color: AppColors.textBlue),
-                              //             textAlign: TextAlign.center,
-                              //           ),
-                              //         ),
-                              // )
-                            )),
+                            Text(
+                              affirmationController.affirm[selectedIndex]
+                                  ['content']!,
+                              style: AppStyles().smallText.copyWith(
+                                  fontSize: 20, color: AppColors.textBlue),
+                              textAlign: TextAlign.center,
+                            ),
+                            // Obx(
+                            //   () => affirmationController.isLoading.value
+                            //       ? Container()
+                            //       : Center(
+                            //           child: Text(
+                            //             affirmationController.affirmationModel
+                            //                 .value.data![1].content!,
+                            //             style: AppStyles().smallText.copyWith(
+                            //                 fontSize: 20,
+                            //                 color: AppColors.textBlue),
+                            //             textAlign: TextAlign.center,
+                            //           ),
+                            //         ),
+                            // )
+
                             SizedBox(
                               height: 10.h,
                             ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              color: AppColors.greenColor,
-                            )
                           ],
                         ),
                       ),
@@ -203,8 +196,8 @@ class _AffirmationPageState extends State<AffirmationPage> {
                       child: InkWell(
                         onTap: () {
                           startTimer();
-                          speak(affirmationController
-                              .affirmationModel.value.data![0].content
+                          speak(affirmationController.affirmationModel.value
+                              .data![selectedIndex].content
                               .toString());
                         },
                         child: Container(
@@ -234,6 +227,30 @@ class _AffirmationPageState extends State<AffirmationPage> {
                           style: AppStyles()
                               .smallText
                               .copyWith(color: AppColors.backGroundColor),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 10.w,
+                    top: 10.w,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = selectedIndex++;
+                        });
+                        print('omo $selectedIndex');
+                      },
+                      child: Container(
+                        height: 30.h,
+                        width: 70.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.w),
+                            border: Border.all(
+                                color: AppColors.backGroundColor, width: 2.w)),
+                        child: Icon(
+                          Icons.next_plan_outlined,
+                          color: AppColors.backGroundColor,
                         ),
                       ),
                     ),
