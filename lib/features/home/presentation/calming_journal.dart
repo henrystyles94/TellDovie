@@ -59,20 +59,23 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
 
   var items = [
     '',
-    'I am Angry 1',
-    'I am Sad 2',
-    'I am Happy',
-    'I an Frustrated',
+    'I did not complete my work',
+    'I may have distracted my friends',
+    'I upset others',
+    'I upset myself',
+    'Type how you feel'
   ];
 
   String actionvalue = '';
   int? tappedIndex = -1;
   var actionitems = [
     '',
-    'Read sime Novel',
-    'Play Video',
-    'Sing Songs',
-    'Talk a walk',
+    'Talk to a friend',
+    'Talk to a teacher',
+    'Mindset Station',
+    'Calming corner',
+    'I have an idea',
+    'Type how you feel'
   ];
   var reactions = [
     {'imageSrc': 'assets/images/hap.png', 'title': 'Happy'},
@@ -101,6 +104,8 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
   }
 
   TextEditingController journalController = TextEditingController();
+  TextEditingController addFeelings = TextEditingController();
+  TextEditingController outComeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,7 +157,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                       ),
                       SizedBox(height: 5.h),
                       Text(
-                        '${journalController.text}',
+                        journalController.text,
                         style: AppStyles().smallText,
                       ),
                       SizedBox(
@@ -491,12 +496,52 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     // After selecting the desired option,it will
 
                     onChanged: (String? newValue) {
+                      if (newValue == 'Type how you feel') {
+                        Get.bottomSheet(Container(
+                          height: 200.h,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: AppColors.backGroundColor,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10.w),
+                                  topRight: Radius.circular(10.w))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              children: [
+                                CustomInputField(
+                                  controller: outComeController,
+                                ),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                CustomButton(
+                                    height: 50.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    borderRadius: 10.w,
+                                    buttonText: 'Save',
+                                    opnPress: () {
+                                      Get.back();
+                                    },
+                                    isLoading: false)
+                              ],
+                            ),
+                          ),
+                        ));
+                      }
                       setState(() {
                         dropdownvalue = newValue!;
                       });
                     },
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                outComeController.text,
+                style: AppStyles().smallText,
               ),
               SizedBox(
                 height: 41.h,
@@ -538,12 +583,49 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     // After selecting the desired option,it will
 
                     onChanged: (String? newValue) {
+                      if (newValue == 'Type how you feel') {
+                        Get.bottomSheet(Container(
+                          height: 200.h,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: AppColors.backGroundColor,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10.w),
+                                  topRight: Radius.circular(10.w))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              children: [
+                                CustomInputField(
+                                  controller: addFeelings,
+                                ),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                CustomButton(
+                                    height: 50.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    borderRadius: 10.w,
+                                    buttonText: 'Save',
+                                    opnPress: () {
+                                      Get.back();
+                                    },
+                                    isLoading: false)
+                              ],
+                            ),
+                          ),
+                        ));
+                      }
                       setState(() {
                         actionvalue = newValue!;
                       });
                     },
                   ),
                 ),
+              ),
+              Text(
+                addFeelings.text,
+                style: AppStyles().smallText,
               ),
               SizedBox(
                 height: 66.h,

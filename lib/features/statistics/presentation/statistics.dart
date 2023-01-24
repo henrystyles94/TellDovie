@@ -1,11 +1,13 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:dovie/constants/styles/app_styles.dart';
+import 'package:dovie/features/auth/presentation/login_screen.dart';
 import 'package:dovie/features/home/model/bar_chart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../constants/themes/colors.dart';
 
 class StaticsScreen extends StatelessWidget {
@@ -49,6 +51,23 @@ class StaticsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.backGroundColor,
         elevation: 0.0,
+        actions: [
+          InkWell(
+            onTap: () async {
+              SharedPreferences pref = await SharedPreferences.getInstance();
+              pref.clear();
+              Get.offAll(() => LoginScreen());
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Icon(
+                Icons.logout_outlined,
+                color: AppColors.black,
+                size: 20.h,
+              ),
+            ),
+          )
+        ],
         leading: InkWell(
             onTap: () {
               Get.back();

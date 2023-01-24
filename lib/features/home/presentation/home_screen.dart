@@ -38,10 +38,11 @@ class HomeScreen extends StatelessWidget {
         padding: EdgeInsets.all(16.0.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               // height: 84.h,
-              width: 161.w,
+              width: 181.w,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.w),
                   color: AppColors.whiteColor),
@@ -49,6 +50,7 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('You have:',
                         style: AppStyles().smallText.copyWith(fontSize: 14)),
@@ -63,17 +65,18 @@ class HomeScreen extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 26.0),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
                                     walletController.loadedValue.value.data!,
                                     style: AppStyles()
                                         .smallText
-                                        .copyWith(fontSize: 20),
+                                        .copyWith(fontSize: 13),
                                   ),
                                   SizedBox(
-                                    width: 11.w,
+                                    width: 3.w,
                                   ),
-                                  Flexible(
+                                  Expanded(
                                       child: Image.asset(
                                           'assets/images/dollar.png'))
                                 ],

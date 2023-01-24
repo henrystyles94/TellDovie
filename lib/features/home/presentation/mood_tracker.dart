@@ -31,14 +31,14 @@ var items = [
   'Talk a walk',
 ];
 var reactions = [
-  {'imageSrc': 'assets/images/hap.png', 'title': 'Happy'},
-  {'imageSrc': 'assets/images/ex.png', 'title': 'Excited'},
-  {'imageSrc': 'assets/images/hope.png', 'title': 'Hopeful'},
-  {'imageSrc': 'assets/images/proud.png', 'title': 'Proud'},
-  {'imageSrc': 'assets/images/silly.png', 'title': 'Silly'},
   {'imageSrc': 'assets/images/sad.png', 'title': 'Sad'},
-  {'imageSrc': 'assets/images/angry.png', 'title': 'Angry'},
-  {'imageSrc': 'assets/images/frustrate.png', 'title': 'Frustrated'},
+  {'imageSrc': 'assets/images/frustrate.png', 'title': 'Anxious'},
+  {'imageSrc': 'assets/images/shy.png', 'title': 'Tired'},
+  {'imageSrc': 'assets/images/proud.png', 'title': 'Happy'},
+  {'imageSrc': 'assets/images/frustrate.png', 'title': 'Nervous'},
+  {'imageSrc': 'assets/images/ex.png', 'title': 'Excited'},
+  {'imageSrc': 'assets/images/hope.png', 'title': 'Optimistic'},
+  {'imageSrc': 'assets/images/shy.png', 'title': 'Frustrated'},
   {'imageSrc': 'assets/images/shy.png', 'title': 'Shy'},
   // {'imageSrc': 'assets/images/add.png', 'title': ''},
 ];

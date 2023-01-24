@@ -47,142 +47,144 @@ class _AvatarAnimationScreenState extends State<AvatarAnimationScreen> {
               ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          children: [
-            Obx(
-              () => Row(
-                children: [
-                  animationController.selectedItem.value == 0
-                      ? Image.asset('assets/svg/normal.png')
-                      : animationController.selectedItem.value == 1
-                          ? Image.asset('assets/svg/cap.png')
-                          : animationController.selectedItem.value == 2
-                              ? Image.asset('assets/svg/robot.png')
-                              : animationController.selectedItem.value == 3
-                                  ? Image.asset('assets/svg/crown.png')
-                                  : animationController.selectedItem.value == 4
-                                      ? Image.asset('assets/svg/octoStand.png')
-                                      : Image.asset('assets/svg/normal.png'),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            children: [
+              Obx(
+                () => Row(
+                  children: [
+                    animationController.selectedItem.value == 0
+                        ? Image.asset('assets/svg/normal.png')
+                        : animationController.selectedItem.value == 1
+                            ? Image.asset('assets/svg/cap.png')
+                            : animationController.selectedItem.value == 2
+                                ? Image.asset('assets/svg/robot.png')
+                                : animationController.selectedItem.value == 3
+                                    ? Image.asset('assets/svg/crown.png')
+                                    : animationController.selectedItem.value == 4
+                                        ? Image.asset('assets/svg/octoStand.png')
+                                        : Image.asset('assets/svg/normal.png'),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 58.h,
-            ),
-            Text(
-              'Get an Item',
-              style: AppStyles().smallText,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            SizedBox(
-              height: 56.h,
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: ((context, index) {
-                      return Obx(
-                        () => InkWell(
-                          onTap: () {
-                            animationController.selectedItem.value = index;
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(9.0),
-                            child: Container(
-                              height: 66.h,
-                              width: 66.w,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.w),
-                                  border: Border.all(
-                                      color: animationController
-                                                  .selectedItem.value ==
-                                              index
-                                          ? AppColors.red
-                                          : AppColors.whiteColor),
-                                  color: AppColors.whiteColor,
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          '${items[index]['imgPath']}'))),
+              SizedBox(
+                height: 58.h,
+              ),
+              Text(
+                'Get an Item',
+                style: AppStyles().smallText,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              SizedBox(
+                height: 56.h,
+                width: MediaQuery.of(context).size.width,
+                child: Center(
+                  child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: ((context, index) {
+                        return Obx(
+                          () => InkWell(
+                            onTap: () {
+                              animationController.selectedItem.value = index;
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(9.0),
+                              child: Container(
+                                height: 66.h,
+                                width: 66.w,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.w),
+                                    border: Border.all(
+                                        color: animationController
+                                                    .selectedItem.value ==
+                                                index
+                                            ? AppColors.red
+                                            : AppColors.whiteColor),
+                                    color: AppColors.whiteColor,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            '${items[index]['imgPath']}'))),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
-                    separatorBuilder: (context, index) => Divider(
-                          height: 180.w,
-                        ),
-                    itemCount: items.length),
+                        );
+                      }),
+                      separatorBuilder: (context, index) => Divider(
+                            height: 180.w,
+                          ),
+                      itemCount: items.length),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () {
-                    if (animationController.selectedItem.value > 0) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value - 1;
-                    }
-                  },
-                  child: Container(
-                    height: 79.h,
-                    width: 79.w,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: AppColors.buttonColor),
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: AppColors.whiteColor,
+              SizedBox(
+                height: 16.h,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      if (animationController.selectedItem.value > 0) {
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value - 1;
+                      }
+                    },
+                    child: Container(
+                      height: 79.h,
+                      width: 79.w,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: AppColors.buttonColor),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: AppColors.whiteColor,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 59.w,
-                ),
-                InkWell(
-                  onTap: () {
-                    if (animationController.selectedItem.value < items.length) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value + 1;
-                    }
-                    print(animationController.selectedItem.value);
-                    setState(() {});
-                  },
-                  child: Container(
-                    height: 79.h,
-                    width: 79.w,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: AppColors.buttonColor),
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppColors.whiteColor,
-                    ),
+                  SizedBox(
+                    width: 59.w,
                   ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 50.h,
-            ),
-            CustomButton(
+                  InkWell(
+                    onTap: () {
+                      if (animationController.selectedItem.value < items.length) {
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value + 1;
+                      }
+                      print(animationController.selectedItem.value);
+                      setState(() {});
+                    },
+                    child: Container(
+                      height: 79.h,
+                      width: 79.w,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: AppColors.buttonColor),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: AppColors.whiteColor,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
                 height: 50.h,
-                width: MediaQuery.of(context).size.width,
-                borderRadius: 20.w,
-                buttonText: 'Save',
-                opnPress: () {
-                  Get.snackbar('Saved', 'Avatar saved',
-                      backgroundColor: AppColors.buttonColor,
-                      colorText: AppColors.whiteColor);
-                },
-                isLoading: false)
-          ],
+              ),
+              CustomButton(
+                  height: 50.h,
+                  width: MediaQuery.of(context).size.width,
+                  borderRadius: 20.w,
+                  buttonText: 'Save',
+                  opnPress: () {
+                    Get.snackbar('Saved', 'Avatar saved',
+                        backgroundColor: AppColors.buttonColor,
+                        colorText: AppColors.whiteColor);
+                  },
+                  isLoading: false)
+            ],
+          ),
         ),
       ),
     );
