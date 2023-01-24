@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/constants/themes/colors.dart';
+import 'package:dovie/features/home/presentation/mood_tracker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,6 +44,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
     super.initState();
     // initialize the rear camera
     initCamera(widget.cameras![1]);
+    startTimer();
     activitiesController.earnGrowthPointController();
   }
 
@@ -88,7 +90,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
     await flutterTts.speak(text);
   }
 
-  var selectedIndex = 0.obs;
+  var selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     String strDigits(int n) => n.toString().padLeft(2, '0');
@@ -159,11 +161,8 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                           () => activitiesController.loadingMindset.value
                               ? Container()
                               : Text(
-                                  activitiesController
-                                      .loadedGrowthMindsets
-                                      .value
-                                      .data![selectedIndex.value]
-                                      .content!,
+                                  activitiesController.minds[selectedIndex]
+                                      ['content'],
                                   style: AppStyles().smallText.copyWith(
                                       fontSize: 20, color: AppColors.textBlue),
                                   textAlign: TextAlign.center,
@@ -193,8 +192,8 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                       child: InkWell(
                         onTap: () {
                           startTimer();
-                          speak(activitiesController.loadedGrowthMindsets.value
-                              .data![selectedIndex.value].content
+                          speak(activitiesController.minds[selectedIndex]
+                                  ['content']
                               .toString());
                         },
                         child: Container(
@@ -233,7 +232,12 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                     top: 10.w,
                     child: InkWell(
                       onTap: () {
-                        selectedIndex.value + 1;
+                        setState(() {
+                          if ((affirmationController.affirm.length - 1) !=
+                              selectedIndex) {
+                            selectedIndex = selectedIndex + 1;
+                          }
+                        });
                         print('object');
                       },
                       child: Container(

@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               // height: 84.h,
-              width: 131.w,
+              width: 161.w,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.w),
                   color: AppColors.whiteColor),
@@ -62,6 +62,7 @@ class HomeScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 26.0),
                               child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     walletController.loadedValue.value.data!,
@@ -70,9 +71,9 @@ class HomeScreen extends StatelessWidget {
                                         .copyWith(fontSize: 20),
                                   ),
                                   SizedBox(
-                                    width: 14.w,
+                                    width: 11.w,
                                   ),
-                                  Expanded(
+                                  Flexible(
                                       child: Image.asset(
                                           'assets/images/dollar.png'))
                                 ],
@@ -127,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                         } else if (index == 4) {
                           Get.to(() => InformationHubScreen());
                         } else if (index == 5) {
-                          Get.to(() =>  AvatarScreen());
+                          Get.to(() => AvatarScreen());
                         }
                       },
                       child: Padding(

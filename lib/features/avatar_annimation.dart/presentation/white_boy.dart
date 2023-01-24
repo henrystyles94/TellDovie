@@ -150,7 +150,7 @@ class _AnimateWhiteBoyScreen extends State<AnimateWhiteBoyScreen> {
                   ),
                   InkWell(
                     onTap: (){
-                      if (animationController.selectedItem.value > 0) {
+                      if (animationController.selectedItem.value <items.length) {
                       animationController.selectedItem.value =
                           animationController.selectedItem.value + 1;
                     }

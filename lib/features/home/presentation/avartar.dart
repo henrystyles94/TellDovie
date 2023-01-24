@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../avatar_annimation.dart/presentation/ladies_head.dart';
+
 class AvatarScreen extends StatelessWidget {
   AvatarScreen({super.key});
   List avatars = [
@@ -61,10 +63,16 @@ class AvatarScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      print(index);
-                      Get.to(() => AvatarHeadScreen(
-                            selected: index,
-                          ));
+                      // print(index);
+                      if (index == 2 || index == 3) {
+                        Get.to(() => LadiesHairScren(
+                              selected: index,
+                            ));
+                      } else {
+                        Get.to(() => AvatarHeadScreen(
+                              selected: index,
+                            ));
+                      }
                     },
                     child: Container(
                       height: 163.h,

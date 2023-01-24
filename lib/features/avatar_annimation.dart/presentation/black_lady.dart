@@ -131,9 +131,9 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                   InkWell(
                     onTap: () {
                       if (animationController.selectedItem.value > 0) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value - 1;
-                    }
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value - 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -150,11 +150,12 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                     width: 59.w,
                   ),
                   InkWell(
-                    onTap: (){
-                      if (animationController.selectedItem.value > 0) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value + 1;
-                    }
+                    onTap: () {
+                      if (animationController.selectedItem.value <
+                          items.length) {
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value + 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -179,8 +180,8 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                   buttonText: 'Save',
                   opnPress: () {
                     Get.snackbar('Saved', 'Avatar saved',
-                      backgroundColor: AppColors.buttonColor,
-                      colorText: AppColors.whiteColor);
+                        backgroundColor: AppColors.buttonColor,
+                        colorText: AppColors.whiteColor);
                   },
                   isLoading: false)
             ],

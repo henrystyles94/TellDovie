@@ -46,6 +46,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
     // initialize the rear camera
     affirmationController.earnAffirmationPointsController();
     initCamera(widget.cameras![1]);
+    startTimer();
   }
 
   Timer? countdownTimer;
@@ -236,8 +237,12 @@ class _AffirmationPageState extends State<AffirmationPage> {
                     top: 10.w,
                     child: InkWell(
                       onTap: () {
+                        if (affirmationController.affirm.length - 1 ==
+                            selectedIndex) {
+                          return;
+                        }
                         setState(() {
-                          selectedIndex = selectedIndex++;
+                          selectedIndex = selectedIndex + 1;
                         });
                         print('omo $selectedIndex');
                       },

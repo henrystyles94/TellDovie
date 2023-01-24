@@ -82,6 +82,7 @@ class _WellnesScreenState extends State<WellnesScreen> {
     await flutterTts.speak(text);
   }
 
+  var selectedIndex = 0.obs;
   @override
   Widget build(BuildContext context) {
     String strDigits(int n) => n.toString().padLeft(2, '0');
@@ -153,33 +154,30 @@ class _WellnesScreenState extends State<WellnesScreen> {
                         child: Obx(
                           () => activitiesController.loadingMindset.value
                               ? Container()
-                              : Column(
-                                  children: List.generate(
+                              : Text(
                                   activitiesController
-                                      .affirmationModel.value.data!.length,
-                                  (index) => Text(
-                                    activitiesController.loadedGrowthMindsets
-                                        .value.data![index].content!,
-                                    style: AppStyles().smallText.copyWith(
-                                        fontSize: 20,
-                                        color: AppColors.textBlue),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  // Obx(
-                                  //   () => affirmationController.isLoading.value
-                                  //       ? Container()
-                                  //       : Center(
-                                  //           child: Text(
-                                  //             affirmationController.affirmationModel
-                                  //                 .value.data![1].content!,
-                                  //             style: AppStyles().smallText.copyWith(
-                                  //                 fontSize: 20,
-                                  //                 color: AppColors.textBlue),
-                                  //             textAlign: TextAlign.center,
-                                  //           ),
-                                  //         ),
-                                  // )
-                                )),
+                                      .loadedGrowthMindsets
+                                      .value
+                                      .data![selectedIndex.value]
+                                      .content!,
+                                  style: AppStyles().smallText.copyWith(
+                                      fontSize: 20, color: AppColors.textBlue),
+                                  textAlign: TextAlign.center,
+                                ),
+                          // Obx(
+                          //   () => affirmationController.isLoading.value
+                          //       ? Container()
+                          //       : Center(
+                          //           child: Text(
+                          //             affirmationController.affirmationModel
+                          //                 .value.data![1].content!,
+                          //             style: AppStyles().smallText.copyWith(
+                          //                 fontSize: 20,
+                          //                 color: AppColors.textBlue),
+                          //             textAlign: TextAlign.center,
+                          //           ),
+                          //         ),
+                          // )
                         ),
                       ),
                     ),
@@ -222,6 +220,30 @@ class _WellnesScreenState extends State<WellnesScreen> {
                           style: AppStyles()
                               .smallText
                               .copyWith(color: AppColors.backGroundColor),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 10.w,
+                    top: 10.w,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = selectedIndex + 1;
+                        });
+                        print('object');
+                      },
+                      child: Container(
+                        height: 30.h,
+                        width: 70.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.w),
+                            border: Border.all(
+                                color: AppColors.backGroundColor, width: 2.w)),
+                        child: Icon(
+                          Icons.next_plan_outlined,
+                          color: AppColors.backGroundColor,
                         ),
                       ),
                     ),

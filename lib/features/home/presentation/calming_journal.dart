@@ -501,6 +501,13 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
               SizedBox(
                 height: 41.h,
               ),
+              Text(
+                'What can you do to make it better?',
+                style: AppStyles().headingText.copyWith(fontSize: 18),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
               Container(
                 height: 50.h,
                 width: MediaQuery.of(context).size.width,

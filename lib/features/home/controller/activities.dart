@@ -24,6 +24,7 @@ class ActivityController extends GetxController {
   final loadedLessonModel = LessonHubResponseModel().obs;
   final loadedGrowthMindsets = GrowthMindsetResponseModel().obs;
   var affirm = [];
+  var minds = [];
   @override
   void onInit() {
     getAffirmationController();
@@ -98,6 +99,7 @@ class ActivityController extends GetxController {
       var result = await activityRepo.growthMindsetRepository();
       loadingMindset(false);
       loadedGrowthMindsets.value = growthMindsetResponseModelFromJson(result);
+      minds.addAll(jsonDecode(result)['data']);
     } catch (e) {
       loadingMindset(false);
     }

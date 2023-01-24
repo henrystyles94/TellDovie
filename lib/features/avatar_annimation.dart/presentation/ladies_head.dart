@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dovie/constants/themes/colors.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/black_boy_feeder.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/black_lady.dart';
@@ -5,22 +7,21 @@ import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dar
 import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy_feeder.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/white_lady.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/white_on_wheel.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../constants/styles/app_styles.dart';
+import '../../../constants/themes/colors.dart';
 import 'avatar_animation.dart';
 import 'black_onwheel.dart';
 
-class AvatarHeadScreen extends StatelessWidget {
+class LadiesHairScren extends StatelessWidget {
   final selected;
-  AvatarHeadScreen({super.key, required this.selected});
+  LadiesHairScren({super.key, this.selected});
+
   List avatarHead = [
-    {'imgPath': 'assets/svg/bhead.png'},
-    {'imgPath': 'assets/svg/yellowHair.png'},
-    {'imgPath': 'assets/svg/brownHair.png'},
-    {'imgPath': 'assets/svg/redHair.png'},
+    {'imgPath': 'assets/svg/lady.png'},
+    // {'imgPath': 'assets/svg/yellowHair.png'},
+    // {'imgPath': 'assets/svg/brownHair.png'},
+    // {'imgPath': 'assets/svg/redHair.png'},
   ];
   @override
   Widget build(BuildContext context) {

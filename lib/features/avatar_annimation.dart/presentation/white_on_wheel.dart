@@ -152,7 +152,8 @@ class _WhiteBoyOnWheel extends State<WhiteBoyOnWheel> {
                   ),
                   InkWell(
                     onTap: () {
-                      if (animationController.selectedItem.value > 0) {
+                      if (animationController.selectedItem.value <
+                          items.length) {
                         animationController.selectedItem.value =
                             animationController.selectedItem.value + 1;
                       }
