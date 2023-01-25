@@ -44,6 +44,7 @@ class _WellnesScreenState extends State<WellnesScreen> {
     availableCameras().then(
       (value) => initCamera(value[1]),
     );
+    startTimer();
 
     activitiesController.earnGrowthPointController();
   }
