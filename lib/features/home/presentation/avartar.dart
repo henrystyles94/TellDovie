@@ -16,12 +16,12 @@ class AvatarScreen extends StatelessWidget {
     {'imgPath': 'assets/svg/whiteGrilStand.png'},
     {'imgPath': 'assets/svg/blackBFeed.png'},
     {'imgPath': 'assets/svg/whiteBFeed.png'},
-    // {'imgPath': 'assets/svg/bGF.png'},
-    // {'imgPath': 'assets/svg/whiteGF.png'},
+    {'imgPath': 'assets/svg/bGF.png'},
+    {'imgPath': 'assets/svg/whiteGF.png'},
     {'imgPath': 'assets/svg/bweel.png'},
     {'imgPath': 'assets/svg/wweel.png'},
-    // {'imgPath': 'assets/svg/bgweel.png'},
-    // {'imgPath': 'assets/svg/wgweel.png'},
+    {'imgPath': 'assets/svg/bgweel.png'},
+    {'imgPath': 'assets/svg/wgweel.png'},
   ];
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,12 @@ class AvatarScreen extends StatelessWidget {
                   return InkWell(
                     onTap: () {
                       // print(index);
-                      if (index == 2 || index == 3) {
+                      if (index == 2 ||
+                          index == 3 ||
+                          index == 6 ||
+                          index == 7 ||
+                          index == 10 ||
+                          index == 11) {
                         Get.to(() => LadiesHairScren(
                               selected: index,
                             ));

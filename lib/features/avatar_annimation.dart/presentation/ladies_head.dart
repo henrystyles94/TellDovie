@@ -1,3 +1,5 @@
+import 'package:dovie/features/avatar_annimation.dart/presentation/white_girlFeed.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/whitegirl_on_wheel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dovie/constants/themes/colors.dart';
@@ -11,6 +13,8 @@ import 'package:get/get.dart';
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
 import 'avatar_animation.dart';
+import 'black_lady_withFeeder.dart';
+import 'black_ladyon_wheel.dart';
 import 'black_onwheel.dart';
 
 class LadiesHairScren extends StatelessWidget {
@@ -19,9 +23,9 @@ class LadiesHairScren extends StatelessWidget {
 
   List avatarHead = [
     {'imgPath': 'assets/svg/lady.png'},
-    // {'imgPath': 'assets/svg/yellowHair.png'},
-    // {'imgPath': 'assets/svg/brownHair.png'},
-    // {'imgPath': 'assets/svg/redHair.png'},
+    {'imgPath': 'assets/svg/yelowgirlhair.png'},
+    {'imgPath': 'assets/svg/browngirlHair.png'},
+    {'imgPath': 'assets/svg/redgirlHair.png'},
   ];
   @override
   Widget build(BuildContext context) {
@@ -85,11 +89,17 @@ class LadiesHairScren extends StatelessWidget {
                                                     WhiteBoyFeederScreen())
                                                 : selected == 6
                                                     ? Get.to(() =>
-                                                        BlackOnWheeelsScreen())
+                                                        BlackLadyWithFeederScreen())
                                                     : selected == 7
                                                         ? Get.to(() =>
-                                                            WhiteBoyOnWheel())
-                                                        : BlackGirlAnimation();
+                                                            WhhiteGirlFeederScreen())
+                                                        : selected == 10
+                                                            ? Get.to(() =>
+                                                                BlackLadyOnWheelChair())
+                                                            : selected == 11
+                                                                ? Get.to(() =>
+                                                                    WhiteGirlOnWheels())
+                                                                : BlackGirlAnimation();
                       },
                       child: Container(
                         height: 163.h,

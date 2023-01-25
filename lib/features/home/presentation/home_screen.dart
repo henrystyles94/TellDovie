@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               // height: 84.h,
-              width: 181.w,
+              width: 131.w,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.w),
                   color: AppColors.whiteColor),
@@ -76,9 +76,7 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(
                                     width: 3.w,
                                   ),
-                                  Expanded(
-                                      child: Image.asset(
-                                          'assets/images/dollar.png'))
+                                  Image.asset('assets/images/dollar.png')
                                 ],
                               ),
                             ),

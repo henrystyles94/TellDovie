@@ -29,6 +29,7 @@ var items = [
   'Play Video',
   'Sing Songs',
   'Talk a walk',
+  'Type how you feel',
 ];
 var reactions = [
   {'imageSrc': 'assets/images/sad.png', 'title': 'Sad'},
@@ -45,6 +46,7 @@ var reactions = [
 final activityController = Get.put(ActivityController());
 TextEditingController feelingController = TextEditingController();
 TextEditingController addTextField = TextEditingController();
+TextEditingController mood = TextEditingController();
 AudioPlayer audioPlayer = AudioPlayer();
 bool isPlaying = false;
 Duration duration = Duration.zero;
@@ -525,6 +527,43 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                     // After selecting the desired option,it will
 
                     onChanged: (String? newValue) {
+                      if (newValue == 'Type how you feel') {
+                        Get.bottomSheet(Container(
+                          height: 200.h,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: AppColors.backGroundColor,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10.w),
+                                  topRight: Radius.circular(10.w))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              children: [
+                                CustomInputField(
+                                  controller: mood,
+                                ),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                Text(
+                                  mood.text,
+                                  style: AppStyles().smallText,
+                                ),
+                                CustomButton(
+                                    height: 50.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    borderRadius: 10.w,
+                                    buttonText: 'Save',
+                                    opnPress: () {
+                                      Get.back();
+                                    },
+                                    isLoading: false)
+                              ],
+                            ),
+                          ),
+                        ));
+                      }
                       setState(() {
                         dropdownvalue = newValue!;
                       });
