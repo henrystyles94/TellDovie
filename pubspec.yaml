@@ -82,6 +82,14 @@ flutter:
     - assets/fonts/
     - assets/images/
     - assets/svg/
+    - assets/svg/whitegirl/
+    - assets/svg/whitegirl/bhead/
+    - assets/svg/whitegirl/rhead/
+    - assets/svg/whitegirl/yhead/
+    - assets/svg/bboy-curly/
+    - assets/svg/blackgirl_curly/bhead/
+    - assets/svg/blackgirl_curly/rhead/
+    - assets/svg/blackgirl_curly/yhead/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

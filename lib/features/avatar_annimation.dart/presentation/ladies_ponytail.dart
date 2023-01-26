@@ -4,31 +4,27 @@ import 'package:dovie/features/avatar_annimation.dart/presentation/girls/avatar_
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dovie/constants/themes/colors.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/black_boy_feeder.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/black_boy_feeder.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/girls/black_lady.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy_feeder.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/white_lady.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/white_on_wheel.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy_feeder.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/white_lady.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/white_on_wheel.dart';
 import 'package:get/get.dart';
 import '../../../constants/styles/app_styles.dart';
-import '../../../constants/themes/colors.dart';
-import 'avatar_animation.dart';
-import 'black_onwheel.dart';
+// import '../../../constants/themes/colors.dart';
+// import 'avatar_animation.dart';
+// import 'black_onwheel.dart';
 
-class LadiesHairScren extends StatelessWidget {
+class LadiesPonytail extends StatelessWidget {
   final selected;
-  LadiesHairScren({super.key, this.selected});
+  LadiesPonytail({super.key, this.selected});
 
   List avatarHead = [
-    {'imgPath': 'assets/svg/bgirl-bhead.png'},
-    {'imgPath': 'assets/svg/bgirl-yhead.png'},
-    {'imgPath': 'assets/svg/bgirl-brhead.png'},
-    {'imgPath': 'assets/svg/bgirl-rhead.png'},
-
-    // {'imgPath': 'assets/svg/yellowHair.png'},
-    // {'imgPath': 'assets/svg/brownHair.png'},
-    // {'imgPath': 'assets/svg/redHair.png'},
+    {'imgPath': 'assets/svg/ponytail-black.png'},
+    {'imgPath': 'assets/svg/ponytail-yellow.png'},
+    {'imgPath': 'assets/svg/ponytail-brown.png'},
+    {'imgPath': 'assets/svg/ponytail-red.png'},
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,22 +1,22 @@
+import 'package:dovie/constants/styles/app_styles.dart';
+import 'package:dovie/constants/themes/colors.dart';
 import 'package:dovie/features/auth/presentation/welcome_screen.dart';
+import 'package:dovie/features/avatar_annimation.dart/controller/avatar_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../constants/styles/app_styles.dart';
-import '../../../constants/themes/colors.dart';
-import '../controller/avatar_animation.dart';
-
-class BlackGirlAnimation extends StatefulWidget {
-  BlackGirlAnimation({super.key});
+class WhiteGirlBrownHeadAnimation extends StatefulWidget {
+  WhiteGirlBrownHeadAnimation({super.key});
 
   @override
-  State<BlackGirlAnimation> createState() => _BlackGirlAnimation();
+  State<WhiteGirlBrownHeadAnimation> createState() =>
+      _WhiteGirlBrownHeadAnimation();
 }
 
 final animationController = Get.put(AvatarAnimationController());
 
-class _BlackGirlAnimation extends State<BlackGirlAnimation> {
+class _WhiteGirlBrownHeadAnimation extends State<WhiteGirlBrownHeadAnimation> {
   bool selectedItem1 = false;
 
   var items = [
@@ -57,17 +57,35 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/obg.png')
+                        ? Image.asset(
+                            'assets/svg/blackgirl_curly/bhead/bhead-rshirt.png',
+                            width: 200,
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/bgc.png')
+                            ? Image.asset(
+                                'assets/svg/blackgirl_curly/bhead/bhead-rshirt-cap.png',
+                                width: 200,
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/bgb.png')
+                                ? Image.asset(
+                                    'assets/svg/blackgirl_curly/bhead/bhead-rshirt-stick.png',
+                                    width: 200,
+                                  )
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/bgwbi.png')
+                                    ? Image.asset(
+                                        'assets/svg/blackgirl_curly/bhead/bhead-rshirt-bird.png',
+                                        width: 200,
+                                      )
                                     : animationController.selectedItem.value ==
                                             4
-                                        ? Image.asset('assets/svg/bgwcr.png')
-                                        : Image.asset('assets/svg/whiteN.png'),
+                                        ? Image.asset(
+                                            'assets/svg/blackgirl_curly/bhead/bhead-rshirt-crown.png',
+                                            width: 200,
+                                          )
+                                        : Image.asset(
+                                            'assets/svg/blackgirl_curly/bhead/bhead-rshirt.png',
+                                            width: 200,
+                                          ),
                   ],
                 ),
               ),
