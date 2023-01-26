@@ -46,7 +46,7 @@ class AvatarScreen extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Choose  your Avatar',
+              'Choose your Avatar',
               style: AppStyles().headingText.copyWith(fontSize: 20),
             ),
             SizedBox(

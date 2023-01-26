@@ -1,4 +1,7 @@
 import 'package:dovie/constants/themes/colors.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_brown_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_red_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_yellow_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/black_boy_feeder.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/black_lady.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dart';
@@ -67,28 +70,43 @@ class AvatarHeadScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        print('object');
-                        selected == 0
+                        print(avatarHead[index]);
+                        selected == 0 && avatarHead[index] == avatarHead[0]
                             ? Get.to(() => AvatarAnimationScreen())
-                            : selected == 1
-                                ? Get.to(() => AnimateWhiteBoyScreen())
-                                : selected == 2
-                                    ? Get.to(() => BlackGirlAnimation())
-                                    : selected == 3
-                                        ? Get.to(() => WhiteGirlAnimation())
-                                        : selected == 4
+                            : selected == 0 &&
+                                    avatarHead[index] == avatarHead[1]
+                                ? Get.to(
+                                    () => AvatarAnimationYellowHeadScreen())
+                                : selected == 0 &&
+                                        avatarHead[index] == avatarHead[2]
+                                    ? Get.to(
+                                        () => AvatarAnimationBrownHeadScreen())
+                                    : selected == 0 &&
+                                            avatarHead[index] == avatarHead[3]
+                                        ? Get.to(() =>
+                                            AvatarAnimationRedHeadScreen())
+                                        : selected == 1
                                             ? Get.to(
-                                                () => BlackBoyFeederScreen())
-                                            : selected == 5
-                                                ? Get.to(() =>
-                                                    WhiteBoyFeederScreen())
-                                                : selected == 6
+                                                () => AnimateWhiteBoyScreen())
+                                            : selected == 2
+                                                ? Get.to(
+                                                    () => BlackGirlAnimation())
+                                                : selected == 3
                                                     ? Get.to(() =>
-                                                        BlackOnWheeelsScreen())
-                                                    : selected == 7
+                                                        WhiteGirlAnimation())
+                                                    : selected == 4
                                                         ? Get.to(() =>
-                                                            WhiteBoyOnWheel())
-                                                        : BlackGirlAnimation();
+                                                            BlackBoyFeederScreen())
+                                                        : selected == 5
+                                                            ? Get.to(() =>
+                                                                WhiteBoyFeederScreen())
+                                                            : selected == 6
+                                                                ? Get.to(() =>
+                                                                    BlackOnWheeelsScreen())
+                                                                : selected == 7
+                                                                    ? Get.to(() =>
+                                                                        WhiteBoyOnWheel())
+                                                                    : BlackGirlAnimation();
                       },
                       child: Container(
                         height: 163.h,
