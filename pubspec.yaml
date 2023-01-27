@@ -82,11 +82,26 @@ flutter:
     - assets/fonts/
     - assets/images/
     - assets/svg/
+    - assets/svg/whiteboy/
+    - assets/svg/whiteboy/y_head/
+    - assets/svg/whiteboy/r_head/
+    - assets/svg/whiteboy/br_head/
+    - assets/svg/whiteboy/bl_head/
+    - assets/svg/whiteboy/orange_shirt/
+    - assets/svg/whiteboy/orange_shirt/bottle/
+    - assets/svg/whiteboy/orange_shirt/wheelchair/
+    - assets/svg/whiteboy/orange_shirt/wheelchair/y_head/
+    - assets/svg/whiteboy/orange_shirt/wheelchair/bl_head/
+    - assets/svg/whiteboy/orange_shirt/wheelchair/br_head/
+    - assets/svg/whiteboy/orange_shirt/wheelchair/r_head/
     - assets/svg/whitegirl/
-    - assets/svg/whitegirl/bhead/
-    - assets/svg/whitegirl/rhead/
-    - assets/svg/whitegirl/yhead/
-    - assets/svg/bboy-curly/
+    - assets/svg/whitegirl/brown_head/
+    - assets/svg/whitegirl/red_head/
+    - assets/svg/whitegirl/yellow_head/
+    - assets/svg/blackboy/
+    - assets/svg/blackboy/orange_shirt/
+    - assets/svg/blackboy/orange_shirt/bottle/
+    - assets/svg/blackboy/orange_shirt/wheelchair/
     - assets/svg/blackgirl_curly/bhead/
     - assets/svg/blackgirl_curly/rhead/
     - assets/svg/blackgirl_curly/yhead/

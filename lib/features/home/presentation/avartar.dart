@@ -1,6 +1,7 @@
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/constants/themes/colors.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_punk_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/ladies_ponytail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,7 +66,9 @@ class AvatarScreen extends StatelessWidget {
                   return InkWell(
                     onTap: () {
                       // print(index);
-                      if (index == 2) {
+                      if (index == 1 || index == 5 || index == 7) {
+                        Get.to(() => AvatarPunkHeadScreen(selected: index));
+                      } else if (index == 2) {
                         Get.to(() => LadiesHairScren(
                               selected: index,
                             ));

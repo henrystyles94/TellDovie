@@ -57,17 +57,32 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/wgn.png')
+                        ? Image.asset(
+                            'assets/svg/wgn.png',
+                            width: ScreenSize.getHeight(220),
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/wgwc.png')
+                            ? Image.asset(
+                                'assets/svg/wgwc.png',
+                                width: ScreenSize.getHeight(220),
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/wgwbat.png')
+                                ? Image.asset(
+                                    'assets/svg/wgwbat.png',
+                                    width: ScreenSize.getHeight(220),
+                                  )
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/wgwcr.png')
+                                    ? Image.asset(
+                                        'assets/svg/wgwcr.png',
+                                        width: ScreenSize.getHeight(220),
+                                      )
                                     // : animationController.selectedItem.value ==
                                     //         4
                                     //     ? Image.asset('assets/svg/bgwcr.png')
-                                    : Image.asset('assets/svg/whiteN.png'),
+                                    : Image.asset(
+                                        'assets/svg/whiteN.png',
+                                        width: ScreenSize.getHeight(220),
+                                      ),
                   ],
                 ),
               ),

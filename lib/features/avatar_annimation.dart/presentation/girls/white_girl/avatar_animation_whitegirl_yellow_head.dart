@@ -59,33 +59,33 @@ class _WhiteGirlYellowHeadAnimation
                   children: [
                     animationController.selectedItem.value == 0
                         ? Image.asset(
-                            'assets/svg/blackgirl_curly/yhead/bg-yhead-rshirt.png',
-                            width: 200,
+                            'assets/svg/whitegirl/yellow_head/yhead.png',
+                            width: ScreenSize.getHeight(220),
                           )
                         : animationController.selectedItem.value == 1
                             ? Image.asset(
-                                'assets/svg/blackgirl_curly/yhead/bg-yhead-rshirt-cap.png',
-                                width: 200,
+                                'assets/svg/whitegirl/yellow_head/yhead-cap.png',
+                                width: ScreenSize.getHeight(220),
                               )
                             : animationController.selectedItem.value == 2
                                 ? Image.asset(
-                                    'assets/svg/blackgirl_curly/yhead/bg-yhead-rshirt-stick.png',
-                                    width: 200,
+                                    'assets/svg/whitegirl/yellow_head/yhead-bat.png',
+                                    width: ScreenSize.getHeight(220),
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
-                                        'assets/svg/blackgirl_curly/yhead/bg-yhead-rshirt-bird.png',
-                                        width: 200,
+                                        'assets/svg/whitegirl/yellow_head/yhead-bird.png',
+                                        width: ScreenSize.getHeight(220),
                                       )
                                     : animationController.selectedItem.value ==
                                             4
                                         ? Image.asset(
-                                            'assets/svg/blackgirl_curly/yhead/bg-yhead-rshirt-crown.png',
-                                            width: 200,
+                                            'assets/svg/whitegirl/yellow_head/yhead-crown.png',
+                                            width: ScreenSize.getHeight(220),
                                           )
                                         : Image.asset(
-                                            'assets/svg/blackgirl_curly/yhead/bg-yhead-rshirt.png',
-                                            width: 200,
+                                            'assets/svg/whitegirl/yellow_head/yhead.png',
+                                            width: ScreenSize.getHeight(220),
                                           ),
                   ],
                 ),

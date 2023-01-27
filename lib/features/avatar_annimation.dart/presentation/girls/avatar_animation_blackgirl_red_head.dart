@@ -60,32 +60,32 @@ class _BlackGirlRedHeadAnimation extends State<BlackGirlRedHeadAnimation> {
                     animationController.selectedItem.value == 0
                         ? Image.asset(
                             'assets/svg/blackgirl_curly/rhead/rhead-rshirt.png',
-                            width: 200,
+                            width: ScreenSize.getHeight(220),
                           )
                         : animationController.selectedItem.value == 1
                             ? Image.asset(
                                 'assets/svg/blackgirl_curly/rhead/rhead-rshirt-cap.png',
-                                width: 200,
+                                width: ScreenSize.getHeight(220),
                               )
                             : animationController.selectedItem.value == 2
                                 ? Image.asset(
                                     'assets/svg/blackgirl_curly/rhead/rhead-rshirt-stick.png',
-                                    width: 200,
+                                    width: ScreenSize.getHeight(220),
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
                                         'assets/svg/blackgirl_curly/rhead/rhead-rshirt-bird.png',
-                                        width: 200,
+                                        width: ScreenSize.getHeight(220),
                                       )
                                     : animationController.selectedItem.value ==
                                             4
                                         ? Image.asset(
                                             'assets/svg/blackgirl_curly/rhead/rhead-rshirt-crown.png',
-                                            width: 200,
+                                            width: ScreenSize.getHeight(220),
                                           )
                                         : Image.asset(
                                             'assets/svg/blackgirl_curly/rhead/rhead-rshirt.png',
-                                            width: 200,
+                                            width: ScreenSize.getHeight(220),
                                           ),
                   ],
                 ),

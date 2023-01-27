@@ -57,21 +57,34 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/obg.png', width: 200)
+                        ? Image.asset(
+                            'assets/svg/obg.png',
+                            width: ScreenSize.getHeight(220),
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/bgc.png', width: 200)
+                            ? Image.asset(
+                                'assets/svg/bgc.png',
+                                width: ScreenSize.getHeight(220),
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/bgb.png', width: 200)
+                                ? Image.asset(
+                                    'assets/svg/bgb.png',
+                                    width: ScreenSize.getHeight(220),
+                                  )
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/bgwbi.png',
-                                        width: 200)
+                                    ? Image.asset(
+                                        'assets/svg/bgwbi.png',
+                                        width: ScreenSize.getHeight(220),
+                                      )
                                     : animationController.selectedItem.value ==
                                             4
-                                        ? Image.asset('assets/svg/bgwcr.png',
-                                            width: 200)
+                                        ? Image.asset(
+                                            'assets/svg/bgwcr.png',
+                                            width: ScreenSize.getHeight(220),
+                                          )
                                         : Image.asset(
                                             'assets/svg/obg.png',
-                                            width: 200,
+                                            width: ScreenSize.getHeight(220),
                                           ),
                   ],
                 ),

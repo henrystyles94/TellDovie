@@ -56,17 +56,35 @@ class _AnimateWhiteBoyScreen extends State<AnimateWhiteBoyScreen> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/whiteN.png')
+                        ? Image.asset(
+                            'assets/svg/whiteboy/bl_head/whiteN.png',
+                            width: ScreenSize.getHeight(220),
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/whiteBc.png')
+                            ? Image.asset(
+                                'assets/svg/whiteboy/bl_head/whiteBc.png',
+                                width: ScreenSize.getHeight(220),
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/whiteR.png')
+                                ? Image.asset(
+                                    'assets/svg/whiteboy/bl_head/whiteR.png',
+                                    width: ScreenSize.getHeight(220),
+                                  )
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/whiteC.png')
+                                    ? Image.asset(
+                                        'assets/whiteboy/bl_head/svg/whiteC.png',
+                                        width: ScreenSize.getHeight(220),
+                                      )
                                     : animationController.selectedItem.value ==
                                             4
-                                        ? Image.asset('assets/svg/whiteOc.png')
-                                        : Image.asset('assets/svg/whiteN.png'),
+                                        ? Image.asset(
+                                            'assets/svg/whiteboy/bl_head/whiteOc.png',
+                                            width: ScreenSize.getHeight(220),
+                                          )
+                                        : Image.asset(
+                                            'assets/svg/whiteboy/bl_head/whiteN.png',
+                                            width: ScreenSize.getHeight(220),
+                                          ),
                   ],
                 ),
               ),
@@ -128,11 +146,11 @@ class _AnimateWhiteBoyScreen extends State<AnimateWhiteBoyScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       if (animationController.selectedItem.value > 0) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value - 1;
-                    }
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value - 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -149,11 +167,12 @@ class _AnimateWhiteBoyScreen extends State<AnimateWhiteBoyScreen> {
                     width: 59.w,
                   ),
                   InkWell(
-                    onTap: (){
-                      if (animationController.selectedItem.value <items.length) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value + 1;
-                    }
+                    onTap: () {
+                      if (animationController.selectedItem.value <
+                          items.length) {
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value + 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -178,8 +197,8 @@ class _AnimateWhiteBoyScreen extends State<AnimateWhiteBoyScreen> {
                   buttonText: 'Save',
                   opnPress: () {
                     Get.snackbar('Saved', 'Avatar saved',
-                      backgroundColor: AppColors.buttonColor,
-                      colorText: AppColors.whiteColor);
+                        backgroundColor: AppColors.buttonColor,
+                        colorText: AppColors.whiteColor);
                   },
                   isLoading: false)
             ],

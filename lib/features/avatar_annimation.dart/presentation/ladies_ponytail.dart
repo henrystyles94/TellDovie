@@ -1,6 +1,10 @@
 import 'package:dovie/features/avatar_annimation.dart/presentation/girls/avatar_animation_blackgirl_brown_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/girls/avatar_animation_blackgirl_red_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/girls/avatar_animation_blackgirl_yellow_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/avatar_animation_whitegirl_brown_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/avatar_animation_whitegirl_red_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/avatar_animation_whitegirl_yellow_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/white_lady.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dovie/constants/themes/colors.dart';
@@ -21,7 +25,7 @@ class LadiesPonytail extends StatelessWidget {
   LadiesPonytail({super.key, this.selected});
 
   List avatarHead = [
-    {'imgPath': 'assets/svg/ponytail-black.png'},
+    {'imgPath': 'assets/svg/pony-black.png'},
     {'imgPath': 'assets/svg/ponytail-yellow.png'},
     {'imgPath': 'assets/svg/ponytail-brown.png'},
     {'imgPath': 'assets/svg/ponytail-red.png'},
@@ -77,19 +81,19 @@ class LadiesPonytail extends StatelessWidget {
                         //     : selected == 1
                         //         ? Get.to(() => AnimateWhiteBoyScreen())
                         //         :
-                        selected == 2 && avatarHead[index] == avatarHead[0]
-                            ? Get.to(() => BlackGirlAnimation())
-                            : selected == 2 &&
+                        selected == 3 && avatarHead[index] == avatarHead[0]
+                            ? Get.to(() => WhiteGirlAnimation())
+                            : selected == 3 &&
                                     avatarHead[index] == avatarHead[1]
-                                ? Get.to(() => BlackGirlYellowHeadAnimation())
-                                : selected == 2 &&
+                                ? Get.to(() => WhiteGirlYellowHeadAnimation())
+                                : selected == 3 &&
                                         avatarHead[index] == avatarHead[2]
                                     ? Get.to(
-                                        () => BlackGirlBrownHeadAnimation())
-                                    : selected == 2 &&
+                                        () => WhiteGirlBrownHeadAnimation())
+                                    : selected == 3 &&
                                             avatarHead[index] == avatarHead[3]
                                         ? Get.to(
-                                            () => BlackGirlRedHeadAnimation())
+                                            () => WhiteGirlRedHeadAnimation())
                                         // : selected == 3
                                         //     ? Get.to(() => WhiteGirlAnimation())
                                         :
