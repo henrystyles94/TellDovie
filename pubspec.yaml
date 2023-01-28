@@ -89,6 +89,10 @@ flutter:
     - assets/svg/whiteboy/bl_head/
     - assets/svg/whiteboy/orange_shirt/
     - assets/svg/whiteboy/orange_shirt/bottle/
+    - assets/svg/whiteboy/orange_shirt/bottle/bl_head/
+    - assets/svg/whiteboy/orange_shirt/bottle/br_head/
+    - assets/svg/whiteboy/orange_shirt/bottle/r_head/
+    - assets/svg/whiteboy/orange_shirt/bottle/y_head/
     - assets/svg/whiteboy/orange_shirt/wheelchair/
     - assets/svg/whiteboy/orange_shirt/wheelchair/y_head/
     - assets/svg/whiteboy/orange_shirt/wheelchair/bl_head/
@@ -101,7 +105,14 @@ flutter:
     - assets/svg/blackboy/
     - assets/svg/blackboy/orange_shirt/
     - assets/svg/blackboy/orange_shirt/bottle/
+    - assets/svg/blackboy/orange_shirt/bottle/y_head/
+    - assets/svg/blackboy/orange_shirt/bottle/br_head/
+    - assets/svg/blackboy/orange_shirt/bottle/r_head/
     - assets/svg/blackboy/orange_shirt/wheelchair/
+    - assets/svg/blackboy/orange_shirt/wheelchair/bl_head/
+    - assets/svg/blackboy/orange_shirt/wheelchair/br_head/
+    - assets/svg/blackboy/orange_shirt/wheelchair/r_head/
+    - assets/svg/blackboy/orange_shirt/wheelchair/y_head/
     - assets/svg/blackgirl_curly/bhead/
     - assets/svg/blackgirl_curly/rhead/
     - assets/svg/blackgirl_curly/yhead/

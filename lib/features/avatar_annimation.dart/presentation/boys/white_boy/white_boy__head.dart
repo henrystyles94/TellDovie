@@ -67,7 +67,7 @@ class _AnimateWhiteBoyYellowHeadScreen
                                     'assets/svg/whiteboy/y_head/yellow-head-robot.png')
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
-                                        'assets/whiteboy/y_head/yellow-head-crown.png')
+                                        'assets/svg/whiteboy/y_head/yellow-head-crown.png')
                                     : animationController.selectedItem.value ==
                                             4
                                         ? Image.asset(

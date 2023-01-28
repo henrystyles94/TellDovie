@@ -72,7 +72,7 @@ class _AnimateWhiteBoyScreen extends State<AnimateWhiteBoyScreen> {
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
-                                        'assets/whiteboy/bl_head/svg/whiteC.png',
+                                        'assets/svg/whiteboy/bl_head/svg/whiteC.png',
                                         width: ScreenSize.getHeight(220),
                                       )
                                     : animationController.selectedItem.value ==

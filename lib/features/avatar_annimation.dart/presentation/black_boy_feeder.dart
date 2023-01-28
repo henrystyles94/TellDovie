@@ -56,21 +56,37 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/blackFn.png')
+                        ? Image.asset(
+                            'assets/svg/blackFn.png',
+                            width: ScreenSize.getHeight(220),
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/blackFCap.png')
+                            ? Image.asset(
+                                'assets/svg/blackFCap.png',
+                                width: ScreenSize.getHeight(220),
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/blackFcrown.png')
+                                ? Image.asset(
+                                    'assets/svg/blackFcrown.png',
+                                    width: ScreenSize.getHeight(220),
+                                  )
                                 : animationController.selectedItem.value == 3
                                     ? Flexible(
                                         fit: FlexFit.loose,
                                         child: Image.asset(
-                                            'assets/svg/blackfire.png'))
+                                          'assets/svg/blackfire.png',
+                                          width: ScreenSize.getHeight(320),
+                                        ))
                                     : animationController.selectedItem.value ==
                                             4
                                         ? Image.asset(
-                                            'assets/svg/blackfeedOcto.png')
-                                        : Image.asset('assets/svg/normal.png'),
+                                            'assets/svg/blackfeedOcto.png',
+                                            width: ScreenSize.getHeight(220),
+                                          )
+                                        : Image.asset(
+                                            'assets/svg/normal.png',
+                                            width: ScreenSize.getHeight(220),
+                                          ),
                   ],
                 ),
               ),
@@ -132,11 +148,11 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       if (animationController.selectedItem.value > 0) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value - 1;
-                    }
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value - 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -153,11 +169,12 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                     width: 59.w,
                   ),
                   InkWell(
-                    onTap: (){
-                      if (animationController.selectedItem.value <items.length) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value+ 1;
-                    }
+                    onTap: () {
+                      if (animationController.selectedItem.value <
+                          items.length) {
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value + 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,

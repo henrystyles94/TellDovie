@@ -65,12 +65,12 @@ class _WhiteBoyWheelChairRedHeadScreen
                                 'assets/svg/whiteboy/orange_shirt/wheelchair/r_head/red-head-cap.png',
                                 width: ScreenSize.getHeight(220),
                               )
-                            : animationController.selectedItem.value == 3
+                            : animationController.selectedItem.value == 2
                                 ? Image.asset(
-                                    'assets/whiteboy/orange_shirt/wheelchair/r_head/red-head-crown.png',
+                                    'assets/svg/whiteboy/orange_shirt/wheelchair/r_head/red-head-crown.png',
                                     width: ScreenSize.getHeight(220),
                                   )
-                                : animationController.selectedItem.value == 4
+                                : animationController.selectedItem.value == 3
                                     ? Image.asset(
                                         'assets/svg/whiteboy/orange_shirt/wheelchair/r_head/red-head-octo.png',
                                         width: ScreenSize.getHeight(220),

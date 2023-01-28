@@ -60,32 +60,32 @@ class _AvatarAnimationBrownHeadScreenState
                     animationController.selectedItem.value == 0
                         ? Image.asset(
                             'assets/svg/normal-bhead.png',
-                            width: 300,
+                            width: 320,
                           )
                         : animationController.selectedItem.value == 1
                             ? Image.asset(
                                 'assets/svg/cap-bhead.png',
-                                width: 300,
+                                width: 320,
                               )
                             : animationController.selectedItem.value == 2
                                 ? Image.asset(
                                     'assets/svg/robot-bhead.png',
-                                    width: 300,
+                                    width: 320,
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
                                         'assets/svg/crown-bhead.png',
-                                        width: 300,
+                                        width: 320,
                                       )
                                     : animationController.selectedItem.value ==
                                             4
                                         ? Image.asset(
                                             'assets/svg/octo-bhead.png',
-                                            width: 300,
+                                            width: 320,
                                           )
                                         : Image.asset(
                                             'assets/svg/normal-bhead.png',
-                                            width: 300,
+                                            width: 320,
                                           ),
                   ],
                 ),

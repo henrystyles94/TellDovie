@@ -73,7 +73,7 @@ class _AnimatedWhiteBoyYellowHeadScreen
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
-                                        'assets/whiteboy/y_head/yellow-head-crown.png',
+                                        'assets/svg/whiteboy/y_head/yellow-head-crown.png',
                                         width: ScreenSize.getHeight(220),
                                       )
                                     : animationController.selectedItem.value ==

@@ -57,26 +57,26 @@ class _WhiteBoyWheelChairBrownHeadScreen
                   children: [
                     animationController.selectedItem.value == 0
                         ? Image.asset(
-                            'assets/svg/whiteboy/orange_shirt/wheelchair/r_head/red-head.png',
+                            'assets/svg/whiteboy/orange_shirt/wheelchair/br_head/brown-head.png',
                             width: ScreenSize.getHeight(220),
                           )
                         : animationController.selectedItem.value == 1
                             ? Image.asset(
-                                'assets/svg/whiteboy/orange_shirt/wheelchair/r_head/red-head-cap.png',
+                                'assets/svg/whiteboy/orange_shirt/wheelchair/br_head/brown-head-cap.png',
                                 width: ScreenSize.getHeight(220),
                               )
-                            : animationController.selectedItem.value == 3
+                            : animationController.selectedItem.value == 2
                                 ? Image.asset(
-                                    'assets/whiteboy/orange_shirt/wheelchair/r_head/red-head-crown.png',
+                                    'assets/svg/whiteboy/orange_shirt/wheelchair/br_head/brown-head-cr.png',
                                     width: ScreenSize.getHeight(220),
                                   )
-                                : animationController.selectedItem.value == 4
+                                : animationController.selectedItem.value == 3
                                     ? Image.asset(
-                                        'assets/svg/whiteboy/orange_shirt/wheelchair/r_head/red-head-octo.png',
+                                        'assets/svg/whiteboy/orange_shirt/wheelchair/br_head/brown-head-octo.png',
                                         width: ScreenSize.getHeight(220),
                                       )
                                     : Image.asset(
-                                        'assets/svg/whiteboy/orange_shirt/wheelchair/r_head/red-head.png',
+                                        'assets/svg/whiteboy/orange_shirt/wheelchair/br_head/brown-head.png',
                                         width: ScreenSize.getHeight(220),
                                       ),
                   ],

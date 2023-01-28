@@ -60,32 +60,32 @@ class _AvatarAnimationRedHeadScreenState
                     animationController.selectedItem.value == 0
                         ? Image.asset(
                             'assets/svg/normal-rhead.png',
-                            width: 300,
+                            width: 320,
                           )
                         : animationController.selectedItem.value == 1
                             ? Image.asset(
                                 'assets/svg/cap-rhead.png',
-                                width: 300,
+                                width: 320,
                               )
                             : animationController.selectedItem.value == 2
                                 ? Image.asset(
                                     'assets/svg/robot-rhead.png',
-                                    width: 300,
+                                    width: 320,
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
                                         'assets/svg/crown-rhead.png',
-                                        width: 300,
+                                        width: 320,
                                       )
                                     : animationController.selectedItem.value ==
                                             4
                                         ? Image.asset(
                                             'assets/svg/octo-rhead.png',
-                                            width: 300,
+                                            width: 320,
                                           )
                                         : Image.asset(
                                             'assets/svg/normal-rhead.png',
-                                            width: 300,
+                                            width: 320,
                                           ),
                   ],
                 ),

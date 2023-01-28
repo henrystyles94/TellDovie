@@ -67,7 +67,7 @@ class _WhiteBoyWheelChairYellowHeadScreen
                               )
                             : animationController.selectedItem.value == 2
                                 ? Image.asset(
-                                    'assets/whiteboy/orange_shirt/wheelchair/y_head/yhead-wheel-crown.png',
+                                    'assets/svg/whiteboy/orange_shirt/wheelchair/y_head/yhead-wheel-cr.png',
                                     width: ScreenSize.getHeight(220),
                                   )
                                 : animationController.selectedItem.value == 3
