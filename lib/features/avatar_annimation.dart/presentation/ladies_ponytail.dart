@@ -1,24 +1,20 @@
-import 'package:dovie/features/avatar_annimation.dart/presentation/girls/avatar_animation_blackgirl_brown_head.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/girls/avatar_animation_blackgirl_red_head.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/girls/avatar_animation_blackgirl_yellow_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/avatar_animation_whitegirl_brown_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/avatar_animation_whitegirl_red_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/avatar_animation_whitegirl_yellow_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/feeder/white_girl_feeder_black_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/feeder/white_girl_feeder_brown_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/feeder/white_girl_feeder_red_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/feeder/white_girl_feeder_yellow_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/wheelchair/wheelchair_black_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/wheelchair/wheelchair_brown_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/wheelchair/wheelchair_red_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/wheelchair/wheelchair_yellow_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/white_lady.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dovie/constants/themes/colors.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/black_boy_feeder.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/girls/black_lady.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy_feeder.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/white_lady.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/white_on_wheel.dart';
 import 'package:get/get.dart';
 import '../../../constants/styles/app_styles.dart';
-// import '../../../constants/themes/colors.dart';
-// import 'avatar_animation.dart';
-// import 'black_onwheel.dart';
 
 class LadiesPonytail extends StatelessWidget {
   final selected;
@@ -94,21 +90,52 @@ class LadiesPonytail extends StatelessWidget {
                                             avatarHead[index] == avatarHead[3]
                                         ? Get.to(
                                             () => WhiteGirlRedHeadAnimation())
-                                        // : selected == 3
-                                        //     ? Get.to(() => WhiteGirlAnimation())
                                         :
-                                        // selected == 4
-                                        //     ? Get.to(() => BlackBoyFeederScreen())
-                                        //     : selected == 5
-                                        //         ? Get.to(() => WhiteBoyFeederScreen())
-                                        //         : selected == 6
-                                        //             ? Get.to(
-                                        //                 () => BlackOnWheeelsScreen())
-                                        //             : selected == 7
-                                        //                 ? Get.to(
-                                        //                     () => WhiteBoyOnWheel())
-                                        //                 :
-                                        Container();
+                                        //
+                                        //
+                                        selected == 7 &&
+                                                avatarHead[index] ==
+                                                    avatarHead[0]
+                                            ? Get.to(() =>
+                                                WhiteGirlBlackHeadFeederScreen())
+                                            : selected == 7 &&
+                                                    avatarHead[index] ==
+                                                        avatarHead[1]
+                                                ? Get.to(() =>
+                                                    WhiteGirlYellowHeadFeederScreen())
+                                                : selected == 7 &&
+                                                        avatarHead[index] ==
+                                                            avatarHead[2]
+                                                    ? Get.to(() =>
+                                                        WhiteGirlBrownHeadFeederScreen())
+                                                    : selected == 7 &&
+                                                            avatarHead[index] ==
+                                                                avatarHead[3]
+                                                        ? Get.to(() =>
+                                                            WhiteGirlRedHeadFeederScreen())
+                                                        :
+                                                        //
+                                                        //
+                                                        selected == 11 &&
+                                                                avatarHead[index] ==
+                                                                    avatarHead[
+                                                                        0]
+                                                            ? Get.to(() =>
+                                                                WhiteGirlWheelChairBlackHeadScreen())
+                                                            : selected == 11 &&
+                                                                    avatarHead[index] ==
+                                                                        avatarHead[
+                                                                            1]
+                                                                ? Get.to(() =>
+                                                                    WhiteGirlWheelChairYellowHeadScreen())
+                                                                : selected ==
+                                                                            11 &&
+                                                                        avatarHead[index] ==
+                                                                            avatarHead[2]
+                                                                    ? Get.to(() => WhiteGirlWheelChairBrownHeadScreen())
+                                                                    : selected == 11 && avatarHead[index] == avatarHead[3]
+                                                                        ? Get.to(() => WhiteGirlWheelChairRedHeadScreen())
+                                                                        : Container();
                       },
                       child: Container(
                         height: 163.h,

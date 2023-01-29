@@ -98,10 +98,6 @@ flutter:
     - assets/svg/whiteboy/orange_shirt/wheelchair/bl_head/
     - assets/svg/whiteboy/orange_shirt/wheelchair/br_head/
     - assets/svg/whiteboy/orange_shirt/wheelchair/r_head/
-    - assets/svg/whitegirl/
-    - assets/svg/whitegirl/brown_head/
-    - assets/svg/whitegirl/red_head/
-    - assets/svg/whitegirl/yellow_head/
     - assets/svg/blackboy/
     - assets/svg/blackboy/orange_shirt/
     - assets/svg/blackboy/orange_shirt/bottle/
@@ -116,6 +112,32 @@ flutter:
     - assets/svg/blackgirl_curly/bhead/
     - assets/svg/blackgirl_curly/rhead/
     - assets/svg/blackgirl_curly/yhead/
+    - assets/svg/blackgirl_curly/orange_shirt/
+    - assets/svg/blackgirl_curly/orange_shirt/wheelchair/
+    - assets/svg/blackgirl_curly/orange_shirt/wheelchair/bl_head/
+    - assets/svg/blackgirl_curly/orange_shirt/wheelchair/br_head/
+    - assets/svg/blackgirl_curly/orange_shirt/wheelchair/r_head/
+    - assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/
+    - assets/svg/blackgirl_curly/orange_shirt/feeder/
+    - assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/
+    - assets/svg/blackgirl_curly/orange_shirt/feeder/br_head/
+    - assets/svg/blackgirl_curly/orange_shirt/feeder/r_head/
+    - assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/
+    - assets/svg/whitegirl/
+    - assets/svg/whitegirl/brown_head/
+    - assets/svg/whitegirl/red_head/
+    - assets/svg/whitegirl/yellow_head/
+    - assets/svg/whitegirl/orange_shirt/
+    - assets/svg/whitegirl/orange_shirt/feeder/
+    - assets/svg/whitegirl/orange_shirt/feeder/bl_head/
+    - assets/svg/whitegirl/orange_shirt/feeder/br_head/
+    - assets/svg/whitegirl/orange_shirt/feeder/r_head/
+    - assets/svg/whitegirl/orange_shirt/feeder/y_head/
+    - assets/svg/whitegirl/orange_shirt/wheelchair/
+    - assets/svg/whitegirl/orange_shirt/wheelchair/y_head/
+    - assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/
+    - assets/svg/whitegirl/orange_shirt/wheelchair/br_head/
+    - assets/svg/whitegirl/orange_shirt/wheelchair/r_head/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

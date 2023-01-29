@@ -6,25 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class BlackBoyWheelChairRedHeadScreen extends StatefulWidget {
-  BlackBoyWheelChairRedHeadScreen({super.key});
+class WhiteGirlWheelChairYellowHeadScreen extends StatefulWidget {
+  WhiteGirlWheelChairYellowHeadScreen({super.key});
 
   @override
-  State<BlackBoyWheelChairRedHeadScreen> createState() =>
-      _BlackBoyWheelChairRedHeadScreen();
+  State<WhiteGirlWheelChairYellowHeadScreen> createState() =>
+      _WhiteGirlWheelChairYellowHeadScreen();
 }
 
 final animationController = Get.put(AvatarAnimationController());
 
-class _BlackBoyWheelChairRedHeadScreen
-    extends State<BlackBoyWheelChairRedHeadScreen> {
+class _WhiteGirlWheelChairYellowHeadScreen
+    extends State<WhiteGirlWheelChairYellowHeadScreen> {
   bool selectedItem1 = false;
 
   var items = [
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/c.png'},
-    {'imgPath': 'assets/svg/octo.png'},
+    {'imgPath': 'assets/svg/bird.png'},
   ];
 
   @override
@@ -57,27 +57,27 @@ class _BlackBoyWheelChairRedHeadScreen
                   children: [
                     animationController.selectedItem.value == 0
                         ? Image.asset(
-                            'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head.png',
-                            width: ScreenSize.getHeight(300),
+                            'assets/svg/whitegirl/orange_shirt/wheelchair/y_head/yhead-wheel.png',
+                            width: ScreenSize.getHeight(220),
                           )
                         : animationController.selectedItem.value == 1
                             ? Image.asset(
-                                'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head-cap.png',
-                                width: ScreenSize.getHeight(300),
+                                'assets/svg/whitegirl/orange_shirt/wheelchair/y_head/yhead-wheel-cap.png',
+                                width: ScreenSize.getHeight(220),
                               )
                             : animationController.selectedItem.value == 2
                                 ? Image.asset(
-                                    'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head-cr.png',
-                                    width: ScreenSize.getHeight(300),
+                                    'assets/svg/whitegirl/orange_shirt/wheelchair/y_head/yhead-wheel-cr.png',
+                                    width: ScreenSize.getHeight(220),
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
-                                        'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head-octo.png',
-                                        width: ScreenSize.getHeight(300),
+                                        'assets/svg/whitegirl/orange_shirt/wheelchair/y_head/yhead-wheel-bird.png',
+                                        width: ScreenSize.getHeight(220),
                                       )
                                     : Image.asset(
-                                        'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head.png',
-                                        width: ScreenSize.getHeight(300),
+                                        'assets/svg/whitegirl/orange_shirt/wheelchair/y_head/yhead-wheel.png',
+                                        width: ScreenSize.getHeight(220),
                                       ),
                   ],
                 ),

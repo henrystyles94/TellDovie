@@ -6,25 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class BlackBoyWheelChairRedHeadScreen extends StatefulWidget {
-  BlackBoyWheelChairRedHeadScreen({super.key});
+class BlackGirlRedHeadFeederScreen extends StatefulWidget {
+  BlackGirlRedHeadFeederScreen({super.key});
 
   @override
-  State<BlackBoyWheelChairRedHeadScreen> createState() =>
-      _BlackBoyWheelChairRedHeadScreen();
+  State<BlackGirlRedHeadFeederScreen> createState() =>
+      _BlackGirlRedHeadFeederScreen();
 }
 
 final animationController = Get.put(AvatarAnimationController());
 
-class _BlackBoyWheelChairRedHeadScreen
-    extends State<BlackBoyWheelChairRedHeadScreen> {
+class _BlackGirlRedHeadFeederScreen
+    extends State<BlackGirlRedHeadFeederScreen> {
   bool selectedItem1 = false;
 
   var items = [
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/c.png'},
-    {'imgPath': 'assets/svg/octo.png'},
+    {'imgPath': 'assets/svg/fire.png'},
+    {'imgPath': 'assets/svg/bird.png'},
   ];
 
   @override
@@ -57,28 +58,36 @@ class _BlackBoyWheelChairRedHeadScreen
                   children: [
                     animationController.selectedItem.value == 0
                         ? Image.asset(
-                            'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head.png',
-                            width: ScreenSize.getHeight(300),
+                            'assets/svg/blackgirl_curly/orange_shirt/feeder/r_head/red-head-feeder.png',
+                            width: ScreenSize.getHeight(320),
                           )
                         : animationController.selectedItem.value == 1
                             ? Image.asset(
-                                'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head-cap.png',
-                                width: ScreenSize.getHeight(300),
+                                'assets/svg/blackgirl_curly/orange_shirt/feeder/r_head/red-head-cap.png',
+                                width: ScreenSize.getHeight(320),
                               )
                             : animationController.selectedItem.value == 2
                                 ? Image.asset(
-                                    'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head-cr.png',
-                                    width: ScreenSize.getHeight(300),
+                                    'assets/svg/blackgirl_curly/orange_shirt/feeder/r_head/red-head-crown.png',
+                                    width: ScreenSize.getHeight(320),
                                   )
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset(
-                                        'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head-octo.png',
-                                        width: ScreenSize.getHeight(300),
-                                      )
-                                    : Image.asset(
-                                        'assets/svg/blackboy/orange_shirt/wheelchair/r_head/red-head.png',
-                                        width: ScreenSize.getHeight(300),
-                                      ),
+                                    ? Flexible(
+                                        fit: FlexFit.loose,
+                                        child: Image.asset(
+                                          'assets/svg/blackgirl_curly/orange_shirt/feeder/r_head/red-head-fire.png',
+                                          width: ScreenSize.getHeight(320),
+                                        ))
+                                    : animationController.selectedItem.value ==
+                                            4
+                                        ? Image.asset(
+                                            'assets/svg/blackgirl_curly/orange_shirt/feeder/r_head/red-head-bird.png',
+                                            width: ScreenSize.getHeight(320),
+                                          )
+                                        : Image.asset(
+                                            'assets/svg/blackgirl_curly/orange_shirt/feeder/r_head/red-head-feeder.png',
+                                            width: ScreenSize.getHeight(320),
+                                          ),
                   ],
                 ),
               ),

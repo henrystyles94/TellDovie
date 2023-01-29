@@ -1,7 +1,4 @@
 import 'package:dovie/constants/themes/colors.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_brown_head.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_red_head.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_yellow_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/boys/white_boy/feeder/white_boy_feeder_brown_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/boys/white_boy/feeder/white_boy_feeder_red_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/boys/white_boy/feeder/white_boy_feeder_yellow_head.dart';
@@ -13,18 +10,11 @@ import 'package:dovie/features/avatar_annimation.dart/presentation/boys/white_bo
 import 'package:dovie/features/avatar_annimation.dart/presentation/boys/white_boy/white_boy_red_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/boys/white_boy/white_boy_yellow_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/black_boy_feeder.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/girls/black_lady.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy_feeder.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/white_lady.dart';
-// import 'package:dovie/features/avatar_annimation.dart/presentation/white_on_wheel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../constants/styles/app_styles.dart';
-import 'avatar_animation.dart';
 import 'white_boy_feeder.dart';
 // import 'black_onwheel.dart';
 
