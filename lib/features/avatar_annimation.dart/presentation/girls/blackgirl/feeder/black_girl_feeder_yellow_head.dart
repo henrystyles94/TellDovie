@@ -59,34 +59,34 @@ class _BlackGirlYellowHeadFeederScreen
                     animationController.selectedItem.value == 0
                         ? Image.asset(
                             'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-feeder.png',
-                            width: ScreenSize.getHeight(320),
+                            width: ScreenSize.getHeight(220),
                           )
                         : animationController.selectedItem.value == 1
                             ? Image.asset(
                                 'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-cap.png',
-                                width: ScreenSize.getHeight(320),
+                                width: ScreenSize.getHeight(220),
                               )
                             : animationController.selectedItem.value == 2
                                 ? Image.asset(
                                     'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-crown.png',
-                                    width: ScreenSize.getHeight(320),
+                                    width: ScreenSize.getHeight(220),
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Flexible(
                                         fit: FlexFit.loose,
                                         child: Image.asset(
                                           'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-fire.png',
-                                          width: ScreenSize.getHeight(320),
+                                          width: ScreenSize.getHeight(220),
                                         ))
                                     : animationController.selectedItem.value ==
                                             4
                                         ? Image.asset(
                                             'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-bird.png',
-                                            width: ScreenSize.getHeight(320),
+                                            width: ScreenSize.getHeight(220),
                                           )
                                         : Image.asset(
                                             'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-feeder.png',
-                                            width: ScreenSize.getHeight(320),
+                                            width: ScreenSize.getHeight(220),
                                           ),
                   ],
                 ),

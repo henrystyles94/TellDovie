@@ -129,19 +129,19 @@ class AvatarHeadScreen extends StatelessWidget {
                                                         //                     ? Get.to(() =>
                                                         //                         WhiteBoyFeederScreen())
                                                         // :
-                                                        selected == 6 &&
+                                                        selected == 8 &&
                                                                 avatarHead[index] ==
                                                                     avatarHead[
                                                                         0]
                                                             ? Get.to(() =>
                                                                 BlackBoyWheelChairBlackHeadScreen())
-                                                            : selected == 6 &&
+                                                            : selected == 8 &&
                                                                     avatarHead[index] ==
                                                                         avatarHead[1]
                                                                 ? Get.to(() => BlackBoyWheelChairYellowHeadScreen())
-                                                                : selected == 6 && avatarHead[index] == avatarHead[2]
+                                                                : selected == 8 && avatarHead[index] == avatarHead[2]
                                                                     ? Get.to(() => BlackBoyWheelChairBrownHeadScreen())
-                                                                    : selected == 6 && avatarHead[index] == avatarHead[3]
+                                                                    : selected == 8 && avatarHead[index] == avatarHead[3]
                                                                         ? Get.to(() => BlackBoyWheelChairRedHeadScreen())
                                                                         :
                                                                         //                         : selected == 7

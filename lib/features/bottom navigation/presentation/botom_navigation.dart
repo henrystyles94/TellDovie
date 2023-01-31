@@ -15,8 +15,8 @@ class BottomNavigationScreen extends StatelessWidget {
   final navController = Get.put(NavController());
   final List<Widget> screenContents = [
     HomeScreen(),
-     const WellnesScreen(),
-     LessonScreen(),
+    const WellnesScreen(),
+    LessonScreen(),
     StaticsScreen()
   ];
   @override

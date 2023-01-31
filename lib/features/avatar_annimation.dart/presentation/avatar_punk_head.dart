@@ -125,19 +125,19 @@ class AvatarPunkHeadScreen extends StatelessWidget {
                                                         //                         ? Get.to(() =>
                                                         //                             BlackOnWheeelsScreen())
                                                         //                         :
-                                                        selected == 7 &&
+                                                        selected == 9 &&
                                                                 avatarHead[index] ==
                                                                     avatarHead[
                                                                         0]
                                                             ? Get.to(() =>
                                                                 WhiteBoyWheelChairBlackHeadScreen())
-                                                            : selected == 7 &&
+                                                            : selected == 9 &&
                                                                     avatarHead[index] ==
                                                                         avatarHead[1]
                                                                 ? Get.to(() => WhiteBoyWheelChairYellowHeadScreen())
-                                                                : selected == 7 && avatarHead[index] == avatarHead[2]
+                                                                : selected == 9 && avatarHead[index] == avatarHead[2]
                                                                     ? Get.to(() => WhiteBoyWheelChairBrownHeadScreen())
-                                                                    : selected == 7 && avatarHead[index] == avatarHead[3]
+                                                                    : selected == 9 && avatarHead[index] == avatarHead[3]
                                                                         ? Get.to(() => WhiteBoyWheelChairRedHeadScreen())
                                                                         :
                                                                         // BlackGirlAnimation();
