@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:camera/camera.dart';
+import 'package:dovie/features/home/presentation/growth_mindset.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -121,7 +122,33 @@ class _AffirmationPageState extends State<AffirmationPage> {
                   SizedBox(
                     width: 34.w,
                   ),
-                  Image.asset('assets/images/drop.png')
+                  PopupMenuButton(
+                      // color: AppColors.backGroundColor,
+                      icon: Icon(Icons.arrow_drop_down),
+                      onSelected: (value) async {
+                        if (value == 0) {
+                          await availableCameras()
+                              .then((value) => Get.to(() => GrowthMindsetScreen(
+                                    cameras: value,
+                                  )));
+                          // Get.to(() => GrowthMindsetScreen());
+                        }
+                      },
+                      itemBuilder: (context) {
+                        return [
+                          PopupMenuItem(
+                            height: 50.h,
+                            child: Text('Growth mindset'),
+                            value: 0,
+                          )
+                        ];
+                      })
+                  // InkWell(
+                  //     onTap: () {
+                  //       Get
+                  //       // Get.to(GrowthMindsetScreen());
+                  //     },
+                  //     child: Image.asset('assets/images/drop.png'))
                 ],
               ),
               SizedBox(
