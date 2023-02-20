@@ -76,7 +76,10 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(
                                     width: 3.w,
                                   ),
-                                  Image.asset('assets/images/dollar.png')
+                                  SizedBox(
+                                      height: 20.h,
+                                      child: Image.asset(
+                                          'assets/images/dollar.png'))
                                 ],
                               ),
                             ),

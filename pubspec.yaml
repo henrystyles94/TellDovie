@@ -44,6 +44,9 @@ dependencies:
   permission_handler: ^10.2.0
   audioplayers: ^1.2.0
   image_picker: ^0.8.6
+  flutter_stripe: ^8.0.0+1
+  url_launcher: ^6.1.9  
+  syncfusion_flutter_pdfviewer: ^20.4.50
 
 
 dependencies_override:
