@@ -56,20 +56,37 @@ class _WhiteBoyFeederScreen extends State<WhiteBoyFeederScreen> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/fbnorm.png')
+                        ? Image.asset(
+                            'assets/svg/fbnorm.png',
+                            width: ScreenSize.getHeight(210),
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/fbcap.png')
+                            ? Image.asset(
+                                'assets/svg/fbcap1.png',
+                                width: ScreenSize.getHeight(200),
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/fbcr.png')
+                                ? Image.asset(
+                                    'assets/svg/fbcr.png',
+                                    width: ScreenSize.getHeight(210),
+                                  )
                                 : animationController.selectedItem.value == 3
                                     ? Flexible(
                                         fit: FlexFit.loose,
-                                        child:
-                                            Image.asset('assets/svg/fbf.png'))
+                                        child: Image.asset(
+                                          'assets/svg/fbf.png',
+                                          width: ScreenSize.getHeight(220),
+                                        ))
                                     : animationController.selectedItem.value ==
                                             4
-                                        ? Image.asset('assets/svg/fboct.png')
-                                        : Image.asset('assets/svg/fbnorm.png'),
+                                        ? Image.asset(
+                                            'assets/svg/fboct.png',
+                                            width: ScreenSize.getHeight(220),
+                                          )
+                                        : Image.asset(
+                                            'assets/svg/fbnorm.png',
+                                            width: ScreenSize.getHeight(220),
+                                          ),
                   ],
                 ),
               ),

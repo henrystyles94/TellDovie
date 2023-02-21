@@ -203,7 +203,7 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                     height: 20.h,
                   ),
                   SizedBox(
-                    height: 360.h,
+                    height: 320.h,
                     child: GridView.builder(
                       itemCount: loginImages.length,
                       physics: const NeverScrollableScrollPhysics(),
@@ -223,6 +223,7 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                             });
                           },
                           child: Container(
+                            margin: const EdgeInsets.all(10),
                             height: 20.h,
                             width: 20.w,
                             decoration: BoxDecoration(
@@ -230,16 +231,18 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                                 color: AppColors.offWhiteColor,
                                 image: DecorationImage(
                                   image: AssetImage(
-                                      "${loginImages[index]['imgPath']}"),
+                                    "${loginImages[index]['imgPath']}",
+                                  ),
                                 )),
                           ),
                         );
                       },
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 20.w,
-                          childAspectRatio: 1.1,
-                          mainAxisSpacing: 10),
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 20.w,
+                        // childAspectRatio: 1.1,
+                        // mainAxisSpacing: 10
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -273,6 +276,9 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                           });
                         },
                         isLoading: authController.isLoading.value),
+                  ),
+                  SizedBox(
+                    height: 30.h,
                   )
                 ],
               ),

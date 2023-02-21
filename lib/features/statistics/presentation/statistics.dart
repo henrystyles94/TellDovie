@@ -3,6 +3,7 @@
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/features/auth/presentation/login_screen.dart';
 import 'package:dovie/features/home/model/bar_chart_model.dart';
+import 'package:dovie/features/subscription/subscription_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -52,6 +53,15 @@ class StaticsScreen extends StatelessWidget {
         backgroundColor: AppColors.backGroundColor,
         elevation: 0.0,
         actions: [
+          InkWell(
+            onTap: () => Get.to(
+              () => SubscriptionScreen(),
+            ),
+            child: Image.asset(
+              'assets/images/dollar.png',
+              width: ScreenSize.getWidth(25),
+            ),
+          ),
           InkWell(
             onTap: () async {
               SharedPreferences pref = await SharedPreferences.getInstance();

@@ -1,23 +1,34 @@
 import 'package:dovie/constants/themes/colors.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_brown_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_red_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_animation_yellow_head.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/black_boy_feeder.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/black_lady.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy_feeder.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/white_lady.dart';
-import 'package:dovie/features/avatar_annimation.dart/presentation/white_on_wheel.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/boys/black_boy/feeder/black_boy_feeder_brown_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/boys/black_boy/feeder/black_boy_feeder_red_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/boys/black_boy/feeder/black_boy_feeder_yellow_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/boys/black_boy/wheelchair/wheelchair_black_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/boys/black_boy/wheelchair/wheelchair_brown_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/boys/black_boy/wheelchair/wheelchair_red_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/boys/black_boy/wheelchair/wheelchair_yellow_head.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/black_boy_feeder.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/girls/black_lady.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/white_boy_feeder.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/girls/white_girl/white_lady.dart';
+// import 'package:dovie/features/avatar_annimation.dart/presentation/white_on_wheel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import 'avatar_animation.dart';
-import 'black_onwheel.dart';
+// import 'black_onwheel.dart';
 
 class AvatarHeadScreen extends StatelessWidget {
   final selected;
   AvatarHeadScreen({super.key, required this.selected});
   List avatarHead = [
-    {'imgPath': 'assets/svg/bhead.png'},
+    {'imgPath': 'assets/svg/blackhead.png'},
     {'imgPath': 'assets/svg/yellowHair.png'},
     {'imgPath': 'assets/svg/brownHair.png'},
     {'imgPath': 'assets/svg/redHair.png'},
@@ -67,28 +78,78 @@ class AvatarHeadScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        print('object');
-                        selected == 0
+                        print(avatarHead[0]);
+                        selected == 0 && avatarHead[index] == avatarHead[0]
                             ? Get.to(() => AvatarAnimationScreen())
-                            : selected == 1
-                                ? Get.to(() => AnimateWhiteBoyScreen())
-                                : selected == 2
-                                    ? Get.to(() => BlackGirlAnimation())
-                                    : selected == 3
-                                        ? Get.to(() => WhiteGirlAnimation())
-                                        : selected == 4
+                            : selected == 0 &&
+                                    avatarHead[index] == avatarHead[1]
+                                ? Get.to(
+                                    () => AvatarAnimationYellowHeadScreen())
+                                : selected == 0 &&
+                                        avatarHead[index] == avatarHead[2]
+                                    ? Get.to(
+                                        () => AvatarAnimationBrownHeadScreen())
+                                    : selected == 0 &&
+                                            avatarHead[index] == avatarHead[3]
+                                        ? Get.to(() =>
+                                            AvatarAnimationRedHeadScreen())
+                                        :
+                                        //selected == 1
+                                        //     ? Get.to(
+                                        //         () => AnimateWhiteBoyScreen())
+                                        //     : selected == 2
+                                        //         ? Get.to(
+                                        //             () => BlackGirlAnimation())
+                                        //         : selected == 3
+                                        //             ? Get.to(() =>
+                                        //                 WhiteGirlAnimation())
+                                        // :
+                                        selected == 4 &&
+                                                avatarHead[index] ==
+                                                    avatarHead[0]
                                             ? Get.to(
                                                 () => BlackBoyFeederScreen())
-                                            : selected == 5
+                                            : selected == 4 &&
+                                                    avatarHead[index] ==
+                                                        avatarHead[1]
                                                 ? Get.to(() =>
-                                                    WhiteBoyFeederScreen())
-                                                : selected == 6
+                                                    BlackBoyYellowHeadFeederScreen())
+                                                : selected == 4 &&
+                                                        avatarHead[index] ==
+                                                            avatarHead[2]
                                                     ? Get.to(() =>
-                                                        BlackOnWheeelsScreen())
-                                                    : selected == 7
+                                                        BlackBoyBrownHeadFeederScreen())
+                                                    : selected == 4 &&
+                                                            avatarHead[index] ==
+                                                                avatarHead[3]
                                                         ? Get.to(() =>
-                                                            WhiteBoyOnWheel())
-                                                        : BlackGirlAnimation();
+                                                            BlackBoyRedHeadFeederScreen())
+                                                        :
+                                                        //selected == 5
+                                                        //                     ? Get.to(() =>
+                                                        //                         WhiteBoyFeederScreen())
+                                                        // :
+                                                        selected == 8 &&
+                                                                avatarHead[index] ==
+                                                                    avatarHead[
+                                                                        0]
+                                                            ? Get.to(() =>
+                                                                BlackBoyWheelChairBlackHeadScreen())
+                                                            : selected == 8 &&
+                                                                    avatarHead[index] ==
+                                                                        avatarHead[1]
+                                                                ? Get.to(() => BlackBoyWheelChairYellowHeadScreen())
+                                                                : selected == 8 && avatarHead[index] == avatarHead[2]
+                                                                    ? Get.to(() => BlackBoyWheelChairBrownHeadScreen())
+                                                                    : selected == 8 && avatarHead[index] == avatarHead[3]
+                                                                        ? Get.to(() => BlackBoyWheelChairRedHeadScreen())
+                                                                        :
+                                                                        //                         : selected == 7
+                                                                        //                             ? Get.to(() =>
+                                                                        //                                 WhiteBoyOnWheel())
+                                                                        //                             :
+                                                                        // BlackGirlAnimation();
+                                                                        Container();
                       },
                       child: Container(
                         height: 163.h,

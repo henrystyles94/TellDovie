@@ -1,31 +1,30 @@
+import 'package:dovie/constants/styles/app_styles.dart';
+import 'package:dovie/constants/themes/colors.dart';
 import 'package:dovie/features/auth/presentation/welcome_screen.dart';
+import 'package:dovie/features/avatar_annimation.dart/controller/avatar_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../constants/styles/app_styles.dart';
-import '../../../constants/themes/colors.dart';
-import '../controller/avatar_animation.dart';
-
-class BlackGirlAnimation extends StatefulWidget {
-  BlackGirlAnimation({super.key});
+class BlackBoyWheelChairYellowHeadScreen extends StatefulWidget {
+  BlackBoyWheelChairYellowHeadScreen({super.key});
 
   @override
-  State<BlackGirlAnimation> createState() => _BlackGirlAnimation();
+  State<BlackBoyWheelChairYellowHeadScreen> createState() =>
+      _BlackBoyWheelChairYellowHeadScreen();
 }
 
 final animationController = Get.put(AvatarAnimationController());
 
-class _BlackGirlAnimation extends State<BlackGirlAnimation> {
+class _BlackBoyWheelChairYellowHeadScreen
+    extends State<BlackBoyWheelChairYellowHeadScreen> {
   bool selectedItem1 = false;
 
   var items = [
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
-    {'imgPath': 'assets/svg/bat.png'},
-    {'imgPath': 'assets/svg/bird.png'},
     {'imgPath': 'assets/svg/c.png'},
-    // {'imgPath': 'assets/svg/.png'},
+    {'imgPath': 'assets/svg/octo.png'},
   ];
 
   @override
@@ -57,17 +56,29 @@ class _BlackGirlAnimation extends State<BlackGirlAnimation> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/obg.png')
+                        ? Image.asset(
+                            'assets/svg/blackboy/orange_shirt/wheelchair/y_head/yhead-wheel.png',
+                            width: ScreenSize.getHeight(300),
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/bgc.png')
+                            ? Image.asset(
+                                'assets/svg/blackboy/orange_shirt/wheelchair/y_head/yhead-wheel-cap.png',
+                                width: ScreenSize.getHeight(300),
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/bgb.png')
+                                ? Image.asset(
+                                    'assets/svg/blackboy/orange_shirt/wheelchair/y_head/yhead-wheel-crown.png',
+                                    width: ScreenSize.getHeight(300),
+                                  )
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/bgwbi.png')
-                                    : animationController.selectedItem.value ==
-                                            4
-                                        ? Image.asset('assets/svg/bgwcr.png')
-                                        : Image.asset('assets/svg/whiteN.png'),
+                                    ? Image.asset(
+                                        'assets/svg/blackboy/orange_shirt/wheelchair/y_head/yhead-wheel-octo.png',
+                                        width: ScreenSize.getHeight(300),
+                                      )
+                                    : Image.asset(
+                                        'assets/svg/blackboy/orange_shirt/wheelchair/y_head/yhead-wheel.png',
+                                        width: ScreenSize.getHeight(300),
+                                      ),
                   ],
                 ),
               ),

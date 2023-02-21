@@ -1,31 +1,30 @@
+import 'package:dovie/constants/styles/app_styles.dart';
+import 'package:dovie/constants/themes/colors.dart';
 import 'package:dovie/features/auth/presentation/welcome_screen.dart';
+import 'package:dovie/features/avatar_annimation.dart/controller/avatar_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../constants/styles/app_styles.dart';
-import '../../../constants/themes/colors.dart';
-import '../controller/avatar_animation.dart';
-
-class WhiteGirlAnimation extends StatefulWidget {
-  WhiteGirlAnimation({super.key});
+class WhiteGirlWheelChairBlackHeadScreen extends StatefulWidget {
+  WhiteGirlWheelChairBlackHeadScreen({super.key});
 
   @override
-  State<WhiteGirlAnimation> createState() => _WhiteGirlAnimation();
+  State<WhiteGirlWheelChairBlackHeadScreen> createState() =>
+      _WhiteGirlWheelChairBlackHeadScreen();
 }
 
 final animationController = Get.put(AvatarAnimationController());
 
-class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
+class _WhiteGirlWheelChairBlackHeadScreen
+    extends State<WhiteGirlWheelChairBlackHeadScreen> {
   bool selectedItem1 = false;
 
   var items = [
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
-    {'imgPath': 'assets/svg/bat.png'},
-
     {'imgPath': 'assets/svg/c.png'},
-    // {'imgPath': 'assets/svg/.png'},
+    {'imgPath': 'assets/svg/bird.png'},
   ];
 
   @override
@@ -57,17 +56,29 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/wgn.png')
+                        ? Image.asset(
+                            'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwn.png',
+                            width: ScreenSize.getHeight(220),
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/wgwc.png')
+                            ? Image.asset(
+                                'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwcap.png',
+                                width: ScreenSize.getHeight(220),
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/wgwbat.png')
+                                ? Image.asset(
+                                    'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwcr.png',
+                                    width: ScreenSize.getHeight(220),
+                                  )
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/wgwcr.png')
-                                    // : animationController.selectedItem.value ==
-                                    //         4
-                                    //     ? Image.asset('assets/svg/bgwcr.png')
-                                    : Image.asset('assets/svg/whiteN.png'),
+                                    ? Image.asset(
+                                        'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwbird.png',
+                                        width: ScreenSize.getHeight(220),
+                                      )
+                                    : Image.asset(
+                                        'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwn.png',
+                                        width: ScreenSize.getHeight(220),
+                                      ),
                   ],
                 ),
               ),
@@ -129,11 +140,11 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       if (animationController.selectedItem.value > 0) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value - 1;
-                    }
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value - 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -150,11 +161,12 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
                     width: 59.w,
                   ),
                   InkWell(
-                    onTap: (){
-                      if (animationController.selectedItem.value < items.length) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value + 1;
-                    }
+                    onTap: () {
+                      if (animationController.selectedItem.value <
+                          items.length) {
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value + 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -179,8 +191,8 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
                   buttonText: 'Save',
                   opnPress: () {
                     Get.snackbar('Saved', 'Avatar saved',
-                      backgroundColor: AppColors.buttonColor,
-                      colorText: AppColors.whiteColor);
+                        backgroundColor: AppColors.buttonColor,
+                        colorText: AppColors.whiteColor);
                   },
                   isLoading: false)
             ],

@@ -56,16 +56,35 @@ class _AvatarAnimationScreenState extends State<AvatarAnimationScreen> {
                 () => Row(
                   children: [
                     animationController.selectedItem.value == 0
-                        ? Image.asset('assets/svg/normal.png')
+                        ? Image.asset(
+                            'assets/svg/normal.png',
+                            width: ScreenSize.getHeight(220),
+                          )
                         : animationController.selectedItem.value == 1
-                            ? Image.asset('assets/svg/cap.png')
+                            ? Image.asset(
+                                'assets/svg/cap.png',
+                                width: ScreenSize.getHeight(220),
+                              )
                             : animationController.selectedItem.value == 2
-                                ? Image.asset('assets/svg/robot.png')
+                                ? Image.asset(
+                                    'assets/svg/robot.png',
+                                    width: ScreenSize.getHeight(220),
+                                  )
                                 : animationController.selectedItem.value == 3
-                                    ? Image.asset('assets/svg/crown.png')
-                                    : animationController.selectedItem.value == 4
-                                        ? Image.asset('assets/svg/octoStand.png')
-                                        : Image.asset('assets/svg/normal.png'),
+                                    ? Image.asset(
+                                        'assets/svg/crown.png',
+                                        width: ScreenSize.getHeight(220),
+                                      )
+                                    : animationController.selectedItem.value ==
+                                            4
+                                        ? Image.asset(
+                                            'assets/svg/octoStand.png',
+                                            width: ScreenSize.getHeight(220),
+                                          )
+                                        : Image.asset(
+                                            'assets/svg/normal.png',
+                                            width: ScreenSize.getHeight(220),
+                                          ),
                   ],
                 ),
               ),
@@ -149,7 +168,8 @@ class _AvatarAnimationScreenState extends State<AvatarAnimationScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      if (animationController.selectedItem.value < items.length) {
+                      if (animationController.selectedItem.value <
+                          items.length) {
                         animationController.selectedItem.value =
                             animationController.selectedItem.value + 1;
                       }

@@ -154,42 +154,48 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                     bottom: 30.h,
                     left: 50.w,
                     right: 50.w,
-                    child: Container(
-                      // height: 108.h,
-                      width: 210.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30.w),
-                          color: AppColors.whiteColor),
-                      child: Padding(
-                        padding: const EdgeInsets.all(28.0),
-                        child: Obx(
-                          () => activitiesController.loadingMindset.value
-                              ? Container()
-                              : Text(
-                                  activitiesController.minds[selectedIndex]
-                                      ['content'],
-                                  style: AppStyles().smallText.copyWith(
-                                      fontSize: 20, color: AppColors.textBlue),
-                                  textAlign: TextAlign.center,
-                                ),
-                          // Obx(
-                          //   () => affirmationController.isLoading.value
-                          //       ? Container()
-                          //       : Center(
-                          //           child: Text(
-                          //             affirmationController.affirmationModel
-                          //                 .value.data![1].content!,
-                          //             style: AppStyles().smallText.copyWith(
-                          //                 fontSize: 20,
-                          //                 color: AppColors.textBlue),
-                          //             textAlign: TextAlign.center,
-                          //           ),
-                          //         ),
-                          // )
-                        ),
-                      ),
-                    ),
+                    child: activitiesController.minds[selectedIndex]
+                                ['content'] ==
+                            null
+                        ? Container()
+                        : Container(
+                            // height: 108.h,
+                            width: 210.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30.w),
+                                color: AppColors.whiteColor),
+                            child: Padding(
+                              padding: const EdgeInsets.all(28.0),
+                              child:
+                                  // Obx(
+                                  //   () => activitiesController.loadingMindset.value
+                                  //       ? Container()
+                                  //       :
+                                  Text(
+                                activitiesController.minds[selectedIndex]
+                                    ['content'],
+                                style: AppStyles().smallText.copyWith(
+                                    fontSize: 20, color: AppColors.textBlue),
+                                textAlign: TextAlign.center,
+                              ),
+                              // Obx(
+                              //   () => affirmationController.isLoading.value
+                              //       ? Container()
+                              //       : Center(
+                              //           child: Text(
+                              //             affirmationController.affirmationModel
+                              //                 .value.data![1].content!,
+                              //             style: AppStyles().smallText.copyWith(
+                              //                 fontSize: 20,
+                              //                 color: AppColors.textBlue),
+                              //             textAlign: TextAlign.center,
+                              //           ),
+                              //         ),
+                              // )
+                            ),
+                          ),
                   ),
+                  // ),
                   Positioned(
                       // bottom: 50.h,
                       left: MediaQuery.of(context).size.width * 0.04,
@@ -238,12 +244,12 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          if ((affirmationController.affirm.length - 1) !=
+                          if ((activitiesController.minds.length - 1) !=
                               selectedIndex) {
                             selectedIndex = selectedIndex + 1;
                           }
                         });
-                        print('object');
+                        print('object' + selectedIndex.toString());
                       },
                       child: Container(
                         height: 30.h,
@@ -252,7 +258,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                             borderRadius: BorderRadius.circular(10.w),
                             border: Border.all(
                                 color: AppColors.backGroundColor, width: 2.w)),
-                        child: Icon(
+                        child: const Icon(
                           Icons.next_plan_outlined,
                           color: AppColors.backGroundColor,
                         ),

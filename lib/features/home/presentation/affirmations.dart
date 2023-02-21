@@ -182,45 +182,50 @@ class _AffirmationPageState extends State<AffirmationPage> {
                     bottom: 50.h,
                     left: 50.w,
                     right: 50.w,
-                    child: Container(
-                      // height: 108.h,
-                      width: 210.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30.w),
-                          color: AppColors.whiteColor),
-                      child: Padding(
-                        padding: const EdgeInsets.all(28.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              affirmationController.affirm[selectedIndex]
-                                  ['content']!,
-                              style: AppStyles().smallText.copyWith(
-                                  fontSize: 20, color: AppColors.textBlue),
-                              textAlign: TextAlign.center,
-                            ),
-                            // Obx(
-                            //   () => affirmationController.isLoading.value
-                            //       ? Container()
-                            //       : Center(
-                            //           child: Text(
-                            //             affirmationController.affirmationModel
-                            //                 .value.data![1].content!,
-                            //             style: AppStyles().smallText.copyWith(
-                            //                 fontSize: 20,
-                            //                 color: AppColors.textBlue),
-                            //             textAlign: TextAlign.center,
-                            //           ),
-                            //         ),
-                            // )
+                    child: affirmationController.affirm[selectedIndex]
+                                ['content'] ==
+                            null
+                        ? Container()
+                        : Container(
+                            // height: 108.h,
+                            width: 210.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30.w),
+                                color: AppColors.whiteColor),
+                            child: Padding(
+                              padding: const EdgeInsets.all(28.0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    affirmationController.affirm[selectedIndex]
+                                        ['content']!,
+                                    style: AppStyles().smallText.copyWith(
+                                        fontSize: 20,
+                                        color: AppColors.textBlue),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  // Obx(
+                                  //   () => affirmationController.isLoading.value
+                                  //       ? Container()
+                                  //       : Center(
+                                  //           child: Text(
+                                  //             affirmationController.affirmationModel
+                                  //                 .value.data![1].content!,
+                                  //             style: AppStyles().smallText.copyWith(
+                                  //                 fontSize: 20,
+                                  //                 color: AppColors.textBlue),
+                                  //             textAlign: TextAlign.center,
+                                  //           ),
+                                  //         ),
+                                  // )
 
-                            SizedBox(
-                              height: 10.h,
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                    ),
+                          ),
                   ),
                   Positioned(
                       // bottom: 50.h,
@@ -278,14 +283,21 @@ class _AffirmationPageState extends State<AffirmationPage> {
                         });
                         print('omo $selectedIndex');
                       },
-                      child: Container(
+                      child:
+                          // affirmationController.affirm[selectedIndex]
+                          //             ['content'] ==
+                          //         null
+                          //     ? Container()
+                          //     :
+
+                          Container(
                         height: 30.h,
                         width: 70.w,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.w),
                             border: Border.all(
                                 color: AppColors.backGroundColor, width: 2.w)),
-                        child: Icon(
+                        child: const Icon(
                           Icons.next_plan_outlined,
                           color: AppColors.backGroundColor,
                         ),

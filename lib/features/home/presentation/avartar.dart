@@ -1,6 +1,8 @@
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/constants/themes/colors.dart';
 import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/avatar_punk_head.dart';
+import 'package:dovie/features/avatar_annimation.dart/presentation/ladies_ponytail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -46,7 +48,7 @@ class AvatarScreen extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Choose  your Avatar',
+              'Choose your Avatar',
               style: AppStyles().headingText.copyWith(fontSize: 20),
             ),
             SizedBox(
@@ -64,13 +66,14 @@ class AvatarScreen extends StatelessWidget {
                   return InkWell(
                     onTap: () {
                       // print(index);
-                      if (index == 2 ||
-                          index == 3 ||
-                          index == 6 ||
-                          index == 7 ||
-                          index == 10 ||
-                          index == 11) {
+                      if (index == 1 || index == 5 || index == 9) {
+                        Get.to(() => AvatarPunkHeadScreen(selected: index));
+                      } else if (index == 2 || index == 6 || index == 10) {
                         Get.to(() => LadiesHairScren(
+                              selected: index,
+                            ));
+                      } else if (index == 3 || index == 7 || index == 11) {
+                        Get.to(() => LadiesPonytail(
                               selected: index,
                             ));
                       } else {
