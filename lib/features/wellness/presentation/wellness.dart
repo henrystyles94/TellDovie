@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class _WellnesScreenState extends State<WellnesScreen> {
       (value) => initCamera(value[1]),
     );
     startTimer();
-
+    print(myDuration);
     activitiesController.earnGrowthPointController();
   }
 
@@ -62,6 +63,11 @@ class _WellnesScreenState extends State<WellnesScreen> {
       final seconds = myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {
         countdownTimer!.cancel();
+        Get.snackbar(
+          'Yaeee',
+          'You have just earned some Dovie points',
+          backgroundColor: AppColors.backGroundColor,
+        );
       } else {
         myDuration = Duration(seconds: seconds);
       }
@@ -114,7 +120,7 @@ class _WellnesScreenState extends State<WellnesScreen> {
                   SizedBox(
                     width: 34.w,
                   ),
-                  Image.asset('assets/images/drop.png')
+                  // Image.asset('assets/images/drop.png')
                 ],
               ),
               SizedBox(
@@ -242,7 +248,7 @@ class _WellnesScreenState extends State<WellnesScreen> {
                             borderRadius: BorderRadius.circular(10.w),
                             border: Border.all(
                                 color: AppColors.backGroundColor, width: 2.w)),
-                        child: Icon(
+                        child: const Icon(
                           Icons.next_plan_outlined,
                           color: AppColors.backGroundColor,
                         ),

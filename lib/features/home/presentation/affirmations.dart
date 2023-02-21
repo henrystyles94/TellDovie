@@ -63,6 +63,11 @@ class _AffirmationPageState extends State<AffirmationPage> {
       final seconds = myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {
         countdownTimer!.cancel();
+         Get.snackbar(
+          'Yaeee',
+          'You have just earned some Dovie points',
+          backgroundColor: AppColors.backGroundColor,
+        );
       } else {
         myDuration = Duration(seconds: seconds);
       }
