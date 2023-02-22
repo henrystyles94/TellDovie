@@ -63,7 +63,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
     'I may have distracted my friends',
     'I upset others',
     'I upset myself',
-    'Type how you feel'
+    'I have an Idea'
   ];
 
   String actionvalue = '';

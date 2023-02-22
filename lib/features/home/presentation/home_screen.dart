@@ -132,7 +132,14 @@ class HomeScreen extends StatelessWidget {
                         } else if (index == 4) {
                           Get.to(() => InformationHubScreen());
                         } else if (index == 5) {
-                          Get.to(() => AvatarScreen());
+                          if (int.parse(
+                                  walletController.loadedValue.value.data!) <
+                              20) {
+                            Get.snackbar('Opps',
+                                "You don't have enough points to build an avatar");
+                          } else {
+                            Get.to(() => AvatarScreen());
+                          }
                         }
                       },
                       child: Padding(

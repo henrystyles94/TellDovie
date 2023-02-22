@@ -115,16 +115,16 @@ class InformationHubScreen extends StatelessWidget {
                         SizedBox(
                           height: 20.h,
                         ),
-                        CustomButton(
-                            isLoading: false,
-                            height: 70.h,
-                            width: MediaQuery.of(context).size.width,
-                            borderRadius: 30.w,
-                            buttonText: 'Kids Monthly Newsletter',
-                            opnPress: () {
-                              Get.snackbar('Message', 'No Newsletter',
-                                  backgroundColor: AppColors.backGroundColor);
-                            })
+                        // CustomButton(
+                        //     isLoading: false,
+                        //     height: 70.h,
+                        //     width: MediaQuery.of(context).size.width,
+                        //     borderRadius: 30.w,
+                        //     buttonText: 'Kids Monthly Newsletter',
+                        //     opnPress: () {
+                        //       Get.snackbar('Message', 'No Newsletter',
+                        //           backgroundColor: AppColors.backGroundColor);
+                        //     })
                       ],
                     ),
                   ),

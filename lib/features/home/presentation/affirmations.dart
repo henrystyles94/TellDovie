@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
+import '../../wallet/controller/wallet.dart';
 import '../controller/activities.dart';
 
 class AffirmationPage extends StatefulWidget {
@@ -25,6 +26,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
   FlutterTts flutterTts = FlutterTts();
 
   final affirmationController = Get.put(ActivityController());
+  final walletController = Get.put(WalletController());
 
   Future initCamera(CameraDescription cameraDescription) async {
 // create a CameraController
@@ -63,11 +65,14 @@ class _AffirmationPageState extends State<AffirmationPage> {
       final seconds = myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {
         countdownTimer!.cancel();
-         Get.snackbar(
+
+        Get.snackbar(
           'Yaeee',
           'You have just earned some Dovie points',
           backgroundColor: AppColors.backGroundColor,
         );
+        Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
+        walletController.walletController();
       } else {
         myDuration = Duration(seconds: seconds);
       }

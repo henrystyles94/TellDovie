@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/constants/themes/colors.dart';
+import 'package:dovie/features/home/presentation/affirmations.dart';
 import 'package:dovie/features/home/presentation/mood_tracker.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 
+import '../../wallet/controller/wallet.dart';
 import '../controller/activities.dart';
 
 class GrowthMindsetScreen extends StatefulWidget {
@@ -24,6 +26,8 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
   CameraController? _cameraController;
   FlutterTts flutterTts = FlutterTts();
   final activitiesController = Get.put(ActivityController());
+
+  final walletController = Get.put(WalletController());
   Future initCamera(CameraDescription cameraDescription) async {
 // create a CameraController
     _cameraController =
@@ -66,6 +70,8 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
           'You have just earned some Dovie points',
           backgroundColor: AppColors.backGroundColor,
         );
+        Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
+        walletController.walletController();
       } else {
         myDuration = Duration(seconds: seconds);
       }
@@ -126,7 +132,27 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                   SizedBox(
                     width: 34.w,
                   ),
-                  Image.asset('assets/images/drop.png')
+                  PopupMenuButton(
+                      // color: AppColors.backGroundColor,
+                      icon: Icon(Icons.arrow_drop_down),
+                      onSelected: (value) async {
+                        if (value == 0) {
+                          await availableCameras()
+                              .then((value) => Get.to(() => AffirmationPage(
+                                    cameras: value,
+                                  )));
+                          // Get.to(() => GrowthMindsetScreen());
+                        }
+                      },
+                      itemBuilder: (context) {
+                        return [
+                          PopupMenuItem(
+                            height: 50.h,
+                            child: Text('Affirmation'),
+                            value: 0,
+                          )
+                        ];
+                      })
                 ],
               ),
               SizedBox(
