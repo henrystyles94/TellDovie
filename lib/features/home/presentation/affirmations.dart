@@ -67,7 +67,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
         countdownTimer!.cancel();
 
         Get.snackbar(
-          'Yaeee',
+          'Yay!',
           'You have just earned some Dovie points',
           backgroundColor: AppColors.backGroundColor,
         );

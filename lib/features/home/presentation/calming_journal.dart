@@ -70,12 +70,12 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
   int? tappedIndex = -1;
   var actionitems = [
     '',
+    'Read a book',
     'Talk to a friend',
     'Talk to a teacher',
-    'Mindset Station',
-    'Calming corner',
+    'Focus on my breathing',
     'I have an idea',
-    'Type how you feel'
+    // 'Type how you feel'
   ];
   var reactions = [
     {'imageSrc': 'assets/images/hap.png', 'title': 'Happy'},
@@ -583,7 +583,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     // After selecting the desired option,it will
 
                     onChanged: (String? newValue) {
-                      if (newValue == 'Type how you feel') {
+                      if (newValue == 'I have an Idea') {
                         Get.bottomSheet(Container(
                           height: 200.h,
                           width: MediaQuery.of(context).size.width,

@@ -133,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                           Get.to(() => InformationHubScreen());
                         } else if (index == 5) {
                           if (int.parse(
-                                  walletController.loadedValue.value.data!) <
+                                  walletController.loadedValue.value.data.toString()) <
                               20) {
                             Get.snackbar('Opps',
                                 "You don't have enough points to build an avatar");

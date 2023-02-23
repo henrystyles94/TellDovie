@@ -66,7 +66,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
       if (seconds < 0) {
         countdownTimer!.cancel();
         Get.snackbar(
-          'Yaeee',
+          'Yay!',
           'You have just earned some Dovie points',
           backgroundColor: AppColors.backGroundColor,
         );
