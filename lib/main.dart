@@ -6,6 +6,8 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'features/statistics/controller/stats_controlle.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -14,10 +16,23 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+final statsController = Get.put(StatController());
+@override
+void initState() {
+  // TODO: implement initState
+  statsController.statsController();
+}
+
+class _MyAppState extends State<MyApp> {
+  // This widget is the root of your applicatio 
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

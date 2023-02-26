@@ -6,6 +6,7 @@ import 'package:dovie/features/avatar_annimation.dart/presentation/ladies_ponyta
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../avatar_annimation.dart/presentation/ladies_head.dart';
 
@@ -64,8 +65,7 @@ class AvatarScreen extends StatelessWidget {
                     mainAxisSpacing: 20.w),
                 itemBuilder: (context, index) {
                   return InkWell(
-                    onTap: () {
-                      // print(index);
+                    onTap: () async {
                       if (index == 1 || index == 5 || index == 9) {
                         Get.to(() => AvatarPunkHeadScreen(selected: index));
                       } else if (index == 2 || index == 6 || index == 10) {

@@ -5,6 +5,7 @@ import 'package:dovie/features/home/presentation/affirmations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../wallet/controller/wallet.dart';
 import 'avartar.dart';
@@ -114,6 +115,10 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () async {
+                        SharedPreferences preferences =
+                            await SharedPreferences.getInstance();
+
+                        var imageData = preferences.getString('image');
                         if (index == 0) {
                           Get.to(() => const MoodTrackerScreen());
                         } else if (index == 1) {
@@ -132,11 +137,52 @@ class HomeScreen extends StatelessWidget {
                         } else if (index == 4) {
                           Get.to(() => InformationHubScreen());
                         } else if (index == 5) {
-                          if (int.parse(
-                                  walletController.loadedValue.value.data.toString()) <
+                          if (int.parse(walletController.loadedValue.value.data
+                                  .toString()) <
                               20) {
                             Get.snackbar('Opps',
                                 "You don't have enough points to build an avatar");
+                          } else if (imageData != null) {
+                            // pr
+                            Get.bottomSheet(InkWell(
+                              onTap: () {
+                                Get.back();
+                                Get.to(() => AvatarScreen());
+                              },
+                              child: Container(
+                                height: 500.h,
+                                width: MediaQuery.of(context).size.width,
+                                color: AppColors.backGroundColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        height: 60.h,
+                                        width: 100.w,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20.w),
+                                          color: AppColors.buttonColor,
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'Edit',
+                                            style: AppStyles()
+                                                .smallText
+                                                .copyWith(
+                                                    color:
+                                                        AppColors.whiteColor),
+                                          ),
+                                        ),
+                                      ),
+                                      Image.asset(imageData),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ));
                           } else {
                             Get.to(() => AvatarScreen());
                           }

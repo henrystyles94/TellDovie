@@ -9,3 +9,4 @@ var earnAffirmationPoint = 'completed/affirmation';
 var earnGrowthPoint = 'completed/growth';
 var wallet = 'wallet/balance';
 var subPlans = 'sub-plans';
+var statistics = 'statistics';
