@@ -5,6 +5,7 @@ import 'package:dovie/features/avatar_annimation.dart/controller/avatar_animatio
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BlackGirlYellowHeadFeederScreen extends StatefulWidget {
   BlackGirlYellowHeadFeederScreen({super.key});
@@ -198,7 +199,37 @@ class _BlackGirlYellowHeadFeederScreen
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {
+                  opnPress: () async {
+                    SharedPreferences preferences =
+                        await SharedPreferences.getInstance();
+                    // print(animationController.selectedItem.value);
+                    if (animationController.selectedItem.value == 0) {
+                      var check = await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-feeder.png',
+                      );
+                      print(check);
+                    } else if (animationController.selectedItem.value == 1) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-cap.png',
+                      );
+                    } else if (animationController.selectedItem.value == 2) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-crown.png',
+                      );
+                    } else if (animationController.selectedItem.value == 3) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-fire.png',
+                      );
+                    } else if (animationController.selectedItem.value == 4) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/feeder/y_head/yellow-head-bird.png',
+                      );
+                    }
                     Get.snackbar('Saved', 'Avatar saved',
                         backgroundColor: AppColors.buttonColor,
                         colorText: AppColors.whiteColor);

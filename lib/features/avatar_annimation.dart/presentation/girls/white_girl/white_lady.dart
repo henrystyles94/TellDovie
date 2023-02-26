@@ -2,6 +2,7 @@ import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../constants/styles/app_styles.dart';
 import '../../../../../constants/themes/colors.dart';
@@ -23,9 +24,8 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/bat.png'},
-
+    {'imgPath': 'assets/svg/bird.png'},
     {'imgPath': 'assets/svg/c.png'},
-    // {'imgPath': 'assets/svg/.png'},
   ];
 
   @override
@@ -73,16 +73,19 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
                                   )
                                 : animationController.selectedItem.value == 3
                                     ? Image.asset(
-                                        'assets/svg/wgwcr.png',
+                                        'assets/svg/wgwbr.png',
                                         width: ScreenSize.getHeight(220),
                                       )
-                                    // : animationController.selectedItem.value ==
-                                    //         4
-                                    //     ? Image.asset('assets/svg/bgwcr.png')
-                                    : Image.asset(
-                                        'assets/svg/whiteN.png',
-                                        width: ScreenSize.getHeight(220),
-                                      ),
+                                    : animationController.selectedItem.value ==
+                                            4
+                                        ? Image.asset(
+                                            'assets/svg/wgwcr.png',
+                                            width: ScreenSize.getHeight(220),
+                                          )
+                                        : Image.asset(
+                                            'assets/svg/whiteN.png',
+                                            width: ScreenSize.getHeight(220),
+                                          ),
                   ],
                 ),
               ),
@@ -193,7 +196,37 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {
+                  opnPress: () async {
+                    SharedPreferences preferences =
+                        await SharedPreferences.getInstance();
+                    // print(animationController.selectedItem.value);
+                    if (animationController.selectedItem.value == 0) {
+                      var check = await preferences.setString(
+                        'image',
+                        'assets/svg/wgn.png',
+                      );
+                      print(check);
+                    } else if (animationController.selectedItem.value == 1) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/wgwc.png',
+                      );
+                    } else if (animationController.selectedItem.value == 2) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/wgwbat.png',
+                      );
+                    } else if (animationController.selectedItem.value == 3) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/wgwbr.png',
+                      );
+                    } else if (animationController.selectedItem.value == 4) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/wgwcr.png',
+                      );
+                    }
                     Get.snackbar('Saved', 'Avatar saved',
                         backgroundColor: AppColors.buttonColor,
                         colorText: AppColors.whiteColor);

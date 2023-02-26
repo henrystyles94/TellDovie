@@ -5,6 +5,7 @@ import 'package:dovie/features/avatar_annimation.dart/controller/avatar_animatio
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WhiteGirlWheelChairBlackHeadScreen extends StatefulWidget {
   WhiteGirlWheelChairBlackHeadScreen({super.key});
@@ -189,7 +190,31 @@ class _WhiteGirlWheelChairBlackHeadScreen
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {
+                  opnPress: () async {
+                    SharedPreferences preferences =
+                        await SharedPreferences.getInstance();
+
+                    if (animationController.selectedItem.value == 0) {
+                      preferences.setString(
+                        'image',
+                        'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwn.png',
+                      );
+                    } else if (animationController.selectedItem.value == 1) {
+                      preferences.setString(
+                        'image',
+                        'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwcap.png',
+                      );
+                    } else if (animationController.selectedItem.value == 2) {
+                      preferences.setString(
+                        'image',
+                        'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwcr.png',
+                      );
+                    } else if (animationController.selectedItem.value == 3) {
+                      preferences.setString(
+                        'image',
+                        'assets/svg/whitegirl/orange_shirt/wheelchair/bl_head/fbwbird.png',
+                      );
+                    }
                     Get.snackbar('Saved', 'Avatar saved',
                         backgroundColor: AppColors.buttonColor,
                         colorText: AppColors.whiteColor);

@@ -4,6 +4,7 @@ import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../controller/avatar_animation.dart';
 
@@ -197,7 +198,35 @@ class _BlackGirlBrownHeadAnimation extends State<BlackGirlBrownHeadAnimation> {
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {
+                  opnPress: () async {
+                    SharedPreferences preferences =
+                        await SharedPreferences.getInstance();
+                    // print(animationController.selectedItem.value);
+                    if (animationController.selectedItem.value == 0) {
+                      var check = await preferences.setString('image',
+                          'assets/svg/blackgirl_curly/bhead/bhead-rshirt.png');
+                      print(check);
+                    } else if (animationController.selectedItem.value == 1) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/bhead/bhead-rshirt-cap.png',
+                      );
+                    } else if (animationController.selectedItem.value == 2) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/bhead/bhead-rshirt-stick.png',
+                      );
+                    } else if (animationController.selectedItem.value == 3) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/bhead/bhead-rshirt-bird.png',
+                      );
+                    } else if (animationController.selectedItem.value == 4) {
+                      await preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/bhead/bhead-rshirt-crown.png',
+                      );
+                    }
                     Get.snackbar('Saved', 'Avatar saved',
                         backgroundColor: AppColors.buttonColor,
                         colorText: AppColors.whiteColor);

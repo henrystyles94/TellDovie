@@ -5,6 +5,7 @@ import 'package:dovie/features/avatar_annimation.dart/controller/avatar_animatio
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BlackGirlWheelChairYellowHeadScreen extends StatefulWidget {
   BlackGirlWheelChairYellowHeadScreen({super.key});
@@ -189,7 +190,31 @@ class _BlackGirlWheelChairYellowHeadScreen
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {
+                  opnPress: () async {
+                    SharedPreferences preferences =
+                        await SharedPreferences.getInstance();
+
+                    if (animationController.selectedItem.value == 0) {
+                      preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel.png',
+                      );
+                    } else if (animationController.selectedItem.value == 1) {
+                      preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-cap.png',
+                      );
+                    } else if (animationController.selectedItem.value == 2) {
+                      preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-crown.png',
+                      );
+                    } else if (animationController.selectedItem.value == 3) {
+                      preferences.setString(
+                        'image',
+                        'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-bird.png',
+                      );
+                    }
                     Get.snackbar('Saved', 'Avatar saved',
                         backgroundColor: AppColors.buttonColor,
                         colorText: AppColors.whiteColor);
