@@ -6,4 +6,9 @@ class SubscriptionRepository {
     final response = await ApiCalls.httpGetCall(subPlans);
     return response;
   }
+
+  sendAmount(String amount) async {
+    final response = await ApiCalls.httpPostCall(pay, amount);
+    return response;
+  }
 }

@@ -48,6 +48,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
     super.initState();
     // initialize the rear camera
     initCamera(widget.cameras![1]);
+    startingTimer();
     startTimer();
     activitiesController.earnGrowthPointController();
   }
@@ -92,6 +93,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
     startTimer();
     setCountDown();
     _cameraController!.dispose();
+    startingTimer();
     super.dispose();
   }
 
@@ -99,6 +101,27 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
     await flutterTts.setLanguage("en-US");
     await flutterTts.setPitch(1);
     await flutterTts.speak(text);
+  }
+
+  Timer? _timer;
+  int _start = 15;
+
+  void startingTimer() {
+    const oneSec = Duration(seconds: 1);
+    _timer = Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+          });
+        } else {
+          setState(() {
+            _start--;
+          });
+        }
+      },
+    );
   }
 
   var selectedIndex = 0;

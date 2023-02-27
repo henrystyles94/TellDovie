@@ -19,11 +19,11 @@ class HomeScreen extends StatelessWidget {
 
   final activities = [
     {'imgPath': 'assets/images/mt.png', 'route': 'moodTrackerPage'},
-    {'imgPath': 'assets/images/caj.png', 'route': 'calmingJournalPage'},
-    {'imgPath': 'assets/images/gm.png', 'route': 'growthMindset'},
-    {'imgPath': 'assets/images/aff.png', 'route': 'affirmations'},
+    {'imgPath': 'assets/images/lockcalming.png', 'route': 'calmingJournalPage'},
+    {'imgPath': 'assets/images/lockgrowth.png', 'route': 'growthMindset'},
+    {'imgPath': 'assets/images/lockaffirm.png', 'route': 'affirmations'},
     {'imgPath': 'assets/images/if.png', 'route': 'informationHub'},
-    {'imgPath': 'assets/images/avb.png', 'route': 'calmingJournalPage'},
+    {'imgPath': 'assets/images/lockavatar.png', 'route': 'calmingJournalPage'},
   ];
   final walletController = Get.put(WalletController());
   @override
@@ -121,15 +121,30 @@ class HomeScreen extends StatelessWidget {
                         var imageData = preferences.getString('image');
                         if (index == 0) {
                           Get.to(() => const MoodTrackerScreen());
-                        } else if (index == 1) {
+                        } else if (index == 1 &&
+                            int.parse(walletController.loadedValue.value.data
+                                    .toString()) ==
+                                20) {
+                          Get.snackbar('Opps',
+                              "You don't have enough points to build an avatar");
                           Get.to(() => const CalmingJournalScreen());
                           // Get.toNamed(activities[index]["route"].toString());
-                        } else if (index == 2) {
+                        } else if (index == 2 &&
+                            int.parse(walletController.loadedValue.value.data
+                                    .toString()) ==
+                                20) {
+                          Get.snackbar('Opps',
+                              "You don't have enough points to build an avatar");
                           await availableCameras()
                               .then((value) => Get.to(() => GrowthMindsetScreen(
                                     cameras: value,
                                   )));
-                        } else if (index == 3) {
+                        } else if (index == 3 &&
+                            int.parse(walletController.loadedValue.value.data
+                                    .toString()) ==
+                                0) {
+                          Get.snackbar('Opps',
+                              "You don't have enough points to build an avatar");
                           await availableCameras()
                               .then((value) => Get.to(() => AffirmationPage(
                                     cameras: value,

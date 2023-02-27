@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
@@ -199,7 +200,25 @@ class BlackLadyWithFeederScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {
+                  opnPress: ()async {
+                                         SharedPreferences preferences =
+                        await SharedPreferences.getInstance();
+                         if (animationController.selectedItem.value == 0) {
+                      await preferences.setString('image',
+                          'assets/svg/bGF.png');
+                    } else if (animationController.selectedItem.value == 1) {
+                      await preferences.setString('image',
+                          'assets/svg/bgFeedWithCap.png');
+                    } else if (animationController.selectedItem.value == 2) {
+                      await preferences.setString('image',
+                          'assets/svg/bgfeedCr.png');
+                    } else if (animationController.selectedItem.value == 3) {
+                      await preferences.setString('image',
+                          'assets/svg/blackgirlwFire.png');
+                    } else if (animationController.selectedItem.value == 4) {
+                      await preferences.setString('image',
+                          'assets/svg/blackgirlwBird.png');
+                    }
                     Get.snackbar('Saved', 'Avatar saved',
                         backgroundColor: AppColors.buttonColor,
                         colorText: AppColors.whiteColor);

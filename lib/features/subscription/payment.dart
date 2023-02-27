@@ -1,9 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:dovie/constants/api_routes.dart';
+import 'package:dovie/constants/http%20call/api_services.dart';
 import 'package:dovie/constants/styles/app_styles.dart';
 import 'package:dovie/constants/themes/colors.dart';
+import 'package:dovie/features/auth/presentation/welcome_screen.dart';
+import 'package:dovie/features/subscription/repository/subscriptions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -15,6 +20,8 @@ class PaymentScreen extends StatefulWidget {
   @override
   _PaymentScreen createState() => _PaymentScreen();
 }
+
+final subScriptionController = Get.put(SubscriptionRepository());
 
 class _PaymentScreen extends State<PaymentScreen> {
   Map<String, dynamic>? paymentIntent;
@@ -83,6 +90,7 @@ class _PaymentScreen extends State<PaymentScreen> {
       await Stripe.instance.presentPaymentSheet().then((value) {
         showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (_) => AlertDialog(
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -94,6 +102,15 @@ class _PaymentScreen extends State<PaymentScreen> {
                       ),
                       SizedBox(height: 10.0),
                       Text("Payment Successful!"),
+                      CustomButton(
+                          height: 50.h,
+                          width: 80.w,
+                          borderRadius: 10,
+                          buttonText: 'ok',
+                          opnPress: () {
+                            Get.offAllNamed('bottomNavPage');
+                          },
+                          isLoading: false)
                     ],
                   ),
                 ));
@@ -143,6 +160,11 @@ class _PaymentScreen extends State<PaymentScreen> {
         },
         body: body,
       );
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        subScriptionController.sendAmount(amount);
+      }
+      log('${response.statusCode}');
       return json.decode(response.body);
     } catch (err) {
       throw Exception(err.toString());

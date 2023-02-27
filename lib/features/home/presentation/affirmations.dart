@@ -47,6 +47,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
   void initState() {
     super.initState();
     // initialize the rear camera
+    startingTimer();
     affirmationController.earnAffirmationPointsController();
     initCamera(widget.cameras![1]);
     startTimer();
@@ -93,6 +94,28 @@ class _AffirmationPageState extends State<AffirmationPage> {
     startTimer();
     setCountDown();
     super.dispose();
+  }
+//
+
+  Timer? _timer;
+  int _start = 15;
+
+  void startingTimer() {
+    const oneSec = Duration(seconds: 1);
+    _timer = Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+          });
+        } else {
+          setState(() {
+            _start--;
+          });
+        }
+      },
+    );
   }
 
   speak(String text) async {
@@ -266,7 +289,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
                               color: AppColors.backGroundColor, width: 3.w)),
                       child: Center(
                         child: Text(
-                          '$minutes:$seconds',
+                          '$_start:00',
                           style: AppStyles()
                               .smallText
                               .copyWith(color: AppColors.backGroundColor),

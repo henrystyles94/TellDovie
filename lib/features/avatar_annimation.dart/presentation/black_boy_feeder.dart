@@ -2,6 +2,7 @@ import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
@@ -197,7 +198,25 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                   width: MediaQuery.of(context).size.width,
                   borderRadius: 20.w,
                   buttonText: 'Save',
-                  opnPress: () {
+                  opnPress: ()async {
+                     SharedPreferences preferences =
+                        await SharedPreferences.getInstance();
+                         if (animationController.selectedItem.value == 0) {
+                      await preferences.setString('image',
+                          'assets/svg/blackFn.png');
+                    } else if (animationController.selectedItem.value == 1) {
+                      await preferences.setString('image',
+                          'assets/svg/blackFCap.png');
+                    } else if (animationController.selectedItem.value == 2) {
+                      await preferences.setString('image',
+                          'assets/svg/blackFcrown.png');
+                    } else if (animationController.selectedItem.value == 3) {
+                      await preferences.setString('image',
+                          'assets/svg/blackfire.png');
+                    } else if (animationController.selectedItem.value == 4) {
+                      await preferences.setString('image',
+                          'assets/svg/blackfeedOcto.png');
+                    }
                     Get.snackbar('Saved', 'Avatar saved',
                         backgroundColor: AppColors.buttonColor,
                         colorText: AppColors.whiteColor);

@@ -10,3 +10,4 @@ var earnGrowthPoint = 'completed/growth';
 var wallet = 'wallet/balance';
 var subPlans = 'sub-plans';
 var statistics = 'statistics';
+var pay = 'sub';

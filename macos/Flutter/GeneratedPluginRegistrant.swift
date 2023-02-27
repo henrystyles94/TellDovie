@@ -7,8 +7,8 @@ import Foundation
 
 import audioplayers_darwin
 import flutter_tts
-import path_provider_foundation
-import shared_preferences_foundation
+import path_provider_macos
+import shared_preferences_macos
 import syncfusion_pdfviewer_macos
 import url_launcher_macos
 
