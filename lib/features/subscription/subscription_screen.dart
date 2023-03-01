@@ -195,7 +195,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                       ),
                     ),
                     title: Text(
-                      'Build your student’s confidence and self esteem with the Affirmation and Growth mindset station',
+                      'Build higher levels of self-esteem increase motivation & low moods with our growth mindset stations.',
                       style: AppStyles().mediumText.copyWith(
                             fontSize: 18,
                             // fontFamily: 'Fredoka',

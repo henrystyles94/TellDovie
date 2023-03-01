@@ -63,7 +63,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
     'I may have distracted my friends',
     'I upset others',
     'I upset myself',
-    'I have an Idea'
+    'I have an idea'
   ];
 
   String actionvalue = '';
@@ -74,8 +74,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
     'Talk to a friend',
     'Talk to a teacher',
     'Focus on my breathing',
-    'I have an idea',
-    // 'Type how you feel'
+    'I have an idea'
   ];
   var reactions = [
     {'imageSrc': 'assets/images/hap.png', 'title': 'Happy'},
@@ -467,7 +466,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                 height: 8.h,
               ),
               Container(
-                height: 50.h,
+                height: 40.h,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30.w),
@@ -496,7 +495,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     // After selecting the desired option,it will
 
                     onChanged: (String? newValue) {
-                      if (newValue == 'Type how you feel') {
+                      if (newValue == 'I have an idea') {
                         Get.bottomSheet(Container(
                           height: 200.h,
                           width: MediaQuery.of(context).size.width,
@@ -510,7 +509,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                             child: Column(
                               children: [
                                 CustomInputField(
-                                  controller: outComeController,
+                                  controller: addFeelings,
                                 ),
                                 SizedBox(
                                   height: 10.h,
@@ -539,8 +538,12 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
               SizedBox(
                 height: 10.h,
               ),
+              // Text(
+              //   outComeController.text,
+              //   style: AppStyles().smallText,
+              // ),
               Text(
-                outComeController.text,
+                addFeelings.text,
                 style: AppStyles().smallText,
               ),
               SizedBox(
@@ -583,7 +586,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     // After selecting the desired option,it will
 
                     onChanged: (String? newValue) {
-                      if (newValue == 'I have an Idea') {
+                      if (newValue == 'I have an idea') {
                         Get.bottomSheet(Container(
                           height: 200.h,
                           width: MediaQuery.of(context).size.width,
@@ -597,7 +600,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                             child: Column(
                               children: [
                                 CustomInputField(
-                                  controller: addFeelings,
+                                  controller: outComeController,
                                 ),
                                 SizedBox(
                                   height: 10.h,
@@ -624,7 +627,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                 ),
               ),
               Text(
-                addFeelings.text,
+                outComeController.text,
                 style: AppStyles().smallText,
               ),
               SizedBox(

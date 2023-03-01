@@ -66,12 +66,12 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
       final seconds = myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {
         countdownTimer!.cancel();
-        Get.snackbar(
-          'Yay!',
-          'You have just earned some Dovie points',
-          backgroundColor: AppColors.backGroundColor,
-        );
-        Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
+        // Get.snackbar(
+        //   'Yay!',
+        //   'You have just earned some Dovie points',
+        //   backgroundColor: AppColors.backGroundColor,
+        // );
+        // Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
         walletController.walletController();
       } else {
         myDuration = Duration(seconds: seconds);
@@ -115,6 +115,12 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
           setState(() {
             timer.cancel();
           });
+          Get.snackbar(
+            'Yay!',
+            'You have just earned some Dovie points',
+            backgroundColor: AppColors.backGroundColor,
+          );
+          Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
         } else {
           setState(() {
             _start--;
@@ -279,7 +285,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
                               color: AppColors.backGroundColor, width: 3.w)),
                       child: Center(
                         child: Text(
-                          '$minutes:$seconds',
+                          '$_start:00',
                           style: AppStyles()
                               .smallText
                               .copyWith(color: AppColors.backGroundColor),

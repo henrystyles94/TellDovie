@@ -121,28 +121,34 @@ class HomeScreen extends StatelessWidget {
                         var imageData = preferences.getString('image');
                         if (index == 0) {
                           Get.to(() => const MoodTrackerScreen());
-                        } else if (index == 1 &&
-                            int.parse(walletController.loadedValue.value.data
-                                    .toString()) ==
-                                20) {
+                        } else if (index == 1
+                            // &&
+                            // int.parse(walletController.loadedValue.value.data
+                            //         .toString()) ==
+                            //     20
+                            ) {
                           Get.snackbar('Opps',
                               "You don't have enough points to build an avatar");
                           Get.to(() => const CalmingJournalScreen());
                           // Get.toNamed(activities[index]["route"].toString());
-                        } else if (index == 2 &&
-                            int.parse(walletController.loadedValue.value.data
-                                    .toString()) ==
-                                20) {
+                        } else if (index == 2
+                            // &&
+                            // int.parse(walletController.loadedValue.value.data
+                            //         .toString()) ==
+                            //     20
+                            ) {
                           Get.snackbar('Opps',
                               "You don't have enough points to build an avatar");
                           await availableCameras()
                               .then((value) => Get.to(() => GrowthMindsetScreen(
                                     cameras: value,
                                   )));
-                        } else if (index == 3 &&
-                            int.parse(walletController.loadedValue.value.data
-                                    .toString()) ==
-                                0) {
+                        } else if (index == 3
+                            // &&
+                            // int.parse(walletController.loadedValue.value.data
+                            //         .toString()) ==
+                            //     0
+                            ) {
                           Get.snackbar('Opps',
                               "You don't have enough points to build an avatar");
                           await availableCameras()
@@ -152,12 +158,15 @@ class HomeScreen extends StatelessWidget {
                         } else if (index == 4) {
                           Get.to(() => InformationHubScreen());
                         } else if (index == 5) {
-                          if (int.parse(walletController.loadedValue.value.data
-                                  .toString()) <
-                              20) {
-                            Get.snackbar('Opps',
-                                "You don't have enough points to build an avatar");
-                          } else if (imageData != null) {
+                          // if (int.parse(walletController.loadedValue.value.data
+                          //         .toString()) <
+                          //     20)
+                          //  {
+                          // Get.snackbar('Opps',
+                          //     "You don't have enough points to build an avatar");
+                          // }
+                          //  else
+                          if (imageData != null) {
                             // pr
                             Get.bottomSheet(InkWell(
                               onTap: () {
@@ -165,7 +174,7 @@ class HomeScreen extends StatelessWidget {
                                 Get.to(() => AvatarScreen());
                               },
                               child: Container(
-                                height: 500.h,
+                                // height: 500.h,
                                 width: MediaQuery.of(context).size.width,
                                 color: AppColors.backGroundColor,
                                 child: Padding(
@@ -192,7 +201,9 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      Image.asset(imageData),
+                                      Expanded(
+                                          child: Center(
+                                              child: Image.asset(imageData))),
                                     ],
                                   ),
                                 ),

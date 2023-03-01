@@ -109,6 +109,12 @@ class _AffirmationPageState extends State<AffirmationPage> {
           setState(() {
             timer.cancel();
           });
+             Get.snackbar(
+          'Yay!',
+          'You have just earned some Dovie points',
+          backgroundColor: AppColors.backGroundColor,
+        );
+        Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
         } else {
           setState(() {
             _start--;

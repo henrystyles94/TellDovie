@@ -25,11 +25,11 @@ String dropdownvalue = '';
 int? tappedIndex = -1;
 var items = [
   '',
-  'Read sime Novel',
-  'Play Video',
-  'Sing Songs',
-  'Talk a walk',
-  'Type how you feel',
+  'Read a book',
+  'Talk to a friend',
+  'Talk to a teacher',
+  'Focus on my breathing',
+  'I have an idea',
 ];
 var reactions = [
   {'imageSrc': 'assets/images/sad.png', 'title': 'Sad'},
@@ -527,7 +527,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                     // After selecting the desired option,it will
 
                     onChanged: (String? newValue) {
-                      if (newValue == 'Type how you feel') {
+                      if (newValue == 'I have an idea') {
                         Get.bottomSheet(Container(
                           height: 200.h,
                           width: MediaQuery.of(context).size.width,
