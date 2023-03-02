@@ -115,19 +115,19 @@ class StaticsScreen extends StatelessWidget {
             style: AppStyles().headingText.copyWith(fontSize: 20)),
         centerTitle: true,
       ),
-      body: Obx(
-        () => statsController.isLoading.value
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : SingleChildScrollView(
-                child: Padding(
+      body: SingleChildScrollView(
+        child: Obx(
+          () => statsController.isLoading.value
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          height: 315.h,
+                          height: 250.h,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30.w),
@@ -150,97 +150,91 @@ class StaticsScreen extends StatelessWidget {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Column(
-                        children: [
-                          Container(
-                            // height: 156.h,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.w),
-                                color: AppColors.offWhiteColor),
-                            child: Padding(
-                              padding: const EdgeInsets.all(18.0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'How many journal you have completed this month',
-                                    style: AppStyles().smallText,
-                                  ),
-                                  Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: Container(
-                                      height: 46.h,
-                                      width: 56.w,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10.w),
-                                          color: AppColors.backGroundColor),
-                                      child: Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(2),
-                                          child: Text(
-                                            statsController
-                                                .loadedStats.value.journal
-                                                .toString(),
-                                            style: AppStyles().mediumText,
-                                          ),
-                                        ),
+                      Container(
+                        // height: 156.h,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.w),
+                            color: AppColors.offWhiteColor),
+                        child: Padding(
+                          padding: const EdgeInsets.all(18.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                'How many journal you have completed this month',
+                                style: AppStyles().smallText,
+                              ),
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Container(
+                                  height: 46.h,
+                                  width: 56.w,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10.w),
+                                      color: AppColors.backGroundColor),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2),
+                                      child: Text(
+                                        statsController
+                                            .loadedStats.value.journal
+                                            .toString(),
+                                        style: AppStyles().mediumText,
                                       ),
                                     ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Container(
-                            // height: 156.h,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.w),
-                                color: AppColors.offWhiteColor),
-                            child: Padding(
-                              padding: const EdgeInsets.all(18.0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'How many affirmations/growth mindset you have completed this month',
-                                    style: AppStyles().smallText,
                                   ),
-                                  Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: Container(
-                                      height: 46.h,
-                                      width: 56.w,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10.w),
-                                          color: AppColors.backGroundColor),
-                                      child: Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(2),
-                                          child: Text(
-                                            statsController
-                                                .loadedStats.value.affirmGrowth
-                                                .toString(),
-                                            style: AppStyles().mediumText,
-                                          ),
-                                        ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Container(
+                        // height: 156.h,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.w),
+                            color: AppColors.offWhiteColor),
+                        child: Padding(
+                          padding: const EdgeInsets.all(18.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                'How many affirmations/growth mindset you have completed this month',
+                                style: AppStyles().smallText,
+                              ),
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Container(
+                                  height: 46.h,
+                                  width: 56.w,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10.w),
+                                      color: AppColors.backGroundColor),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2),
+                                      child: Text(
+                                        statsController
+                                            .loadedStats.value.affirmGrowth
+                                            .toString(),
+                                        style: AppStyles().mediumText,
                                       ),
                                     ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       )
                     ],
                   ),
                 ),
-              ),
+        ),
       ),
     );
   }

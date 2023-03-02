@@ -15,7 +15,8 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 
 class PaymentScreen extends StatefulWidget {
   final String amount;
-  const PaymentScreen({Key? key, required this.amount}) : super(key: key);
+  final String duration;
+  const PaymentScreen({Key? key, required this.amount, required this.duration}) : super(key: key);
 
   @override
   _PaymentScreen createState() => _PaymentScreen();
@@ -162,7 +163,8 @@ class _PaymentScreen extends State<PaymentScreen> {
       );
       print(response.statusCode);
       if (response.statusCode == 200) {
-        subScriptionController.sendAmount(amount);
+        
+        subScriptionController.subscribe(widget.duration, amount);
       }
       log('${response.statusCode}');
       return json.decode(response.body);

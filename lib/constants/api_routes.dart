@@ -11,3 +11,5 @@ var wallet = 'wallet/balance';
 var subPlans = 'sub-plans';
 var statistics = 'statistics';
 var pay = 'sub';
+var subscribeToPlans = 'subscribe';
+var status = 'status';

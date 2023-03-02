@@ -23,8 +23,10 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
 
   bool v2 = false;
   bool isChecked = false;
-  String yearly = '250';
-  String monthly = '150';
+  String yearly = '47';
+  String monthly = '8';
+  String type1 = '1';
+  String type2 = '12';
 
   String? _groupValue;
 
@@ -259,8 +261,8 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   InkWell(
                     onTap: () {
                       setState(() {
-                        monthly =
-                            '${subController.loadedPlans.value.data![0].amount}';
+                        monthly = '8';
+                        type1 = '1';
                       });
                     },
                     child: Container(
@@ -335,8 +337,8 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   InkWell(
                     onTap: () {
                       setState(() {
-                        yearly =
-                            '${subController.loadedPlans.value.data![1].amount}';
+                        yearly = '47';
+                        type2 = '12';
                       });
                     },
                     child: Container(
@@ -454,12 +456,13 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   //
                   InkWell(
                     onTap: () {
+                      print(type1);
                       Get.bottomSheet(
                         SizedBox(
                           height: 200.h,
                           child: PaymentScreen(
-                            amount: yearly,
-                          ),
+                              amount: yearly != '47' ? '8' : '8',
+                              duration: type1 != '1' ? '12' : '1'),
                         ),
                       );
                     },

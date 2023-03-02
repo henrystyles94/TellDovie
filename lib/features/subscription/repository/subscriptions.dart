@@ -7,8 +7,22 @@ class SubscriptionRepository {
     return response;
   }
 
+//buy coins
   sendAmount(String amount) async {
     final response = await ApiCalls.httpPostCall(pay, amount);
+    return response;
+  }
+
+  //  subcribe
+  subscribe(String duration, amount) async {
+    final response = await ApiCalls.httpPostCall(
+        subscribeToPlans, {"duration": duration, "amount": amount});
+    return response;
+  }
+
+  //check subscription status
+  checkStatus() async {
+    final response = await ApiCalls.httpGetCall(status);
     return response;
   }
 }
