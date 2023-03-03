@@ -25,7 +25,7 @@ class _BlackGirlBlackHeadFeederScreen
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/c.png'},
-    {'imgPath': 'assets/svg/fire.png'},
+    // {'imgPath': 'assets/svg/fire.png'},
     {'imgPath': 'assets/svg/bird.png'},
   ];
 
@@ -72,15 +72,15 @@ class _BlackGirlBlackHeadFeederScreen
                                     'assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/black-head-crown.png',
                                     width: ScreenSize.getHeight(220),
                                   )
-                                : animationController.selectedItem.value == 3
-                                    ? Flexible(
-                                        fit: FlexFit.loose,
-                                        child: Image.asset(
-                                          'assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/black-head-fire.png',
-                                          width: ScreenSize.getHeight(220),
-                                        ))
+                                // : animationController.selectedItem.value == 3
+                                //     ? Flexible(
+                                //         fit: FlexFit.loose,
+                                //         child: Image.asset(
+                                //           'assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/black-head-fire.png',
+                                //           width: ScreenSize.getHeight(220),
+                                //         ))
                                     : animationController.selectedItem.value ==
-                                            4
+                                            3
                                         ? Image.asset(
                                             'assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/black-head-bird.png',
                                             width: ScreenSize.getHeight(220),
@@ -219,12 +219,12 @@ class _BlackGirlBlackHeadFeederScreen
                         'image',
                         'assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/black-head-crown.png',
                       );
+                    // } else if (animationController.selectedItem.value == 3) {
+                    //   await preferences.setString(
+                    //     'image',
+                    //     'assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/black-head-fire.png',
+                    //   );
                     } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/black-head-fire.png',
-                      );
-                    } else if (animationController.selectedItem.value == 4) {
                       await preferences.setString(
                         'image',
                         'assets/svg/blackgirl_curly/orange_shirt/feeder/bl_head/black-head-bird.png',

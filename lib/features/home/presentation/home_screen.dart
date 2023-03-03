@@ -20,11 +20,14 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final activities = [
-    {'imgPath': 'assets/images/mt.png', 'route': 'moodTrackerPage'},
+    {
+      'imgPath': 'assets/images/lockedMoodTrack.png',
+      'route': 'moodTrackerPage'
+    },
     {'imgPath': 'assets/images/lockcalming.png', 'route': 'calmingJournalPage'},
-    {'imgPath': 'assets/images/lockgrowth.png', 'route': 'growthMindset'},
-    {'imgPath': 'assets/images/lockaffirm.png', 'route': 'affirmations'},
-    {'imgPath': 'assets/images/if.png', 'route': 'informationHub'},
+    {'imgPath': 'assets/images/gm.png', 'route': 'growthMindset'},
+    {'imgPath': 'assets/images/aff.png', 'route': 'affirmations'},
+    {'imgPath': 'assets/images/lockedInfoHub.png', 'route': 'informationHub'},
     {'imgPath': 'assets/images/lockavatar.png', 'route': 'calmingJournalPage'},
   ];
 
@@ -139,8 +142,14 @@ class HomeScreen extends StatelessWidget {
                                     await SharedPreferences.getInstance();
 
                                 var imageData = preferences.getString('image');
-                                if (index == 0) {
+                                if (index == 0 &&
+                                    subController.loadedStatus.value.message ==
+                                        'User is active') {
                                   Get.to(() => const MoodTrackerScreen());
+                                } else if (index == 0 &&
+                                    subController.loadedStatus.value.message !=
+                                        'User is active') {
+                                  Get.to(() => SubscriptionScreen());
                                 } else if (index == 1 &&
                                     subController.loadedStatus.value.message ==
                                         'User is active') {
@@ -151,9 +160,11 @@ class HomeScreen extends StatelessWidget {
                                     subController.loadedStatus.value.message !=
                                         'User is active') {
                                   Get.to(SubscriptionScreen());
-                                } else if (index == 2 &&
-                                    subController.loadedStatus.value.message ==
-                                        'User is active') {
+                                } else if (index == 2
+                                    //  &&
+                                    //     subController.loadedStatus.value.message ==
+                                    //         'User is active'
+                                    ) {
                                   await availableCameras().then((value) =>
                                       Get.to(() => GrowthMindsetScreen(
                                             cameras: value,
@@ -162,9 +173,11 @@ class HomeScreen extends StatelessWidget {
                                     subController.loadedStatus.value.message !=
                                         'User is active') {
                                   Get.to(SubscriptionScreen());
-                                } else if (index == 3 &&
-                                    subController.loadedStatus.value.message ==
-                                        'User is active') {
+                                } else if (index == 3
+                                    //  &&
+                                    //     subController.loadedStatus.value.message ==
+                                    //         'User is active'
+                                    ) {
                                   await availableCameras().then(
                                       (value) => Get.to(() => AffirmationPage(
                                             cameras: value,

@@ -24,7 +24,7 @@ class _WhiteBoyFeederScreen extends State<WhiteBoyFeederScreen> {
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/c.png'},
-    {'imgPath': 'assets/svg/fire.png'},
+    // {'imgPath': 'assets/svg/fire.png'},
     {'imgPath': 'assets/svg/octo.png'},
   ];
 
@@ -71,15 +71,15 @@ class _WhiteBoyFeederScreen extends State<WhiteBoyFeederScreen> {
                                     'assets/svg/fbcr.png',
                                     width: ScreenSize.getHeight(210),
                                   )
-                                : animationController.selectedItem.value == 3
-                                    ? Flexible(
-                                        fit: FlexFit.loose,
-                                        child: Image.asset(
-                                          'assets/svg/fbf.png',
-                                          width: ScreenSize.getHeight(220),
-                                        ))
+                                // : animationController.selectedItem.value == 3
+                                //     ? Flexible(
+                                //         fit: FlexFit.loose,
+                                //         child: Image.asset(
+                                //           'assets/svg/fbf.png',
+                                //           width: ScreenSize.getHeight(220),
+                                //         ))
                                     : animationController.selectedItem.value ==
-                                            4
+                                            3
                                         ? Image.asset(
                                             'assets/svg/fboct.png',
                                             width: ScreenSize.getHeight(220),
@@ -210,10 +210,10 @@ class _WhiteBoyFeederScreen extends State<WhiteBoyFeederScreen> {
                     } else if (animationController.selectedItem.value == 2) {
                       await preferences.setString(
                           'image', 'assets/svg/fbcr.png');
+                    // } else if (animationController.selectedItem.value == 3) {
+                    //   await preferences.setString(
+                    //       'image', 'assets/svg/fbf.png');
                     } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString(
-                          'image', 'assets/svg/fbf.png');
-                    } else if (animationController.selectedItem.value == 4) {
                       await preferences.setString(
                           'image', 'assets/svg/fbnorm.png');
                     }

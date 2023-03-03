@@ -50,49 +50,49 @@ class _AffirmationPageState extends State<AffirmationPage> {
     startingTimer();
     affirmationController.earnAffirmationPointsController();
     initCamera(widget.cameras![1]);
-    startTimer();
+    // startTimer();
   }
 
-  Timer? countdownTimer;
-  Duration myDuration = const Duration(seconds: 15);
-  void startTimer() {
-    countdownTimer =
-        Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
-  }
+  // Timer? countdownTimer;
+  // Duration myDuration = const Duration(seconds: 15);
+  // void startTimer() {
+  //   countdownTimer =
+  //       Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
+  // }
 
-  void setCountDown() {
-    const reduceSecondsBy = 1;
-    setState(() {
-      final seconds = myDuration.inSeconds - reduceSecondsBy;
-      if (seconds < 0) {
-        countdownTimer!.cancel();
+  // void setCountDown() {
+  //   const reduceSecondsBy = 1;
+  //   setState(() {
+  //     final seconds = myDuration.inSeconds - reduceSecondsBy;
+  //     if (seconds < 0) {
+  //       countdownTimer!.cancel();
 
-        Get.snackbar(
-          'Yay!',
-          'You have just earned some Dovie points',
-          backgroundColor: AppColors.backGroundColor,
-        );
-        Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
-        walletController.walletController();
-      } else {
-        myDuration = Duration(seconds: seconds);
-      }
-    });
-  }
+  //       Get.snackbar(
+  //         'Yay!',
+  //         'You have just earned some Dovie points',
+  //         backgroundColor: AppColors.backGroundColor,
+  //       );
+  //       Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
+  //       walletController.walletController();
+  //     } else {
+  //       myDuration = Duration(seconds: seconds);
+  //     }
+  //   });
+  // }
 
-  void stopTimer() {
-    setState(() => countdownTimer!.cancel());
-  }
+  // void stopTimer() {
+  //   setState(() => countdownTimer!.cancel());
+  // }
 
-  void resetTimer() {
-    stopTimer();
-    setState(() => myDuration = const Duration(days: 5));
-  }
+  // void resetTimer() {
+  //   stopTimer();
+  //   setState(() => myDuration = const Duration(days: 5));
+  // }
 
   @override
   void dispose() {
-    startTimer();
-    setCountDown();
+    // startTimer();
+    // setCountDown();
     super.dispose();
   }
 //
@@ -109,12 +109,14 @@ class _AffirmationPageState extends State<AffirmationPage> {
           setState(() {
             timer.cancel();
           });
-             Get.snackbar(
-          'Yay!',
-          'You have just earned some Dovie points',
-          backgroundColor: AppColors.backGroundColor,
-        );
-        Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
+          Get.snackbar(
+            'Yay!',
+            'You have just earned some Dovie points',
+            backgroundColor: AppColors.backGroundColor,
+          );
+          Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
+          walletController.walletController();
+          
         } else {
           setState(() {
             _start--;
@@ -134,8 +136,8 @@ class _AffirmationPageState extends State<AffirmationPage> {
   @override
   Widget build(BuildContext context) {
     String strDigits(int n) => n.toString().padLeft(2, '0');
-    final minutes = strDigits(myDuration.inSeconds.remainder(60));
-    final seconds = strDigits(myDuration.inMicroseconds.remainder(60));
+    // final minutes = strDigits(myDuration.inSeconds.remainder(60));
+    // final seconds = strDigits(myDuration.inMicroseconds.remainder(60));
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       body: SingleChildScrollView(
@@ -267,7 +269,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
                       top: 4.4,
                       child: InkWell(
                         onTap: () {
-                          startTimer();
+                          // startingTimer();
                           speak(affirmationController.affirmationModel.value
                               .data![selectedIndex].content
                               .toString());

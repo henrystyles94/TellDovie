@@ -13,3 +13,4 @@ var statistics = 'statistics';
 var pay = 'sub';
 var subscribeToPlans = 'subscribe';
 var status = 'status';
+var checkDownloadRoute = 'completed/hub';

@@ -24,7 +24,7 @@ class _BlackBoyRedHeadFeederScreen extends State<BlackBoyRedHeadFeederScreen> {
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/c.png'},
-    {'imgPath': 'assets/svg/fire.png'},
+    // {'imgPath': 'assets/svg/fire.png'},
     {'imgPath': 'assets/svg/octo.png'},
   ];
 
@@ -71,15 +71,15 @@ class _BlackBoyRedHeadFeederScreen extends State<BlackBoyRedHeadFeederScreen> {
                                     'assets/svg/blackboy/orange_shirt/bottle/r_head/red-head-crown.png',
                                     width: ScreenSize.getHeight(320),
                                   )
-                                : animationController.selectedItem.value == 3
-                                    ? Flexible(
-                                        fit: FlexFit.loose,
-                                        child: Image.asset(
-                                          'assets/svg/blackboy/orange_shirt/bottle/r_head/red-head-fire.png',
-                                          width: ScreenSize.getHeight(320),
-                                        ))
+                                // : animationController.selectedItem.value == 3
+                                //     ? Flexible(
+                                //         fit: FlexFit.loose,
+                                //         child: Image.asset(
+                                //           'assets/svg/blackboy/orange_shirt/bottle/r_head/red-head-fire.png',
+                                //           width: ScreenSize.getHeight(320),
+                                //         ))
                                     : animationController.selectedItem.value ==
-                                            4
+                                            3
                                         ? Image.asset(
                                             'assets/svg/blackboy/orange_shirt/bottle/r_head/red-head-octo.png',
                                             width: ScreenSize.getHeight(320),
@@ -210,10 +210,10 @@ class _BlackBoyRedHeadFeederScreen extends State<BlackBoyRedHeadFeederScreen> {
                     } else if (animationController.selectedItem.value == 2) {
                       preferences.setString('image',
                           'assets/svg/blackboy/orange_shirt/bottle/r_head/red-head-crown.png');
+                    // } else if (animationController.selectedItem.value == 3) {
+                    //   preferences.setString('image',
+                    //       'assets/svg/blackboy/orange_shirt/bottle/r_head/red-head-fire.png');
                     } else if (animationController.selectedItem.value == 3) {
-                      preferences.setString('image',
-                          'assets/svg/blackboy/orange_shirt/bottle/r_head/red-head-fire.png');
-                    } else if (animationController.selectedItem.value == 4) {
                       preferences.setString('image',
                           'assets/svg/blackboy/orange_shirt/bottle/r_head/red-head-octo.png');
                     }

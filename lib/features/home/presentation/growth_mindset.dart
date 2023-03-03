@@ -121,6 +121,7 @@ class _GrowthMindsetScreenState extends State<GrowthMindsetScreen> {
             backgroundColor: AppColors.backGroundColor,
           );
           Get.bottomSheet(Image.asset('assets/images/succ.jpg'));
+          walletController.walletController();
         } else {
           setState(() {
             _start--;

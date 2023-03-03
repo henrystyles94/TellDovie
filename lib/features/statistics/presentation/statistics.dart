@@ -161,7 +161,7 @@ class StaticsScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                'How many journal you have completed this month',
+                                'How many journal entries have you completed this month ?',
                                 style: AppStyles().smallText,
                               ),
                               Align(

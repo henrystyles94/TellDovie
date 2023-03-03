@@ -18,6 +18,7 @@ class ActivityController extends GetxController {
   RxBool sendingJournal = RxBool(false);
   RxBool tracking = RxBool(false);
   RxBool loadingMindset = RxBool(false);
+  RxBool downloadStatus = RxBool(false);
   final activityRepo = ActivitiesRepository();
   final affirmationModel = AffirmationResponseMode().obs;
   final loadedinfoModel = InfoHubResponseMode().obs;
@@ -115,5 +116,15 @@ class ActivityController extends GetxController {
     try {
       await activityRepo.earnGrowthPointsRepository();
     } catch (e) {}
+  }
+
+  Future checkDownloadController(String name) async {
+    try {
+      downloadStatus(true);
+      await activityRepo.checkDownload(name);
+      downloadStatus(false);
+    } catch (e) {
+      downloadStatus(false);
+    }
   }
 }

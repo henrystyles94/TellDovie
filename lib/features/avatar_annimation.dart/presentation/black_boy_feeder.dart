@@ -24,7 +24,7 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/c.png'},
-    {'imgPath': 'assets/svg/fire.png'},
+    // {'imgPath': 'assets/svg/fire.png'},
     {'imgPath': 'assets/svg/octo.png'},
   ];
 
@@ -71,15 +71,15 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                                     'assets/svg/blackFcrown.png',
                                     width: ScreenSize.getHeight(220),
                                   )
-                                : animationController.selectedItem.value == 3
-                                    ? Flexible(
-                                        fit: FlexFit.loose,
-                                        child: Image.asset(
-                                          'assets/svg/blackfire.png',
-                                          width: ScreenSize.getHeight(320),
-                                        ))
+                                // : animationController.selectedItem.value == 3
+                                //     ? Flexible(
+                                //         fit: FlexFit.loose,
+                                //         child: Image.asset(
+                                //           'assets/svg/blackfire.png',
+                                //           width: ScreenSize.getHeight(320),
+                                //         ))
                                     : animationController.selectedItem.value ==
-                                            4
+                                            3
                                         ? Image.asset(
                                             'assets/svg/blackfeedOcto.png',
                                             width: ScreenSize.getHeight(220),
@@ -210,10 +210,10 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                     } else if (animationController.selectedItem.value == 2) {
                       await preferences.setString('image',
                           'assets/svg/blackFcrown.png');
+                    // } else if (animationController.selectedItem.value == 3) {
+                    //   await preferences.setString('image',
+                    //       'assets/svg/blackfire.png');
                     } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString('image',
-                          'assets/svg/blackfire.png');
-                    } else if (animationController.selectedItem.value == 4) {
                       await preferences.setString('image',
                           'assets/svg/blackfeedOcto.png');
                     }

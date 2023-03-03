@@ -29,7 +29,7 @@ class Datum {
         this.id,
         this.name,
         this.price,
-        this.amount,
+        this.duration,
         this.status,
         this.createdAt,
         this.updatedAt,
@@ -38,7 +38,7 @@ class Datum {
     int? id;
     String? name;
     String? price;
-    String? amount;
+    String? duration;
     dynamic status;
     DateTime? createdAt;
     DateTime? updatedAt;
@@ -47,7 +47,7 @@ class Datum {
         id: json["id"],
         name: json["name"],
         price: json["price"],
-        amount: json["amount"],
+        duration: json["duration"],
         status: json["status"],
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
@@ -57,7 +57,7 @@ class Datum {
         "id": id,
         "name": name,
         "price": price,
-        "amount": amount,
+        "duration": duration,
         "status": status,
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),

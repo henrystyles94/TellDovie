@@ -77,16 +77,16 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
     'I have an idea'
   ];
   var reactions = [
-    {'imageSrc': 'assets/images/hap.png', 'title': 'Happy'},
+    // {'imageSrc': 'assets/images/hap.png', 'title': 'Happy'},
     {'imageSrc': 'assets/images/ex.png', 'title': 'Excited'},
-    {'imageSrc': 'assets/images/hope.png', 'title': 'Hopeful'},
+    // {'imageSrc': 'assets/images/hope.png', 'title': 'Hopeful'},
     {'imageSrc': 'assets/images/proud.png', 'title': 'Proud'},
-    {'imageSrc': 'assets/images/silly.png', 'title': 'Silly'},
+    // {'imageSrc': 'assets/images/silly.png', 'title': 'Silly'},
     {'imageSrc': 'assets/images/sad.png', 'title': 'Sad'},
     {'imageSrc': 'assets/images/angry.png', 'title': 'Angry'},
     {'imageSrc': 'assets/images/frustrate.png', 'title': 'Frustrated'},
     {'imageSrc': 'assets/images/shy.png', 'title': 'Shy'},
-    // {'imageSrc': 'assets/images/add.png', 'title': ''},
+    {'imageSrc': 'assets/images/add.png', 'title': 'type how you feel'},
   ];
   @override
   void initState() {
@@ -294,161 +294,74 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     height: 100.h,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: reactions.length + 1,
+                      itemCount: reactions.length,
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap: () {},
-                          child: index > 8
-                              ? InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      affirmationController.clicked = true;
-                                    });
-                                    log('message');
-                                  },
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                tappedIndex = index;
+                              });
+                              if (reactions.length == 7) {
+                                Get.bottomSheet(Container(
+                                  height: 200.h,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.backGroundColor,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10.w),
+                                          topRight: Radius.circular(10.w))),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(28.0),
-                                    child: Row(
-                                      children: [
-                                        // Visibility(
-                                        //   visible: affirmationController.clicked
-                                        //       ? false
-                                        //       : true,
-                                        //   child: Image.asset(
-                                        //     'assets/images/add.png',
-                                        //     fit: BoxFit.scaleDown,
-                                        //   ),
-                                        // ),
-                                        InkWell(
-                                          onTap: () {
-                                            Get.bottomSheet(Container(
-                                              height: 200.h,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              decoration: BoxDecoration(
-                                                  color:
-                                                      AppColors.backGroundColor,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  10.w),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  10.w))),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(18.0),
-                                                child: Column(
-                                                  children: [
-                                                    CustomInputField(
-                                                      controller: addTextField,
-                                                    ),
-                                                    SizedBox(
-                                                      height: 10.h,
-                                                    ),
-                                                    CustomButton(
-                                                        height: 50.h,
-                                                        width: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .width,
-                                                        borderRadius: 10.w,
-                                                        buttonText: 'Save',
-                                                        opnPress: () {
-                                                          Get.back();
-                                                        },
-                                                        isLoading: false)
-                                                  ],
-                                                ),
-                                              ),
-                                            ));
-                                          },
-                                          child: Image.asset(
-                                            'assets/images/add.png',
-                                            fit: BoxFit.scaleDown,
-                                          ),
-                                        ),
-                                        // Visibility(
-                                        //   visible: affirmationController.clicked
-                                        //       ? true
-                                        //       : false,
-                                        //   child: Container(
-                                        //       decoration: BoxDecoration(
-                                        //           color:
-                                        //               AppColors.backGroundColor,
-                                        //           borderRadius:
-                                        //               BorderRadius.circular(
-                                        //                   10.w)),
-                                        //       child: Padding(
-                                        //         padding:
-                                        //             const EdgeInsets.all(8.0),
-                                        //         child: Row(
-                                        //           children: [
-                                        //             Text(
-                                        //               'you can type how you feel here',
-                                        //               style: AppStyles()
-                                        //                   .smallText
-                                        //                   .copyWith(
-                                        //                       fontSize: 15),
-                                        //             ),
-                                        //             InkWell(
-                                        //                 onTap: () {
-                                        //                   setState(() {
-                                        //                     affirmationController
-                                        //                             .clicked =
-                                        //                         false;
-                                        //                   });
-                                        //                 },
-                                        //                 child: Visibility(
-                                        //                     visible:
-                                        //                         affirmationController
-                                        //                                 .clicked
-                                        //                             ? true
-                                        //                             : false,
-                                        //                     child: Icon(
-                                        //                       Icons.cancel,
-                                        //                       size: 10,
-                                        //                     )))
-                                        //           ],
-                                        //         ),
-                                        //       )),
-                                        // ),
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              : InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      tappedIndex = index;
-                                    });
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(18.0),
                                     child: Column(
                                       children: [
-                                        Container(
-                                          height: 55.h,
-                                          decoration: BoxDecoration(
-                                              color: tappedIndex == index
-                                                  ? AppColors.buttonColor
-                                                  : AppColors.whiteColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(10.w)),
-                                          child: Image.asset(reactions[index]
-                                                  ['imageSrc']
-                                              .toString()),
+                                        CustomInputField(
+                                          controller: addTextField,
                                         ),
-                                        Text(
-                                          reactions[index]['title'].toString(),
-                                          style: AppStyles().smallText,
-                                        )
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        CustomButton(
+                                            height: 50.h,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            borderRadius: 10.w,
+                                            buttonText: 'Save',
+                                            opnPress: () {
+                                              Get.back();
+                                            },
+                                            isLoading: false)
                                       ],
                                     ),
                                   ),
-                                ),
+                                ));
+                              }
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 55.h,
+                                    decoration: BoxDecoration(
+                                        color: tappedIndex == index
+                                            ? AppColors.buttonColor
+                                            : AppColors.whiteColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10.w)),
+                                    child: Image.asset(reactions[index]
+                                            ['imageSrc']
+                                        .toString()),
+                                  ),
+                                  Text(
+                                    reactions[index]['title'].toString(),
+                                    style: AppStyles().smallText,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
                         );
                       },
                     ),

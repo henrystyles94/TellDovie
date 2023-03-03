@@ -44,13 +44,20 @@ class ActivitiesRepository {
 
   //earningforAffirmation
   Future earnPointsForAffirmation() async {
-    final response = await ApiCalls.httpPostCall(affirmations, {});
+    final response = await ApiCalls.httpPostCall(earnAffirmationPoint, {});
     return response;
   }
 
   //growth Earning
   Future earnGrowthPointsRepository() async {
     final response = await ApiCalls.httpPostCall(earnGrowthPoint, {});
+    return response;
+  }
+
+  //check downlaod status
+  Future checkDownload(String name) async {
+    final response =
+        await ApiCalls.httpPostCall(checkDownloadRoute, {"name": name});
     return response;
   }
 }

@@ -17,7 +17,7 @@ class WhhiteGirlFeederScreen extends StatelessWidget {
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/c.png'},
-    {'imgPath': 'assets/svg/fire.png'},
+    // {'imgPath': 'assets/svg/fire.png'},
     {'imgPath': 'assets/svg/bird.png'},
   ];
   @override
@@ -64,17 +64,17 @@ class WhhiteGirlFeederScreen extends StatelessWidget {
                                         fit: FlexFit.loose,
                                         child: Image.asset(
                                             'assets/svg/whitrgirlFeedwCr.png')))
-                                : animationController.selectedItem.value == 3
-                                    ? SizedBox(
-                                        height: 400.w,
-                                        width: 300.w,
-                                        child: Flexible(
-                                            fit: FlexFit.loose,
-                                            child: Image.asset(
-                                                'assets/svg/whitegirlFeedwFire.png')),
-                                      )
+                                // : animationController.selectedItem.value == 3
+                                //     ? SizedBox(
+                                //         height: 400.w,
+                                //         width: 300.w,
+                                //         child: Flexible(
+                                //             fit: FlexFit.loose,
+                                //             child: Image.asset(
+                                //                 'assets/svg/whitegirlFeedwFire.png')),
+                                //       )
                                     : animationController.selectedItem.value ==
-                                            4
+                                            3
                                         ? SizedBox(
                                             height: 400.w,
                                             width: 300.w,
@@ -213,10 +213,10 @@ class WhhiteGirlFeederScreen extends StatelessWidget {
                     } else if (animationController.selectedItem.value == 2) {
                       await preferences.setString(
                           'image', 'assets/svg/whitrgirlFeedwCr.png');
+                    // } else if (animationController.selectedItem.value == 3) {
+                    //   await preferences.setString(
+                    //       'image', 'assets/svg/whitegirlFeedwFire.png');
                     } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString(
-                          'image', 'assets/svg/whitegirlFeedwFire.png');
-                    } else if (animationController.selectedItem.value == 4) {
                       await preferences.setString(
                           'image', 'assets/svg/whitegirlFeedWbird.png');
                     }

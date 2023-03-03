@@ -25,7 +25,7 @@ class _BlackBoyBrownHeadFeederScreen
     {'imgPath': 'assets/svg/yu.jpg'},
     {'imgPath': 'assets/svg/pcap.png'},
     {'imgPath': 'assets/svg/c.png'},
-    {'imgPath': 'assets/svg/fire.png'},
+    // {'imgPath': 'assets/svg/fire.png'},
     {'imgPath': 'assets/svg/octo.png'},
   ];
 
@@ -72,15 +72,15 @@ class _BlackBoyBrownHeadFeederScreen
                                     'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-crown.png',
                                     width: ScreenSize.getHeight(320),
                                   )
-                                : animationController.selectedItem.value == 3
-                                    ? Flexible(
-                                        fit: FlexFit.loose,
-                                        child: Image.asset(
-                                          'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-fire.png',
-                                          width: ScreenSize.getHeight(320),
-                                        ))
+                                // : animationController.selectedItem.value == 3
+                                //     ? Flexible(
+                                //         fit: FlexFit.loose,
+                                //         child: Image.asset(
+                                //           'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-fire.png',
+                                //           width: ScreenSize.getHeight(320),
+                                //         ))
                                     : animationController.selectedItem.value ==
-                                            4
+                                            3
                                         ? Image.asset(
                                             'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-octo.png',
                                             width: ScreenSize.getHeight(320),
@@ -213,10 +213,10 @@ class _BlackBoyBrownHeadFeederScreen
                     } else if (animationController.selectedItem.value == 2) {
                       await preferences.setString('image',
                           'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-crown.png');
+                    // } else if (animationController.selectedItem.value == 3) {
+                    //   await preferences.setString('image',
+                    //       'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-fire.png');
                     } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString('image',
-                          'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-fire.png');
-                    } else if (animationController.selectedItem.value == 4) {
                       await preferences.setString('image',
                           'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-octo.png');
                     }

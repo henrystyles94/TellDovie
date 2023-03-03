@@ -1,3 +1,4 @@
+import 'package:dovie/features/auth/presentation/login_screen.dart';
 import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -251,12 +252,17 @@ class _PictureLoginScreenState extends State<PictureLoginScreen> {
                   const Divider(
                     color: AppColors.buttonColor,
                   ),
-                  Center(
-                    child: Text(
-                      'Try a different method',
-                      style: AppStyles()
-                          .smallText
-                          .copyWith(color: AppColors.buttonColor),
+                  InkWell(
+                    onTap: () {
+                      Get.offAll(() => LoginScreen());
+                    },
+                    child: Center(
+                      child: Text(
+                        'Try a different method',
+                        style: AppStyles()
+                            .smallText
+                            .copyWith(color: AppColors.buttonColor),
+                      ),
                     ),
                   ),
                   SizedBox(
