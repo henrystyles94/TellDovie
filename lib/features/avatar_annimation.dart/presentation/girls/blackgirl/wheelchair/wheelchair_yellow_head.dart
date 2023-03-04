@@ -185,41 +185,44 @@ class _BlackGirlWheelChairYellowHeadScreen
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: () async {
-                    SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-
-                    if (animationController.selectedItem.value == 0) {
-                      preferences.setString(
-                        'image',
-                        'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel.png',
-                      );
-                    } else if (animationController.selectedItem.value == 1) {
-                      preferences.setString(
-                        'image',
-                        'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-cap.png',
-                      );
-                    } else if (animationController.selectedItem.value == 2) {
-                      preferences.setString(
-                        'image',
-                        'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-crown.png',
-                      );
-                    } else if (animationController.selectedItem.value == 3) {
-                      preferences.setString(
-                        'image',
-                        'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-bird.png',
-                      );
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                        backgroundColor: AppColors.buttonColor,
-                        colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+              Obx(()=>
+                 CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+              
+                      if (animationController.selectedItem.value == 0) {
+                        preferences.setString(
+                          'image',
+                          'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel.png',
+                        );
+                      } else if (animationController.selectedItem.value == 1) {
+                        preferences.setString(
+                          'image',
+                          'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-cap.png',
+                        );
+                      } else if (animationController.selectedItem.value == 2) {
+                        preferences.setString(
+                          'image',
+                          'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-crown.png',
+                        );
+                      } else if (animationController.selectedItem.value == 3) {
+                        preferences.setString(
+                          'image',
+                          'assets/svg/blackgirl_curly/orange_shirt/wheelchair/y_head/yhead-wheel-bird.png',
+                        );
+                      }
+                      animationController.earnPointController();
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),

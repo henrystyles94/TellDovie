@@ -192,47 +192,50 @@ class _WhiteGirlRedHeadAnimation extends State<WhiteGirlRedHeadAnimation> {
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: () async {
-                    SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                    // print(animationController.selectedItem.value);
-                    if (animationController.selectedItem.value == 0) {
-                      var check = await preferences.setString(
-                        'image',
-                        'assets/svg/whitegirl/red_head/rhead.png',
-                      );
-                      print(check);
-                    } else if (animationController.selectedItem.value == 1) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/whitegirl/red_head/rhead-cap.png',
-                      );
-                    } else if (animationController.selectedItem.value == 2) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/whitegirl/red_head/rhead-bat.png',
-                      );
-                    } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/whitegirl/red_head/rhead-bird.png',
-                      );
-                    } else if (animationController.selectedItem.value == 4) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/whitegirl/red_head/rhead-crown.png',
-                      );
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                        backgroundColor: AppColors.buttonColor,
-                        colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+              Obx(()=>
+                 CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      // print(animationController.selectedItem.value);
+                      if (animationController.selectedItem.value == 0) {
+                        var check = await preferences.setString(
+                          'image',
+                          'assets/svg/whitegirl/red_head/rhead.png',
+                        );
+                        print(check);
+                      } else if (animationController.selectedItem.value == 1) {
+                        await preferences.setString(
+                          'image',
+                          'assets/svg/whitegirl/red_head/rhead-cap.png',
+                        );
+                      } else if (animationController.selectedItem.value == 2) {
+                        await preferences.setString(
+                          'image',
+                          'assets/svg/whitegirl/red_head/rhead-bat.png',
+                        );
+                      } else if (animationController.selectedItem.value == 3) {
+                        await preferences.setString(
+                          'image',
+                          'assets/svg/whitegirl/red_head/rhead-bird.png',
+                        );
+                      } else if (animationController.selectedItem.value == 4) {
+                        await preferences.setString(
+                          'image',
+                          'assets/svg/whitegirl/red_head/rhead-crown.png',
+                        );
+                      }
+                      animationController.earnPointController();
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),

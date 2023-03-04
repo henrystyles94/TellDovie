@@ -261,8 +261,8 @@ class _WellnesScreenState extends State<WellnesScreen> {
                       child: InkWell(
                         onTap: () {
                           // startingTimer();
-                          speak(activitiesController
-                              .loadedGrowthMindsets.value.data![0].content
+                          speak(activitiesController.loadedGrowthMindsets.value
+                              .data![selectedIndex].content
                               .toString());
                         },
                         child: Container(

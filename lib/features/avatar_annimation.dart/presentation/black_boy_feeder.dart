@@ -78,16 +78,15 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
                                 //           'assets/svg/blackfire.png',
                                 //           width: ScreenSize.getHeight(320),
                                 //         ))
-                                    : animationController.selectedItem.value ==
-                                            3
-                                        ? Image.asset(
-                                            'assets/svg/blackfeedOcto.png',
-                                            width: ScreenSize.getHeight(220),
-                                          )
-                                        : Image.asset(
-                                            'assets/svg/normal.png',
-                                            width: ScreenSize.getHeight(220),
-                                          ),
+                                : animationController.selectedItem.value == 3
+                                    ? Image.asset(
+                                        'assets/svg/blackfeedOcto.png',
+                                        width: ScreenSize.getHeight(220),
+                                      )
+                                    : Image.asset(
+                                        'assets/svg/normal.png',
+                                        width: ScreenSize.getHeight(220),
+                                      ),
                   ],
                 ),
               ),
@@ -193,35 +192,40 @@ class _BlackBoyFeederScreen extends State<BlackBoyFeederScreen> {
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: ()async {
-                     SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                         if (animationController.selectedItem.value == 0) {
-                      await preferences.setString('image',
-                          'assets/svg/blackFn.png');
-                    } else if (animationController.selectedItem.value == 1) {
-                      await preferences.setString('image',
-                          'assets/svg/blackFCap.png');
-                    } else if (animationController.selectedItem.value == 2) {
-                      await preferences.setString('image',
-                          'assets/svg/blackFcrown.png');
-                    // } else if (animationController.selectedItem.value == 3) {
-                    //   await preferences.setString('image',
-                    //       'assets/svg/blackfire.png');
-                    } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString('image',
-                          'assets/svg/blackfeedOcto.png');
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                        backgroundColor: AppColors.buttonColor,
-                        colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+              Obx(
+                () => CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      if (animationController.selectedItem.value == 0) {
+                        await preferences.setString(
+                            'image', 'assets/svg/blackFn.png');
+                      } else if (animationController.selectedItem.value == 1) {
+                        await preferences.setString(
+                            'image', 'assets/svg/blackFCap.png');
+                      } else if (animationController.selectedItem.value == 2) {
+                        await preferences.setString(
+                            'image', 'assets/svg/blackFcrown.png');
+                        // } else if (animationController.selectedItem.value == 3) {
+                        //   await preferences.setString('image',
+                        //       'assets/svg/blackfire.png');
+                      } else if (animationController.selectedItem.value == 3) {
+                        await preferences.setString(
+                            'image', 'assets/svg/blackfeedOcto.png');
+                        
+                      }
+                      animationController.earnPointController();
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),

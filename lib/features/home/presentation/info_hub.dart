@@ -68,8 +68,7 @@ class InformationHubScreen extends StatelessWidget {
                       style: AppStyles().smallText,
                     ),
                   )
-                : infoController.loadedinfoModel.value.data!
-                .isEmpty
+                : infoController.loadedinfoModel.value.data!.isEmpty
                     ? Center(
                         child: Text(
                           'No information yet',
@@ -95,12 +94,12 @@ class InformationHubScreen extends StatelessWidget {
                                     onTap: () async {
                                       infoController.checkDownloadController(
                                           infoController.loadedinfoModel.value
-                                              .data![index].name);
+                                              .data![index].title.toString());
                                       launch(infoController.loadedinfoModel
                                           .value.data![index].file!
                                           .toString());
                                       print(
-                                          "hi url ${infoController.loadedinfoModel.value.data![index].file!.trim()}");
+                                          "hi url ${infoController.loadedinfoModel.value.data![index].file!}");
                                     },
                                     child: Container(
                                       height: 76.h,

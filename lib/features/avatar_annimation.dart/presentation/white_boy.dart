@@ -191,35 +191,38 @@ class _AnimateWhiteBoyScreen extends State<AnimateWhiteBoyScreen> {
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: () async{
-                      SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                    if (animationController.selectedItem.value == 0) {
-                      await preferences.setString(
-                          'image', 'assets/svg/whiteboy/bl_head/whiteN.png');
-                    } else if (animationController.selectedItem.value == 1) {
-                      await preferences.setString(
-                          'image', 'assets/svg/whiteboy/bl_head/whiteBc.png');
-                    } else if (animationController.selectedItem.value == 2) {
-                      await preferences.setString(
-                          'image', 'assets/svg/whiteboy/bl_head/whiteR.png');
-                    } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString(
-                          'image', 'assets/svg/whiteboy/bl_head/whiteC.png');
-                    } else if (animationController.selectedItem.value == 4) {
-                      await preferences.setString(
-                          'image', 'assets/svg/whiteboy/bl_head/whiteOc.png');
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                        backgroundColor: AppColors.buttonColor,
-                        colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+            Obx(()=>
+                 CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async{
+                        SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      if (animationController.selectedItem.value == 0) {
+                        await preferences.setString(
+                            'image', 'assets/svg/whiteboy/bl_head/whiteN.png');
+                      } else if (animationController.selectedItem.value == 1) {
+                        await preferences.setString(
+                            'image', 'assets/svg/whiteboy/bl_head/whiteBc.png');
+                      } else if (animationController.selectedItem.value == 2) {
+                        await preferences.setString(
+                            'image', 'assets/svg/whiteboy/bl_head/whiteR.png');
+                      } else if (animationController.selectedItem.value == 3) {
+                        await preferences.setString(
+                            'image', 'assets/svg/whiteboy/bl_head/whiteC.png');
+                      } else if (animationController.selectedItem.value == 4) {
+                        await preferences.setString(
+                            'image', 'assets/svg/whiteboy/bl_head/whiteOc.png');
+                      }
+                      animationController.earnPointController();
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),

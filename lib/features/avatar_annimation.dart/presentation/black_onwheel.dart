@@ -132,11 +132,11 @@ class _BlackOnWheeelsScreen extends State<BlackOnWheeelsScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       if (animationController.selectedItem.value > 0) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value - 1;
-                    }
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value - 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -153,11 +153,12 @@ class _BlackOnWheeelsScreen extends State<BlackOnWheeelsScreen> {
                     width: 59.w,
                   ),
                   InkWell(
-                    onTap: (){
-                      if (animationController.selectedItem.value <items.length) {
-                      animationController.selectedItem.value =
-                          animationController.selectedItem.value + 1;
-                    }
+                    onTap: () {
+                      if (animationController.selectedItem.value <
+                          items.length) {
+                        animationController.selectedItem.value =
+                            animationController.selectedItem.value + 1;
+                      }
                     },
                     child: Container(
                       height: 79.h,
@@ -175,32 +176,35 @@ class _BlackOnWheeelsScreen extends State<BlackOnWheeelsScreen> {
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: ()async {
-                                        SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                         if (animationController.selectedItem.value == 0) {
-                      await preferences.setString('image',
-                          'assets/svg/bwheel.png');
-                    } else if (animationController.selectedItem.value == 1) {
-                      await preferences.setString('image',
-                          'assets/svg/bwheelcap.png');
-                    } else if (animationController.selectedItem.value == 2) {
-                      await preferences.setString('image',
-                          'assets/svg/bwheelcr.png');
-                    } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString('image',
-                          'assets/svg/bwheeloct.png');
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                      backgroundColor: AppColors.buttonColor,
-                      colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+              Obx(
+                () => CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      if (animationController.selectedItem.value == 0) {
+                        await preferences.setString(
+                            'image', 'assets/svg/bwheel.png');
+                      } else if (animationController.selectedItem.value == 1) {
+                        await preferences.setString(
+                            'image', 'assets/svg/bwheelcap.png');
+                      } else if (animationController.selectedItem.value == 2) {
+                        await preferences.setString(
+                            'image', 'assets/svg/bwheelcr.png');
+                      } else if (animationController.selectedItem.value == 3) {
+                        await preferences.setString(
+                            'image', 'assets/svg/bwheeloct.png');
+                      }
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+                      animationController.earnPointController();
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),

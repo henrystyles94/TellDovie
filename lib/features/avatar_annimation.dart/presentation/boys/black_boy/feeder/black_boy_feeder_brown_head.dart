@@ -79,16 +79,15 @@ class _BlackBoyBrownHeadFeederScreen
                                 //           'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-fire.png',
                                 //           width: ScreenSize.getHeight(320),
                                 //         ))
-                                    : animationController.selectedItem.value ==
-                                            3
-                                        ? Image.asset(
-                                            'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-octo.png',
-                                            width: ScreenSize.getHeight(320),
-                                          )
-                                        : Image.asset(
-                                            'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-bottle.png',
-                                            width: ScreenSize.getHeight(320),
-                                          ),
+                                : animationController.selectedItem.value == 3
+                                    ? Image.asset(
+                                        'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-octo.png',
+                                        width: ScreenSize.getHeight(320),
+                                      )
+                                    : Image.asset(
+                                        'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-bottle.png',
+                                        width: ScreenSize.getHeight(320),
+                                      ),
                   ],
                 ),
               ),
@@ -194,37 +193,40 @@ class _BlackBoyBrownHeadFeederScreen
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: () async {
-                    SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                    // print(animationController.selectedItem.value);
-                    if (animationController.selectedItem.value == 0) {
-                      var check = await preferences.setString('image',
-                          'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-bottle.png');
-                      print(check);
-                    } else if (animationController.selectedItem.value == 1) {
-                      await preferences.setString('image',
-                          'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-cap.png');
-                    } else if (animationController.selectedItem.value == 2) {
-                      await preferences.setString('image',
-                          'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-crown.png');
-                    // } else if (animationController.selectedItem.value == 3) {
-                    //   await preferences.setString('image',
-                    //       'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-fire.png');
-                    } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString('image',
-                          'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-octo.png');
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                        backgroundColor: AppColors.buttonColor,
-                        colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+              Obx(()=>
+                 CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      // print(animationController.selectedItem.value);
+                      if (animationController.selectedItem.value == 0) {
+                        var check = await preferences.setString('image',
+                            'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-bottle.png');
+                        print(check);
+                      } else if (animationController.selectedItem.value == 1) {
+                        await preferences.setString('image',
+                            'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-cap.png');
+                      } else if (animationController.selectedItem.value == 2) {
+                        await preferences.setString('image',
+                            'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-crown.png');
+                        // } else if (animationController.selectedItem.value == 3) {
+                        //   await preferences.setString('image',
+                        //       'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-fire.png');
+                      } else if (animationController.selectedItem.value == 3) {
+                        await preferences.setString('image',
+                            'assets/svg/blackboy/orange_shirt/bottle/br_head/brown-head-octo.png');
+                      }
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+                      animationController.earnPointController();
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),

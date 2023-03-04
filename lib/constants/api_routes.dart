@@ -14,3 +14,4 @@ var pay = 'sub';
 var subscribeToPlans = 'subscribe';
 var status = 'status';
 var checkDownloadRoute = 'completed/hub';
+var avatarPointEarn = 'completed/avatar';

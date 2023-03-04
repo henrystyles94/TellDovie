@@ -195,35 +195,38 @@ class _AvatarAnimationRedHeadScreenState
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: () async{
-                     SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                         if (animationController.selectedItem.value == 0) {
-                      await preferences.setString('image',
-                          'assets/svg/normal-rhead.png');
-                    } else if (animationController.selectedItem.value == 1) {
-                      await preferences.setString('image',
-                          'assets/svg/cap-rhead.png');
-                    } else if (animationController.selectedItem.value == 2) {
-                      await preferences.setString('image',
-                          'assets/svg/robot-rhead.png');
-                    } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString('image',
-                          'assets/svg/crown-rhead.png');
-                    } else if (animationController.selectedItem.value == 4) {
-                      await preferences.setString('image',
-                          'assets/svg/octo-rhead.png');
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                        backgroundColor: AppColors.buttonColor,
-                        colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+              Obx(()=>
+                 CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async{
+                       SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                           if (animationController.selectedItem.value == 0) {
+                        await preferences.setString('image',
+                            'assets/svg/normal-rhead.png');
+                      } else if (animationController.selectedItem.value == 1) {
+                        await preferences.setString('image',
+                            'assets/svg/cap-rhead.png');
+                      } else if (animationController.selectedItem.value == 2) {
+                        await preferences.setString('image',
+                            'assets/svg/robot-rhead.png');
+                      } else if (animationController.selectedItem.value == 3) {
+                        await preferences.setString('image',
+                            'assets/svg/crown-rhead.png');
+                      } else if (animationController.selectedItem.value == 4) {
+                        await preferences.setString('image',
+                            'assets/svg/octo-rhead.png');
+                      }
+                      animationController.earnPointController();
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),

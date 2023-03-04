@@ -31,11 +31,18 @@ class ActivitiesRepository {
     return response;
   }
 
-  Future moodTrackerRepository(String reaction, reason, better) async {
+  Future moodTrackerRepository(String audioFil, reaction, outcome, better) async {
     final response = await ApiCalls.httpPostCall(moodTracker,
-        {"reaction": reaction, "reason": reaction, "better": better});
+      {
+    "reason":audioFil,
+    "reaction":reaction,
+    "outcome":outcome,
+    "better":better,
+"description":"mp4"
+});
     return response;
   }
+
 
   Future growthMindsetRepository() async {
     final response = await ApiCalls.httpGetCall(growthMindset);

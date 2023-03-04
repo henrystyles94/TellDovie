@@ -186,15 +186,22 @@ class HomeScreen extends StatelessWidget {
                                     subController.loadedStatus.value.message !=
                                         'User is active') {
                                   Get.to(SubscriptionScreen());
+                                } else if (index == 4 &&
+                                    subController.loadedStatus.value.message !=
+                                        'User is active') {
+                                  Get.to(() => SubscriptionScreen());
                                 } else if (index == 4) {
                                   Get.to(() => InformationHubScreen());
                                 } else if (index == 5) {
                                   if (int.parse(walletController
-                                          .loadedValue.value.data
-                                          .toString()) <
-                                      20) {
+                                              .loadedValue.value.data
+                                              .toString()) <
+                                          20 &&
+                                      subController
+                                              .loadedStatus.value.message !=
+                                          'User is active') {
                                     Get.snackbar('Opps',
-                                        "You don't have enough points to build an avatar");
+                                        "TO ACCESS THIS FEATURE YOU HAVE TO HAVE AN ACTIVE SUBSCRIPTION PLAN AND A COIN BALANCE OF AT LEAST 20 DOVIE POINTS");
                                   } else if (imageData != null) {
                                     // pr
                                     Get.bottomSheet(InkWell(

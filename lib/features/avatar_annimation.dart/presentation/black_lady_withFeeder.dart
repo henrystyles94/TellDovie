@@ -72,24 +72,23 @@ class BlackLadyWithFeederScreen extends StatelessWidget {
                                 //         fit: FlexFit.loose,
                                 //         child: Image.asset(
                                 //             'assets/svg/blackgirlwFire.png'))
-                                    : animationController.selectedItem.value ==
-                                            3
-                                        ? SizedBox(
-                                            height: 400.w,
-                                            width: 300.w,
-                                            child: Flexible(
-                                              fit: FlexFit.loose,
-                                              child: Image.asset(
-                                                  'assets/svg/blackgirlwBird.png'),
-                                            ),
-                                          )
-                                        : SizedBox(
-                                            height: 400.w,
-                                            width: 300.w,
-                                            child: Image.asset(
-                                              'assets/svg/bGF.png',
-                                              fit: BoxFit.fill,
-                                            )),
+                                : animationController.selectedItem.value == 3
+                                    ? SizedBox(
+                                        height: 400.w,
+                                        width: 300.w,
+                                        child: Flexible(
+                                          fit: FlexFit.loose,
+                                          child: Image.asset(
+                                              'assets/svg/blackgirlwBird.png'),
+                                        ),
+                                      )
+                                    : SizedBox(
+                                        height: 400.w,
+                                        width: 300.w,
+                                        child: Image.asset(
+                                          'assets/svg/bGF.png',
+                                          fit: BoxFit.fill,
+                                        )),
                   ],
                 ),
               ),
@@ -195,40 +194,42 @@ class BlackLadyWithFeederScreen extends StatelessWidget {
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: ()async {
-                                         SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                         if (animationController.selectedItem.value == 0) {
-                      await preferences.setString('image',
-                          'assets/svg/bGF.png');
-                    } else if (animationController.selectedItem.value == 1) {
-                      await preferences.setString('image',
-                          'assets/svg/bgFeedWithCap.png');
-                    } else if (animationController.selectedItem.value == 2) {
-                      await preferences.setString('image',
-                          'assets/svg/bgfeedCr.png');
-                    // } else if (animationController.selectedItem.value == 3) {
-                    //   await preferences.setString('image',
-                    //       'assets/svg/blackgirlwFire.png');
-                    } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString('image',
-                          'assets/svg/blackgirlwBird.png');
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                        backgroundColor: AppColors.buttonColor,
-                        colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+              Obx(
+                () => CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      if (animationController.selectedItem.value == 0) {
+                        await preferences.setString(
+                            'image', 'assets/svg/bGF.png');
+                      } else if (animationController.selectedItem.value == 1) {
+                        await preferences.setString(
+                            'image', 'assets/svg/bgFeedWithCap.png');
+                      } else if (animationController.selectedItem.value == 2) {
+                        await preferences.setString(
+                            'image', 'assets/svg/bgfeedCr.png');
+                        // } else if (animationController.selectedItem.value == 3) {
+                        //   await preferences.setString('image',
+                        //       'assets/svg/blackgirlwFire.png');
+                      } else if (animationController.selectedItem.value == 3) {
+                        await preferences.setString(
+                            'image', 'assets/svg/blackgirlwBird.png');
+                      }
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+                      animationController.earnPointController();
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),
       ),
     );
-    
   }
 }

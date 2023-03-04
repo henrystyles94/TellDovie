@@ -23,6 +23,7 @@ class MoodTrackerScreen extends StatefulWidget {
 final affirmationController = Get.put(ActivityController());
 String dropdownvalue = '';
 int? tappedIndex = -1;
+var val;
 var items = [
   '',
   'Read a book',
@@ -305,8 +306,33 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                                 )
                               : InkWell(
                                   onTap: () {
+                                    // print(tappedIconValue);
+                                    // print(reactions[index].length);
+                                    print(index);
+                                    print(val);
                                     setState(() {
                                       tappedIndex = index;
+                                      val = index;
+                                      if (val == 0 || val == null) {
+                                        val = 'sad';
+                                      } else if (val == 1) {
+                                        val = 'anxious';
+                                      } else if (val == 2) {
+                                        val = 'tired';
+                                      } else if (val == 3) {
+                                        val = 'happy';
+                                      } else if (val == 4) {
+                                        val = 'nervous';
+                                      } else if (val == 5) {
+                                        val = 'excited';
+                                      } else if (val == 6) {
+                                        val = 'optimistic';
+                                      } else if (val == 7) {
+                                        val = 'frustrated';
+                                      } else if (val == 8) {
+                                        val = 'shy';
+                                      }
+                                      // tappedIconValue = index;
                                     });
                                   },
                                   child: Padding(
@@ -583,7 +609,11 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                     buttonText: 'Save',
                     opnPress: () {
                       activityController.moodTracker(
-                          'sad', feelingController.text, dropdownvalue);
+                        audioPath!.path,
+                        feelingController.text,
+                        dropdownvalue,
+                        val,
+                      );
                     }),
               )
             ],

@@ -191,47 +191,50 @@ class _WhiteGirlAnimation extends State<WhiteGirlAnimation> {
               SizedBox(
                 height: 50.h,
               ),
-              CustomButton(
-                  height: 50.h,
-                  width: MediaQuery.of(context).size.width,
-                  borderRadius: 20.w,
-                  buttonText: 'Save',
-                  opnPress: () async {
-                    SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                    // print(animationController.selectedItem.value);
-                    if (animationController.selectedItem.value == 0) {
-                      var check = await preferences.setString(
-                        'image',
-                        'assets/svg/wgn.png',
-                      );
-                      print(check);
-                    } else if (animationController.selectedItem.value == 1) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/wgwc.png',
-                      );
-                    } else if (animationController.selectedItem.value == 2) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/wgwbat.png',
-                      );
-                    } else if (animationController.selectedItem.value == 3) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/wgwbr.png',
-                      );
-                    } else if (animationController.selectedItem.value == 4) {
-                      await preferences.setString(
-                        'image',
-                        'assets/svg/wgwcr.png',
-                      );
-                    }
-                    Get.snackbar('Saved', 'Avatar saved',
-                        backgroundColor: AppColors.buttonColor,
-                        colorText: AppColors.whiteColor);
-                  },
-                  isLoading: false)
+              Obx(()=>
+                 CustomButton(
+                    height: 50.h,
+                    width: MediaQuery.of(context).size.width,
+                    borderRadius: 20.w,
+                    buttonText: 'Save',
+                    opnPress: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      // print(animationController.selectedItem.value);
+                      if (animationController.selectedItem.value == 0) {
+                        var check = await preferences.setString(
+                          'image',
+                          'assets/svg/wgn.png',
+                        );
+                        print(check);
+                      } else if (animationController.selectedItem.value == 1) {
+                        await preferences.setString(
+                          'image',
+                          'assets/svg/wgwc.png',
+                        );
+                      } else if (animationController.selectedItem.value == 2) {
+                        await preferences.setString(
+                          'image',
+                          'assets/svg/wgwbat.png',
+                        );
+                      } else if (animationController.selectedItem.value == 3) {
+                        await preferences.setString(
+                          'image',
+                          'assets/svg/wgwbr.png',
+                        );
+                      } else if (animationController.selectedItem.value == 4) {
+                        await preferences.setString(
+                          'image',
+                          'assets/svg/wgwcr.png',
+                        );
+                      }
+                      animationController.earnPointController();
+                      Get.snackbar('Saved', 'Avatar saved',
+                          backgroundColor: AppColors.buttonColor,
+                          colorText: AppColors.whiteColor);
+                    },
+                    isLoading: animationController.isLoading.value),
+              )
             ],
           ),
         ),

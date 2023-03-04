@@ -82,11 +82,11 @@ class ActivityController extends GetxController {
     }
   }
 
-  Future moodTracker(String reaction, reason, better) async {
+  Future moodTracker(String audio,reaction, outcome, better) async {
     try {
       tracking(true);
       var result =
-          await activityRepo.moodTrackerRepository(reaction, reason, better);
+          await activityRepo.moodTrackerRepository(audio, reaction, outcome, better);
       tracking(false);
       SnackBarWidget().succesSnackBar(result['message']);
     } catch (e) {
