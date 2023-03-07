@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:path/path.dart' as p;
 
 import '../../../constants/styles/app_styles.dart';
 import '../../../constants/themes/colors.dart';
@@ -401,9 +402,11 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                           InkWell(
                               onTap: () {
                                 audioPlayer.play(UrlSource(audioPath!.path));
+                                var resulr = p.extension(audioPath!.path);
                                 setState(() {
                                   isPlaying = true;
                                 });
+                                print('hi $resulr');
                               },
                               child: isPlaying == true
                                   ? Icon(Icons.pause)

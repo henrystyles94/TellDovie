@@ -82,17 +82,18 @@ class ActivityController extends GetxController {
     }
   }
 
-  Future moodTracker(String audio,reaction, outcome, better) async {
+  Future moodTracker( audio, reaction, outcome, better) async {
     try {
       tracking(true);
-      var result =
-          await activityRepo.moodTrackerRepository(audio, reaction, outcome, better);
+      var result = await activityRepo.moodTrackerRepository(
+          audio, reaction, outcome, better);
       tracking(false);
       SnackBarWidget().succesSnackBar(result['message']);
     } catch (e) {
       tracking(false);
     }
   }
+//
 
   Future growthMindSetController() async {
     try {

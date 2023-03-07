@@ -47,9 +47,11 @@ dependencies:
   flutter_stripe: ^8.0.0+1
   url_launcher: ^6.1.9  
   syncfusion_flutter_pdfviewer: ^20.4.50
-
+  dio: ^5.0.1
+  
 
 dependencies_override:
+  path: ^1.8.3
   
 
 
