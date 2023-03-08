@@ -7,6 +7,7 @@ import 'package:dovie/features/auth/presentation/welcome_screen.dart';
 import 'package:dovie/features/home/presentation/mood_tracker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 import 'package:flutter_sound/public/flutter_sound_recorder.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -29,10 +30,14 @@ Duration duration = Duration.zero;
 Duration position = Duration.zero;
 final recorder = FlutterSoundRecorder();
 File? audioPath;
+String? newPath;
 bool isRecorderReady = false;
 Future record() async {
   if (!isRecorderReady) return;
-  await recorder.startRecorder(toFile: 'audio');
+  await recorder.startRecorder(
+    codec: Codec.aacMP4,
+    toFile: 'audio.mp4',
+  );
 }
 
 Future stop() async {
@@ -41,6 +46,7 @@ Future stop() async {
 
   final audioFile = File(path!);
   audioPath = audioFile;
+  newPath = path;
   print('RecordedFile = $audioFile');
 }
 
@@ -302,7 +308,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                               setState(() {
                                 tappedIndex = index;
                               });
-                              if (reactions.length == 7) {
+                              if (tappedIndex == 7) {
                                 Get.bottomSheet(Container(
                                   height: 200.h,
                                   width: MediaQuery.of(context).size.width,
@@ -555,10 +561,11 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     isLoading: activityController.sendingJournal.value,
                     opnPress: () {
                       activityController.calmingJournalController(
-                          journalController.text,
-                          dropdownvalue,
-                          actionvalue,
-                          'better');
+                        newPath,
+                        journalController.text,
+                        dropdownvalue,
+                        actionvalue,
+                      );
                     }),
               )
             ],

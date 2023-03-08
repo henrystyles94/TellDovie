@@ -56,18 +56,20 @@ Duration position = Duration.zero;
 final recorder = FlutterSoundRecorder();
 File? audioPath;
 bool isRecorderReady = false;
+String? newPath;
 Future record() async {
   if (!isRecorderReady) return;
-  await recorder.startRecorder(toFile: 'audio');
+  await recorder.startRecorder(codec:Codec.aacMP4, toFile: 'audio.mp4', );
 }
 
 Future stop() async {
   if (!isRecorderReady) return;
   final path = await recorder.stopRecorder();
+  newPath = path;
 
   File audioFile = File(path!);
   audioPath = audioFile;
-  ('RecordedFile = $audioFile');
+  // ('RecordedFile = $audioFile');
 }
 
 Future initRecorder() async {
@@ -612,10 +614,11 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                     buttonText: 'Save',
                     opnPress: () {
                       activityController.moodTracker(
-                        audioPath!.path,
+                        newPath,
+                        val,
                         feelingController.text,
                         dropdownvalue,
-                        val,
+                        
                       );
                     }),
               )
