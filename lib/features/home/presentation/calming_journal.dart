@@ -429,27 +429,27 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                                   onTap: () {
                                     // print(tappedIconValue);
                                     // print(reactions[index].length);
+
+                                    tappedIndex = index;
+                                    val = index;
+                                    if (tappedIndex == 0) {
+                                      val = 'excited';
+                                    } else if (tappedIndex == 1) {
+                                      val = 'proud';
+                                    } else if (tappedIndex == 2) {
+                                      val = 'sad';
+                                    } else if (tappedIndex == 3) {
+                                      val = 'angry';
+                                    } else if (tappedIndex == 4) {
+                                      val = 'frustrated';
+                                    } else if (tappedIndex == 5) {
+                                      val = 'shy';
+
+                                      // tappedIconValue = index;
+                                    }
+                                    setState(() {});
                                     print(index);
                                     print(val);
-                                    setState(() {
-                                      tappedIndex = index;
-                                      val = index;
-                                      if (val == 0 || val == null) {
-                                        val = 'excited';
-                                      } else if (val == 1) {
-                                        val = 'proud';
-                                      } else if (val == 2) {
-                                        val = 'sad';
-                                      } else if (val == 3) {
-                                        val = 'angry';
-                                      } else if (val == 4) {
-                                        val = 'frustrated';
-                                      } else if (val == 5) {
-                                        val = 'shy';
-
-                                        // tappedIconValue = index;
-                                      }
-                                    });
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(10.0),
@@ -556,7 +556,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                       }
                       setState(() {
                         dropdownvalue = newValue!;
-                        dropdownvalue = addFeelings.text;
+                        // dropdownvalue = addFeelings.text;
                       });
                     },
                   ),
@@ -670,6 +670,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     opnPress: () {
                       activityController.calmingJournalController(
                         newPath,
+                        val,
                         journalController.text,
                         dropdownvalue,
                         actionvalue,

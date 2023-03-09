@@ -14,9 +14,10 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 class PaymentScreen extends StatefulWidget {
-  final String amount;
+  final amount;
   final String duration;
-  const PaymentScreen({Key? key, required this.amount, required this.duration}) : super(key: key);
+  const PaymentScreen({Key? key, required this.amount, required this.duration})
+      : super(key: key);
 
   @override
   _PaymentScreen createState() => _PaymentScreen();
@@ -67,7 +68,8 @@ class _PaymentScreen extends State<PaymentScreen> {
 
   Future<void> makePayment() async {
     try {
-      paymentIntent = await createPaymentIntent(widget.amount, 'USD');
+      paymentIntent =
+          await createPaymentIntent(widget.amount.ceil().toString(), 'USD');
 
       //STEP 2: Initialize Payment Sheet
       await Stripe.instance
@@ -163,7 +165,6 @@ class _PaymentScreen extends State<PaymentScreen> {
       );
       print(response.statusCode);
       if (response.statusCode == 200) {
-        
         subScriptionController.subscribe(widget.duration, amount);
       }
       log('${response.statusCode}');

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:dovie/constants/api_routes.dart';
 import 'package:dovie/constants/http%20call/api_services.dart';
@@ -27,6 +25,7 @@ class ActivitiesRepository {
   Future calmingJournalRepository(
     audioFil,
     reaction,
+    feeling,
     outcome,
     better,
   ) async {
@@ -59,7 +58,7 @@ class ActivitiesRepository {
       options: Options(headers: mainheader),
     );
     print(response.data);
-    return response;
+    return response.data;
   }
   // Future calmingJournalRepository(
   //     String reason, reaction, outcome, better) async {
@@ -120,6 +119,7 @@ class ActivitiesRepository {
       options: Options(headers: mainheader),
     );
     print(response.data);
+    return response.data;
   }
 
   Future growthMindsetRepository() async {

@@ -59,7 +59,10 @@ bool isRecorderReady = false;
 String? newPath;
 Future record() async {
   if (!isRecorderReady) return;
-  await recorder.startRecorder(codec:Codec.aacMP4, toFile: 'audio.mp4', );
+  await recorder.startRecorder(
+    codec: Codec.aacMP4,
+    toFile: 'audio.mp4',
+  );
 }
 
 Future stop() async {
@@ -184,15 +187,14 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                       scrollDirection: Axis.horizontal,
                       itemCount: reactions.length + 1,
                       itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {},
+                        return Container(
                           child: index > 8
                               ? InkWell(
                                   onTap: () {
-                                      setState(() {
-                                        affirmationController.clicked = true;
-                                      });
-                                      log('message');
+                                    setState(() {
+                                      affirmationController.clicked = true;
+                                    });
+                                    log('message');
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(28.0),
@@ -309,34 +311,32 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                                 )
                               : InkWell(
                                   onTap: () {
-                                    // print(tappedIconValue);
-                                    // print(reactions[index].length);
-                                    print(index);
+                                    tappedIndex = index;
+                                    val = index;
+                                    if (tappedIndex == 0) {
+                                      val = 'sad';
+                                    } else if (tappedIndex == 1) {
+                                      val = 'anxious';
+                                    } else if (tappedIndex == 2) {
+                                      val = 'tired';
+                                    } else if (tappedIndex == 3) {
+                                      val = 'happy';
+                                    } else if (tappedIndex == 4) {
+                                      val = 'nervous';
+                                    } else if (tappedIndex == 5) {
+                                      val = 'excited';
+                                    } else if (tappedIndex == 6) {
+                                      val = 'optimistic';
+                                    } else if (tappedIndex == 7) {
+                                      val = 'frustrated';
+                                    } else if (tappedIndex == 8) {
+                                      val = 'shy';
+                                    }
+
+                                    // tappedIconValue = index;
                                     print(val);
-                                    setState(() {
-                                      tappedIndex = index;
-                                      val = index;
-                                      if (val == 0 || val == null) {
-                                        val = 'sad';
-                                      } else if (val == 1) {
-                                        val = 'anxious';
-                                      } else if (val == 2) {
-                                        val = 'tired';
-                                      } else if (val == 3) {
-                                        val = 'happy';
-                                      } else if (val == 4) {
-                                        val = 'nervous';
-                                      } else if (val == 5) {
-                                        val = 'excited';
-                                      } else if (val == 6) {
-                                        val = 'optimistic';
-                                      } else if (val == 7) {
-                                        val = 'frustrated';
-                                      } else if (val == 8) {
-                                        val = 'shy';
-                                      }
-                                      // tappedIconValue = index;
-                                    });
+                                    print(index);
+                                    setState(() {});
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(10.0),
@@ -618,7 +618,6 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                         val,
                         feelingController.text,
                         dropdownvalue,
-                        
                       );
                     }),
               )

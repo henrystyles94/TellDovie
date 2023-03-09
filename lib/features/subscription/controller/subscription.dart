@@ -11,6 +11,7 @@ class SubscriptionController extends GetxController {
   final subRepository = SubscriptionRepository();
   var loadedPlans = SubcriptionPlanResponseModel().obs;
   var loadedStatus = StatusResponseModel().obs;
+  RxInt isTapped = RxInt(0);
   @override
   void onInit() {
     getPlansController();

@@ -70,14 +70,15 @@ class ActivityController extends GetxController {
   }
 
   Future calmingJournalController(
-       audio, reaction, outcome, better) async {
+       audio, reaction, feeling,outcome, better) async {
     try {
       sendingJournal(true);
       var result = await activityRepo.calmingJournalRepository(
-          audio, reaction, outcome, better);
+          audio, reaction,feeling, outcome, better);
       sendingJournal(false);
       SnackBarWidget().succesSnackBar(result['message']);
     } catch (e) {
+        SnackBarWidget().succesSnackBar('');
       sendingJournal(false);
     }
   }
