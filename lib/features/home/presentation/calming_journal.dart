@@ -92,7 +92,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
     {'imageSrc': 'assets/images/angry.png', 'title': 'Angry'},
     {'imageSrc': 'assets/images/frustrate.png', 'title': 'Frustrated'},
     {'imageSrc': 'assets/images/shy.png', 'title': 'Shy'},
-    {'imageSrc': 'assets/images/add.png', 'title': 'type how you feel'},
+    // {'imageSrc': 'assets/images/add.png', 'title': 'type how you feel'},
   ];
   @override
   void initState() {
@@ -300,74 +300,181 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     height: 100.h,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: reactions.length,
+                      itemCount: reactions.length + 1,
                       itemBuilder: (context, index) {
                         return InkWell(
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                tappedIndex = index;
-                              });
-                              if (tappedIndex == 7) {
-                                Get.bottomSheet(Container(
-                                  height: 200.h,
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.backGroundColor,
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10.w),
-                                          topRight: Radius.circular(10.w))),
+                          onTap: () {},
+                          child: index > 5
+                              ? InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      affirmationController.clicked = true;
+                                    });
+                                    log('message');
+                                  },
                                   child: Padding(
-                                    padding: const EdgeInsets.all(18.0),
-                                    child: Column(
+                                    padding: const EdgeInsets.all(28.0),
+                                    child: Row(
                                       children: [
-                                        CustomInputField(
-                                          controller: addTextField,
+                                        // Visibility(
+                                        //   visible: affirmationController.clicked
+                                        //       ? false
+                                        //       : true,
+                                        //   child: Image.asset(
+                                        //     'assets/images/add.png',
+                                        //     fit: BoxFit.scaleDown,
+                                        //   ),
+                                        // ),
+                                        InkWell(
+                                          onTap: () {
+                                            Get.bottomSheet(Container(
+                                              height: 200.h,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              decoration: BoxDecoration(
+                                                  color:
+                                                      AppColors.backGroundColor,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  10.w),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  10.w))),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(18.0),
+                                                child: Column(
+                                                  children: [
+                                                    CustomInputField(
+                                                      controller: addTextField,
+                                                    ),
+                                                    SizedBox(
+                                                      height: 10.h,
+                                                    ),
+                                                    CustomButton(
+                                                        height: 50.h,
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        borderRadius: 10.w,
+                                                        buttonText: 'Save',
+                                                        opnPress: () {
+                                                          Get.back();
+                                                        },
+                                                        isLoading: false)
+                                                  ],
+                                                ),
+                                              ),
+                                            ));
+                                          },
+                                          child: Image.asset(
+                                            'assets/images/add.png',
+                                            fit: BoxFit.scaleDown,
+                                          ),
                                         ),
-                                        SizedBox(
-                                          height: 10.h,
-                                        ),
-                                        CustomButton(
-                                            height: 50.h,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            borderRadius: 10.w,
-                                            buttonText: 'Save',
-                                            opnPress: () {
-                                              Get.back();
-                                            },
-                                            isLoading: false)
+                                        // Visibility(
+                                        //   visible: affirmationController.clicked
+                                        //       ? true
+                                        //       : false,
+                                        //   child: Container(
+                                        //       decoration: BoxDecoration(
+                                        //           color:
+                                        //               AppColors.backGroundColor,
+                                        //           borderRadius:
+                                        //               BorderRadius.circular(
+                                        //                   10.w)),
+                                        //       child: Padding(
+                                        //         padding:
+                                        //             const EdgeInsets.all(8.0),
+                                        //         child: Row(
+                                        //           children: [
+                                        //             Text(
+                                        //               'you can type how you feel here',
+                                        //               style: AppStyles()
+                                        //                   .smallText
+                                        //                   .copyWith(
+                                        //                       fontSize: 15),
+                                        //             ),
+                                        //             InkWell(
+                                        //                 onTap: () {
+                                        //                   setState(() {
+                                        //                     affirmationController
+                                        //                             .clicked =
+                                        //                         false;
+                                        //                   });
+                                        //                 },
+                                        //                 child: Visibility(
+                                        //                     visible:
+                                        //                         affirmationController
+                                        //                                 .clicked
+                                        //                             ? true
+                                        //                             : false,
+                                        //                     child: Icon(
+                                        //                       Icons.cancel,
+                                        //                       size: 10,
+                                        //                     )))
+                                        //           ],
+                                        //         ),
+                                        //       )),
+                                        // ),
                                       ],
                                     ),
                                   ),
-                                ));
-                              }
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 55.h,
-                                    decoration: BoxDecoration(
-                                        color: tappedIndex == index
-                                            ? AppColors.buttonColor
-                                            : AppColors.whiteColor,
-                                        borderRadius:
-                                            BorderRadius.circular(10.w)),
-                                    child: Image.asset(reactions[index]
-                                            ['imageSrc']
-                                        .toString()),
+                                )
+                              : InkWell(
+                                  onTap: () {
+                                    // print(tappedIconValue);
+                                    // print(reactions[index].length);
+                                    print(index);
+                                    print(val);
+                                    setState(() {
+                                      tappedIndex = index;
+                                      val = index;
+                                      if (val == 0 || val == null) {
+                                        val = 'excited';
+                                      } else if (val == 1) {
+                                        val = 'proud';
+                                      } else if (val == 2) {
+                                        val = 'sad';
+                                      } else if (val == 3) {
+                                        val = 'angry';
+                                      } else if (val == 4) {
+                                        val = 'frustrated';
+                                      } else if (val == 5) {
+                                        val = 'shy';
+
+                                        // tappedIconValue = index;
+                                      }
+                                    });
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 55.h,
+                                          decoration: BoxDecoration(
+                                              color: tappedIndex == index
+                                                  ? AppColors.buttonColor
+                                                  : AppColors.whiteColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(10.w)),
+                                          child: Image.asset(reactions[index]
+                                                  ['imageSrc']
+                                              .toString()),
+                                        ),
+                                        Text(
+                                          reactions[index]['title'].toString(),
+                                          style: AppStyles().smallText,
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                  Text(
-                                    reactions[index]['title'].toString(),
-                                    style: AppStyles().smallText,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                                ),
                         );
                       },
                     ),
@@ -449,6 +556,7 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                       }
                       setState(() {
                         dropdownvalue = newValue!;
+                        dropdownvalue = addFeelings.text;
                       });
                     },
                   ),

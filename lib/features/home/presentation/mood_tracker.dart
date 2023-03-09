@@ -189,10 +189,10 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                           child: index > 8
                               ? InkWell(
                                   onTap: () {
-                                    setState(() {
-                                      affirmationController.clicked = true;
-                                    });
-                                    log('message');
+                                      setState(() {
+                                        affirmationController.clicked = true;
+                                      });
+                                      log('message');
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(28.0),

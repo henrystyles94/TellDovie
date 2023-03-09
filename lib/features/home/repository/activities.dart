@@ -23,7 +23,8 @@ class ActivitiesRepository {
     final response = await ApiCalls.httpGetCall(lessons);
     return response;
   }
-Future calmingJournalRepository(
+
+  Future calmingJournalRepository(
     audioFil,
     reaction,
     outcome,
@@ -58,6 +59,7 @@ Future calmingJournalRepository(
       options: Options(headers: mainheader),
     );
     print(response.data);
+    return response;
   }
   // Future calmingJournalRepository(
   //     String reason, reaction, outcome, better) async {
