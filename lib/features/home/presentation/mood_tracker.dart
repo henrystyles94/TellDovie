@@ -613,12 +613,18 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
                     borderRadius: 30.w,
                     buttonText: 'Save',
                     opnPress: () {
-                      activityController.moodTracker(
-                        newPath,
-                        val,
-                        feelingController.text,
-                        dropdownvalue,
-                      );
+                      newPath == null
+                          ? activityController.moodTextTracker(
+                              feelingController.text,
+                              val,
+                              dropdownvalue,
+                            )
+                          : activityController.moodTracker(
+                              newPath,
+                              val,
+                              feelingController.text,
+                              dropdownvalue,
+                            );
                     }),
               )
             ],

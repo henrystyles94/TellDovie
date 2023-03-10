@@ -70,24 +70,46 @@ class ActivityController extends GetxController {
   }
 
   Future calmingJournalController(
-       audio, reaction, feeling,outcome, better) async {
+      audio, reaction, feeling, outcome, better,type) async {
     try {
       sendingJournal(true);
       var result = await activityRepo.calmingJournalRepository(
-          audio, reaction,feeling, outcome, better);
+          audio, reaction, feeling, outcome, better, type,);
       sendingJournal(false);
       SnackBarWidget().succesSnackBar(result['message']);
     } catch (e) {
-        SnackBarWidget().succesSnackBar('');
       sendingJournal(false);
     }
   }
 
-  Future moodTracker( audio, reaction, outcome, better) async {
+ Future calmingJournalTextController(
+      reaction, feeling, outcome, better,type) async {
+    try {
+      sendingJournal(true);
+      var result = await activityRepo.calmingJournalTextRepository(
+        reaction, feeling, outcome, better, type,);
+      sendingJournal(false);
+      SnackBarWidget().succesSnackBar(result['message']);
+    } catch (e) {
+      sendingJournal(false);
+    }
+  }
+  Future moodTracker(audio, reaction, outcome, better) async {
     try {
       tracking(true);
       var result = await activityRepo.moodTrackerRepository(
           audio, reaction, outcome, better);
+      tracking(false);
+      SnackBarWidget().succesSnackBar(result['message']);
+    } catch (e) {
+      tracking(false);
+    }
+  }
+  Future moodTextTracker( reason,reaction,  better,) async {
+    try {
+      tracking(true);
+      var result = await activityRepo.moodTrackerTextRepository(
+          reason, reaction, better, );
       tracking(false);
       SnackBarWidget().succesSnackBar(result['message']);
     } catch (e) {

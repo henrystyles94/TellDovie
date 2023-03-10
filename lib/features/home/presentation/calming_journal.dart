@@ -668,13 +668,22 @@ class _CalmingJournalScreenState extends State<CalmingJournalScreen> {
                     buttonText: 'Save',
                     isLoading: activityController.sendingJournal.value,
                     opnPress: () {
-                      activityController.calmingJournalController(
-                        newPath,
-                        val,
-                        journalController.text,
-                        dropdownvalue,
-                        actionvalue,
-                      );
+                      var type;
+                      newPath == null
+                          ? activityController.calmingJournalTextController(
+                              journalController.text,
+                              val,
+                             
+                              dropdownvalue,
+                              actionvalue,
+                              type = "text")
+                          : activityController.calmingJournalController(
+                              newPath,
+                              val,
+                              journalController.text,
+                              dropdownvalue,
+                              actionvalue,
+                              type = "mp4");
                     }),
               )
             ],

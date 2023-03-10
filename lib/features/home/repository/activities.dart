@@ -23,11 +23,12 @@ class ActivitiesRepository {
   }
 
   Future calmingJournalRepository(
-    audioFil,
+    String audioFil,
     reaction,
     feeling,
     outcome,
     better,
+    description,
   ) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     var token = preferences.getString('token');
@@ -43,11 +44,11 @@ class ActivitiesRepository {
       "reaction": reaction,
       "outcome": outcome,
       "better": better,
-      "description": "mp4"
+      "description": description
     });
     Map<String, dynamic> mainheader = {
-      // "Content-type": "application/json",
-      // "Accept": "application/json",
+      "Content-type": "application/json",
+      "Accept": "application/json",
       "Authorization": "Bearer $token"
     };
     Dio dio = Dio();
@@ -60,28 +61,28 @@ class ActivitiesRepository {
     print(response.data);
     return response.data;
   }
-  // Future calmingJournalRepository(
-  //     String reason, reaction, outcome, better) async {
-  //   final response = await ApiCalls.httpPostCall(calmingJourn, {
-  //     "reason": reason,
-  //     "reaction": reaction,
-  //     "outcome": outcome,
-  //     "better": better
-  //   });
-  //   return response;
-  // }
 
-  // Future moodTrackerRepository(
-  //     String audioFil, reaction, outcome, better) async {
-  //   final response = await ApiCalls.httpPostCall(moodTracker, {
-  //     "reason": audioFil,
-  //     "reaction": reaction,
-  //     "outcome": outcome,
-  //     "better": better,
-  //     "description": "mp4"
-  //   });
-  //   return response;
-  // }
+  Future calmingJournalTextRepository(
+      String reason, reaction, outcome, better, description) async {
+    final response = await ApiCalls.httpPostCall(calmingJourn, {
+      "reason": reason,
+      "reaction": reaction,
+      "outcome": outcome,
+      "better": better,
+      "description": description
+    });
+    return response;
+  }
+
+  Future moodTrackerTextRepository(String reason, reaction, better) async {
+    final response = await ApiCalls.httpPostCall(moodTracker, {
+      "reaction": reaction,
+      "reason": reason,
+      "better": better,
+      "description": 'text'
+    });
+    return response;
+  }
 //
 
   Future moodTrackerRepository(
