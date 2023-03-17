@@ -1,4 +1,4 @@
-package com.example.dovie
+package com.samuel.dovie
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 
